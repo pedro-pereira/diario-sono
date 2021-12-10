@@ -52,8 +52,8 @@ public class GraficoActivity extends AppCompatActivity implements OnCompleteList
 
         setContentView(R.layout.activity_grafico);
 
-        seekBarX = findViewById(R.id.seekBar1);
-        seekBarY = findViewById(R.id.seekBar2);
+        //seekBarX = findViewById(R.id.seekBar1);
+        //seekBarY = findViewById(R.id.seekBar2);
 
         chart = findViewById(R.id.chart1);
 
@@ -140,13 +140,13 @@ public class GraficoActivity extends AppCompatActivity implements OnCompleteList
     @Override
     public void onComplete(@NonNull Task<QuerySnapshot> task) {
         if (task.isSuccessful()) {
+            int iterator = 1;
             for (QueryDocumentSnapshot document : task.getResult()) {
                 if (document.exists()) {
                     float duracao = Float.parseFloat(document.get("duracao").toString());
-                    // Log.i("Teste de eventos", document.get("detalhe").toString());
-                    // Log.i("Teste de duracao", String.valueOf(duracao));
-                    values.add(new BarEntry(duracao, duracao));
+                    values.add(new BarEntry(iterator, duracao));
                 }
+                iterator++;
             }
         } else {
             Log.d("TAG", "Error getting documents: ", task.getException());
@@ -182,6 +182,8 @@ public class GraficoActivity extends AppCompatActivity implements OnCompleteList
             gradientFills.add(new GradientColor(startColor5, endColor5));
             set1.setGradientColors(gradientFills);
             ArrayList<IBarDataSet> dataSets = new ArrayList<>();
+            dataSets.add(set1);
+            dataSets.add(set1);
             dataSets.add(set1);
             BarData data = new BarData(dataSets);
             data.setValueTextSize(10f);
