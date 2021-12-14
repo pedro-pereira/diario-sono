@@ -49,14 +49,6 @@ public class GraficoActivity extends AppCompatActivity implements OnCompleteList
 
     AnimationDrawable mAnimation;
 
-    CheckBox check1;
-    CheckBox check2;
-    CheckBox check3;
-    CheckBox check4;
-    CheckBox check5;
-    CheckBox check6;
-    CheckBox check7;
-
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,13 +65,6 @@ public class GraficoActivity extends AppCompatActivity implements OnCompleteList
         setTitle("Gráficos");
 
         setPropertiesChart();
-
-        check1 = (CheckBox) findViewById(R.id.checkbox);
-        check2 = (CheckBox) findViewById(R.id.checkBox2);
-        check3 = (CheckBox) findViewById(R.id.checkBox3);
-        check4 = (CheckBox) findViewById(R.id.checkBox4);
-        check5 = (CheckBox) findViewById(R.id.checkBox5);
-        check6 = (CheckBox) findViewById(R.id.checkBox6);
 
         imgAndroid = (ImageView) findViewById(R.id.imgAndroid);
         imgAndroid.setBackgroundResource(R.drawable.loading);
@@ -114,6 +99,35 @@ public class GraficoActivity extends AppCompatActivity implements OnCompleteList
                     String dayOfTheWeek = sdf.format(dataMomentoFinal).equals("7") ? "1" : String.valueOf(Integer.parseInt(sdf.format(dataMomentoFinal)) + 1);
                     Integer duracao = Integer.parseInt(document.get("duracao").toString());
                     values.add(new Entry(Float.parseFloat(dayOfTheWeek), duracao));
+
+                    String tipoEvento = document.getString("tipoEvento");
+                    if(tipoEvento != null){
+                        switch (tipoEvento){
+                            case "exercicio": {
+                                View view = findViewById(R.id.halter);
+                                String check = "checkBox"+dayOfTheWeek;
+                                CheckBox checkBox = view.findViewById(getResources().getIdentifier(check, "id", getPackageName()));
+                                checkBox.setChecked(true);
+                                break;
+                            }
+                            case "remedio": {
+                                View view = findViewById(R.id.pilula);
+
+                                String check = "checkBox"+dayOfTheWeek;
+                                CheckBox checkBox = view.findViewById(getResources().getIdentifier(check, "id", getPackageName()));
+                                checkBox.setChecked(true);
+                                break;
+                            }
+                            case "bebida": {
+                                View view = findViewById(R.id.bebida);
+                                String check = "checkBox"+dayOfTheWeek;
+
+                                CheckBox checkBox = view.findViewById(getResources().getIdentifier(check, "id", getPackageName()));
+                                checkBox.setChecked(true);
+                                break;
+                            }
+                        }
+                    }
                 }
             }
             LineDataSet set1;
