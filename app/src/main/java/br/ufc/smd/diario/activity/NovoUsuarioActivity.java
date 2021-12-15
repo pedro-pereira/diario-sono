@@ -22,11 +22,14 @@ public class NovoUsuarioActivity extends AppCompatActivity {
 
     FirebaseFirestore db;
 
+    private EditText edtNovoNome;
+    private EditText edtNovoDataNascimento;
+    private EditText edtNovoGenero;
+    private EditText edtNovoCpf;
+    private EditText edtNovoTelefone;
     private EditText edtNovoLogin;
     private EditText edtNovoSenha;
-    private EditText edtNovoNome;
-    private EditText edtNovoEmail;
-    private EditText edtNovoTelefone;
+    private EditText edtNovoConfirmarSenha;
     private Button   btCriar;
 
     @Override
@@ -36,22 +39,28 @@ public class NovoUsuarioActivity extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
 
+        edtNovoNome    = findViewById(R.id.edtNovoNome);
+        edtNovoDataNascimento    = findViewById(R.id.edtNovoDataNascimento);
+        edtNovoGenero    = findViewById(R.id.edtNovoGenero);
+        edtNovoCpf    = findViewById(R.id.edtNovoCpf);
+        edtNovoTelefone = findViewById(R.id.edtNovoTelefone);
         edtNovoLogin    = findViewById(R.id.edtNovoLogin);
         edtNovoSenha    = findViewById(R.id.edtNovoSenha);
-        edtNovoNome     = findViewById(R.id.edtNovoNome);
-        edtNovoEmail    = findViewById(R.id.edtNovoEmail);
-        edtNovoTelefone = findViewById(R.id.edtNovoTelefone);
+        edtNovoConfirmarSenha    = findViewById(R.id.edtNovoConfirmarSenha);
         btCriar         = findViewById(R.id.btCriar);
 
         btCriar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Usuario u = new Usuario();
+                u.setNome(edtNovoNome.getText().toString());
+                u.setNome(edtNovoDataNascimento.getText().toString());
+                u.setNome(edtNovoGenero.getText().toString());
+                u.setNome(edtNovoCpf.getText().toString());
+                u.setTelefone(edtNovoTelefone.getText().toString());
                 u.setUsuario(edtNovoLogin.getText().toString());
                 u.setSenha(edtNovoSenha.getText().toString());
-                u.setNome(edtNovoNome.getText().toString());
-                u.setEmail(edtNovoEmail.getText().toString());
-                u.setTelefone(edtNovoTelefone.getText().toString());
+                u.setEmail(edtNovoConfirmarSenha.getText().toString());
 
                 db.collection("usuarios")
                         .document(u.getUsuario())
