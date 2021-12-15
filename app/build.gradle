@@ -28,6 +28,8 @@ android {
     buildFeatures {
         viewBinding true
     }
+    compileSdkVersion 32
+    buildToolsVersion '32.0.0'
 }
 
 apply plugin: 'com.android.application'
