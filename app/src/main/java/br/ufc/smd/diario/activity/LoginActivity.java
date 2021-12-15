@@ -26,7 +26,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import br.ufc.smd.diario.MainActivity;
 import br.ufc.smd.diario.R;
 import br.ufc.smd.diario.model.Usuario;
 
