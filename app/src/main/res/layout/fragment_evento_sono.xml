@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".fragment.EventoSonoFragment">
+
+    <EditText
+        android:id="@+id/edtDataDeitar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="60dp"
+        android:ems="10"
+        android:hint="Data deitar" />
+
+    <EditText
+        android:id="@+id/edtHoraDeitar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="Hora deitar"
+        android:layout_below="@+id/edtDataDeitar" />
+
+    <EditText
+        android:id="@+id/edtDataLevantar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="Data levantar"
+        android:layout_below="@+id/edtHoraDeitar" />
+
+    <EditText
+        android:id="@+id/edtHoraLevantar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="Hora levantar"
+        android:layout_below="@+id/edtDataLevantar" />
+
+    <EditText
+        android:id="@+id/edtObservacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="Observação"
+        android:layout_below="@+id/edtHoraLevantar" />
+
+    <Button
+        android:id="@+id/btnSalvar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="30dp"
+        android:text="Salvar"
+        android:layout_below="@+id/edtObservacao" />
+
+</RelativeLayout>

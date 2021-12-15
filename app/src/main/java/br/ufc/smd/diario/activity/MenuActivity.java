@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 
 import br.ufc.smd.diario.R;
-import br.ufc.smd.diario.fragment.TabbedActivity;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -28,7 +27,7 @@ public class MenuActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MenuActivity.this, TabbedActivity.class);
+                Intent intent = new Intent(MenuActivity.this, NovoEventoActivity.class);
                 // Intent intent = new Intent(MenuActivity.this, NovoEventoActivity.class);
                 startActivity(intent);
                 finish();
