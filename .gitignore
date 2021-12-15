@@ -44,8 +44,6 @@ captures/
 .idea/caches
 .idea/modules.xml
 .idea/vcs.xml
-.idea/deploymentTargetDropDown.xml
-.idea/misc.xml
 
 .idea/deploymentTargetDropDown
 .idea/misc
@@ -72,3 +70,4 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
+.idea/deploymentTargetDropDown.xml
