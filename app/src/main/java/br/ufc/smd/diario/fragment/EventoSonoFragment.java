@@ -127,7 +127,7 @@ public class EventoSonoFragment extends Fragment {
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Map<String, String> valoresEvento = new HashMap<>();
+                Map<String, Object> valoresEvento = new HashMap<>();
                 valoresEvento.put("detalhe", edtObservacao.getText().toString());
                 valoresEvento.put("tipoEvento", "sono");
 
@@ -136,11 +136,11 @@ public class EventoSonoFragment extends Fragment {
 
                     String momentoDeitar = edtDataDeitar.getText().toString() + " " + edtHoraDeitar.getText().toString();
                     Date dataDeitar = formatter.parse(momentoDeitar);
-                    valoresEvento.put("momentoInicial", dataDeitar.toString());
+                    valoresEvento.put("momentoInicial", dataDeitar);
 
                     String momentoLevantar = edtDataLevantar.getText().toString() + " " + edtHoraLevantar.getText().toString();
                     Date dataLevantar = formatter.parse(momentoLevantar);
-                    valoresEvento.put("momentoFinal", dataLevantar.toString());
+                    valoresEvento.put("momentoFinal", dataLevantar);
 
                     long diferenca = (dataLevantar.getTime() - dataDeitar.getTime()) / 3600000;
                     valoresEvento.put("duracao", Long.toString(diferenca));
