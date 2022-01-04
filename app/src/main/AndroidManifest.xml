@@ -10,18 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Diariosono">
         <activity
+            android:name=".activity.PrincipalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.RegistroEventoActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.GraficoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".fragment.TabbedActivity"
-            android:exported="false"
-            android:label="@string/title_activity_tabbed"
-            android:theme="@style/Theme.Diariosono.NoActionBar" />
-        <activity
-            android:name=".activity.NovoEventoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.MenuActivity"
             android:exported="false" />
         <activity
             android:name=".activity.LoginActivity"
@@ -35,9 +30,6 @@
         <activity
             android:name=".activity.NovoUsuarioActivity"
             android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true" />
     </application>
 
 </manifest>
