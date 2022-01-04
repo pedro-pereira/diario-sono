@@ -93,7 +93,8 @@ public class LoginActivity extends AppCompatActivity {
                                                 Log.d("TAG", document.getId() + " => " + document.getData());
 
                                                 if (u.getUsuario() != null) {
-                                                    Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                                                    // RegistroEventoActivity
+                                                    Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
                                                     intent.putExtra("usuario", u);
                                                     startActivity(intent);
                                                     finish();
