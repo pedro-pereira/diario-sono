@@ -2,6 +2,7 @@ package br.ufc.smd.diario.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -37,10 +38,10 @@ public class DiarioFragment extends Fragment {
     FirebaseFirestore db;
     Button btnSalvar;
 
-    ImageButton btnEventoSono;
-    MaterialButton btnEventoExercicio;
-    MaterialButton btnEventoRemedio;
-    MaterialButton btnEventoBebida;
+    Button btnEventoSono;
+    Button btnEventoExercicio;
+    Button btnEventoRemedio;
+    Button btnEventoBebida;
 
     Button btnSonoDeitar;
     Button btnSonoLevantar;
@@ -72,6 +73,15 @@ public class DiarioFragment extends Fragment {
         // get fragment manager so we can launch from fragment
         final FragmentManager fm = ((AppCompatActivity)getActivity()).getSupportFragmentManager();
 
+        final Drawable drawableEventoSonoHabilitado        = getResources().getDrawable(R.drawable.ic_dormir_habilitado);
+        final Drawable drawableEventoSonoDesabilitado      = getResources().getDrawable(R.drawable.ic_dormir_desabilitado);
+        final Drawable drawableEventoExercicioHabilitado   = getResources().getDrawable(R.drawable.ic_exercicio_habilitado);
+        final Drawable drawableEventoExercicioDesabilitado = getResources().getDrawable(R.drawable.ic_exercicio_desabilitado);
+        final Drawable drawableEventoRemedioHabilitado     = getResources().getDrawable(R.drawable.ic_remedio_habilitado);
+        final Drawable drawableEventoRemedioDesabilitado   = getResources().getDrawable(R.drawable.ic_remedio_desabilitado);
+        final Drawable drawableEventoBebidaHabilitado      = getResources().getDrawable(R.drawable.ic_bebida_habilitado);
+        final Drawable drawableEventoBebidaDesabilitado    = getResources().getDrawable(R.drawable.ic_bebida_desabilitado);
+
         /*
         edtDataDeitar   = view.findViewById(R.id.edtDataDeitar);
         edtHoraDeitar   = view.findViewById(R.id.edtHoraDeitar);
@@ -97,10 +107,10 @@ public class DiarioFragment extends Fragment {
         btnBebidaRefrigerante.setVisibility(View.INVISIBLE);
         btnBebidaAlcool.setVisibility(View.INVISIBLE);
 
-        btnEventoSono.getBackground().setAlpha( 255 );
-        btnEventoExercicio.getBackground().setAlpha( 128 );
-        btnEventoRemedio.getBackground().setAlpha( 128 );
-        btnEventoBebida.getBackground().setAlpha( 128 );
+        btnEventoSono.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoSonoHabilitado , null, null);
+        btnEventoExercicio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoExercicioDesabilitado , null, null);
+        btnEventoRemedio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoRemedioDesabilitado , null, null);
+        btnEventoBebida.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoBebidaDesabilitado , null, null);
 
         btnSalvar       = view.findViewById(R.id.btnSalvar);
 
@@ -115,10 +125,10 @@ public class DiarioFragment extends Fragment {
                 btnBebidaRefrigerante.setVisibility(View.INVISIBLE);
                 btnBebidaAlcool.setVisibility(View.INVISIBLE);
 
-                btnEventoSono.getBackground().setAlpha( 255 );
-                btnEventoExercicio.getBackground().setAlpha( 128 );
-                btnEventoRemedio.getBackground().setAlpha( 128 );
-                btnEventoBebida.getBackground().setAlpha( 128 );
+                btnEventoSono.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoSonoHabilitado , null, null);
+                btnEventoExercicio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoExercicioDesabilitado , null, null);
+                btnEventoRemedio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoRemedioDesabilitado , null, null);
+                btnEventoBebida.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoBebidaDesabilitado , null, null);
             }
         });
 
@@ -133,10 +143,10 @@ public class DiarioFragment extends Fragment {
                 btnBebidaRefrigerante.setVisibility(View.INVISIBLE);
                 btnBebidaAlcool.setVisibility(View.INVISIBLE);
 
-                btnEventoSono.getBackground().setAlpha( 128 );
-                btnEventoExercicio.getBackground().setAlpha( 255 );
-                btnEventoRemedio.getBackground().setAlpha( 128 );
-                btnEventoBebida.getBackground().setAlpha( 128 );
+                btnEventoSono.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoSonoDesabilitado , null, null);
+                btnEventoExercicio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoExercicioHabilitado , null, null);
+                btnEventoRemedio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoRemedioDesabilitado , null, null);
+                btnEventoBebida.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoBebidaDesabilitado , null, null);
             }
         });
 
@@ -151,10 +161,10 @@ public class DiarioFragment extends Fragment {
                 btnBebidaRefrigerante.setVisibility(View.INVISIBLE);
                 btnBebidaAlcool.setVisibility(View.INVISIBLE);
 
-                btnEventoSono.getBackground().setAlpha( 128 );
-                btnEventoExercicio.getBackground().setAlpha( 128 );
-                btnEventoRemedio.getBackground().setAlpha( 255 );
-                btnEventoBebida.getBackground().setAlpha( 128 );
+                btnEventoSono.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoSonoDesabilitado , null, null);
+                btnEventoExercicio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoExercicioDesabilitado , null, null);
+                btnEventoRemedio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoRemedioHabilitado , null, null);
+                btnEventoBebida.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoBebidaDesabilitado , null, null);
             }
         });
 
@@ -169,10 +179,10 @@ public class DiarioFragment extends Fragment {
                 btnBebidaRefrigerante.setVisibility(View.VISIBLE);
                 btnBebidaAlcool.setVisibility(View.VISIBLE);
 
-                btnEventoSono.getBackground().setAlpha( 128 );
-                btnEventoExercicio.getBackground().setAlpha( 128 );
-                btnEventoRemedio.getBackground().setAlpha( 128 );
-                btnEventoBebida.getBackground().setAlpha( 255 );
+                btnEventoSono.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoSonoDesabilitado , null, null);
+                btnEventoExercicio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoExercicioDesabilitado , null, null);
+                btnEventoRemedio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoRemedioDesabilitado , null, null);
+                btnEventoBebida.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoBebidaHabilitado , null, null);
             }
         });
 
