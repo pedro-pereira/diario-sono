@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.ufc.smd.diario">
 
+<!-- android:theme="@style/Theme.Diariosono" -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_diariosono"
@@ -9,6 +10,7 @@
         android:roundIcon="@mipmap/ic_diariosono_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Diariosono">
+
         <activity
             android:name=".activity.PrincipalActivity"
             android:exported="false" />
