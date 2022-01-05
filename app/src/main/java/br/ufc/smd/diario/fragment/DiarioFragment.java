@@ -1,35 +1,17 @@
 package br.ufc.smd.diario.fragment;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.button.MaterialButton;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 import br.ufc.smd.diario.R;
 
@@ -106,6 +88,13 @@ public class DiarioFragment extends Fragment {
         btnBebidaCha.setVisibility(View.INVISIBLE);
         btnBebidaRefrigerante.setVisibility(View.INVISIBLE);
         btnBebidaAlcool.setVisibility(View.INVISIBLE);
+
+        btnSonoDeitar.setBackgroundColor(getResources().getColor(R.color.purple_500));
+        btnSonoLevantar.setBackgroundColor(getResources().getColor(R.color.secondary));
+        btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.purple_500));
+        btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.secondary));
+        btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.secondary));
+        btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.secondary));
 
         btnEventoSono.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoSonoHabilitado , null, null);
         btnEventoExercicio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoExercicioDesabilitado , null, null);
@@ -185,6 +174,66 @@ public class DiarioFragment extends Fragment {
                 btnEventoBebida.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoBebidaHabilitado , null, null);
             }
         });
+
+        // "Aba" de registro de sono - Início
+        btnSonoDeitar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnSonoDeitar.setBackgroundColor(getResources().getColor(R.color.purple_500));
+                btnSonoLevantar.setBackgroundColor(getResources().getColor(R.color.secondary));
+            }
+        });
+
+        btnSonoLevantar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnSonoDeitar.setBackgroundColor(getResources().getColor(R.color.secondary));
+                btnSonoLevantar.setBackgroundColor(getResources().getColor(R.color.purple_500));
+            }
+        });
+        // "Aba" de registro de sono - Fim
+
+        // "Aba" de registro de bebida - Início
+        btnBebidaCafe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.purple_500));
+                btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.secondary));
+                btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.secondary));
+                btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.secondary));
+            }
+        });
+
+        btnBebidaCha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.secondary));
+                btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.purple_500));
+                btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.secondary));
+                btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.secondary));
+            }
+        });
+
+        btnBebidaRefrigerante.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.secondary));
+                btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.secondary));
+                btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.purple_500));
+                btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.secondary));
+            }
+        });
+
+        btnBebidaAlcool.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.secondary));
+                btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.secondary));
+                btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.secondary));
+                btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.purple_500));
+            }
+        });
+        // "Aba" de registro de bebida - Início
 
         /*
         edtDataDeitar.setOnClickListener(new View.OnClickListener() {
