@@ -15,4 +15,6 @@
     <color name="textoBotaoSelecionado">#071025</color>
     <color name="botaoNaoSelecionado">#0F184D</color>
     <color name="textoBotaoNaoSelecionado">#FFFFFF</color>
+
+    <color name="barraSuperiorCadastro">#0F184C</color>
 </resources>

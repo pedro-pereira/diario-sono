@@ -31,7 +31,9 @@
         </activity>
         <activity
             android:name=".activity.NovoUsuarioActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/ActionBarTheme"
+            android:label="Cadastro"/>
     </application>
 
 </manifest>
