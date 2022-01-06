@@ -76,8 +76,8 @@ public class DiarioFragment extends Fragment {
         db = FirebaseFirestore.getInstance();
 
         // Inflate the layout for this fragment
-        // View view = inflater.inflate(R.layout.fragment_diario, container, false);
-        View view = inflater.inflate(R.layout.activity_registro_evento, container, false);
+        // View view = inflater.inflate(R.layout.fragment_diario, container, false); activity_registro_evento
+        View view = inflater.inflate(R.layout.fragment_diario, container, false);
 
         // get fragment manager so we can launch from fragment
         // final FragmentManager fm = ((AppCompatActivity)getActivity()).getSupportFragmentManager();
