@@ -29,6 +29,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import br.ufc.smd.diario.R;
+import br.ufc.smd.diario.activity.PrincipalActivity;
+import br.ufc.smd.diario.model.Usuario;
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
 
@@ -57,6 +59,8 @@ public class DiarioFragment extends Fragment {
     Calendar momentoData;
     int momentoHora;
     int momentoMinuto;
+
+    public Usuario usuario;
 
     public DiarioFragment() {
     }
@@ -128,6 +132,7 @@ public class DiarioFragment extends Fragment {
         momentoMinuto = 0;
 
         btnSalvar       = view.findViewById(R.id.btnSalvar);
+        usuario = ((PrincipalActivity) getActivity()).usuario;
 
         btnEventoSono.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -344,7 +349,7 @@ public class DiarioFragment extends Fragment {
 
                 if(tipoEvento.equals("SONO") && subEvento.equals("LEVANTAR")) {
                     db.collection("usuarios")
-                            .document("ana")
+                            .document(usuario.getUsuario())
                             .collection("eventos")
                             .whereEqualTo("tipoEvento", "SONO")
                             .orderBy("momento")
@@ -363,7 +368,7 @@ public class DiarioFragment extends Fragment {
                                             valoresEvento.put("duracao", Long.toString(diferenca));
 
                                             db.collection("usuarios")
-                                                    .document("ana")
+                                                    .document(usuario.getUsuario())
                                                     .collection("eventos")
                                                     .add(valoresEvento)
                                                     .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -390,7 +395,7 @@ public class DiarioFragment extends Fragment {
                             });
                 } else {
                     db.collection("usuarios")
-                            .document("ana")
+                            .document(usuario.getUsuario())
                             .collection("eventos")
                             .add(valoresEvento)
                             .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
