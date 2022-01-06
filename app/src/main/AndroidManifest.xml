@@ -27,6 +27,11 @@
             android:theme="@style/ActionBarTheme"
             android:label="Editar perfil"/>
         <activity
+            android:name=".activity.NotificacaoActivity"
+            android:exported="false"
+            android:theme="@style/ActionBarTheme"
+            android:label="Notificações"/>
+        <activity
             android:name=".activity.LoginActivity"
             android:exported="true">
             <intent-filter>

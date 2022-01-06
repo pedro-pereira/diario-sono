@@ -3,6 +3,7 @@ package br.ufc.smd.diario.fragment;
 import br.ufc.smd.diario.R;
 import br.ufc.smd.diario.activity.EditarPerfilActivity;
 import br.ufc.smd.diario.activity.LoginActivity;
+import br.ufc.smd.diario.activity.NotificacaoActivity;
 import br.ufc.smd.diario.activity.PrincipalActivity;
 import br.ufc.smd.diario.model.Usuario;
 
@@ -51,7 +52,9 @@ public class PerfilFragment extends Fragment {
         btnNotificacoes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getActivity(), NotificacaoActivity.class);
+                startActivity(intent);
+                getActivity().finish();
             }
         });
 

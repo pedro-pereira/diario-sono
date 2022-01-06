@@ -18,4 +18,7 @@
 
     <color name="barraSuperiorCadastro">#0F184C</color>
     <color name="cinzaBorda">#D0D0D0</color>
+
+    <color name="corFundoCard">#A9BEE2</color>
+    <color name="corTextoCard">#0F184C</color>
 </resources>
