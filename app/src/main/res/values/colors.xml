@@ -17,4 +17,5 @@
     <color name="textoBotaoNaoSelecionado">#FFFFFF</color>
 
     <color name="barraSuperiorCadastro">#0F184C</color>
+    <color name="cinzaBorda">#D0D0D0</color>
 </resources>
