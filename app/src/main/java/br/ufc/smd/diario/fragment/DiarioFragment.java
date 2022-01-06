@@ -112,12 +112,23 @@ public class DiarioFragment extends Fragment {
         btnBebidaRefrigerante.setVisibility(View.INVISIBLE);
         btnBebidaAlcool.setVisibility(View.INVISIBLE);
 
-        btnSonoDeitar.setBackgroundColor(getResources().getColor(R.color.purple_500));
-        btnSonoLevantar.setBackgroundColor(getResources().getColor(R.color.secondary));
-        btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.purple_500));
-        btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.secondary));
-        btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.secondary));
-        btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.secondary));
+        btnSonoDeitar.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
+        btnSonoDeitar.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
+
+        btnSonoLevantar.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+        btnSonoLevantar.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+
+        btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
+        btnBebidaCafe.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
+
+        btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+        btnBebidaCha.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+
+        btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+        btnBebidaRefrigerante.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+
+        btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+        btnBebidaAlcool.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
 
         btnEventoSono.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoSonoHabilitado , null, null);
         btnEventoExercicio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoExercicioDesabilitado , null, null);
@@ -222,8 +233,11 @@ public class DiarioFragment extends Fragment {
         btnSonoDeitar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnSonoDeitar.setBackgroundColor(getResources().getColor(R.color.purple_500));
-                btnSonoLevantar.setBackgroundColor(getResources().getColor(R.color.secondary));
+                btnSonoDeitar.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
+                btnSonoDeitar.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
+
+                btnSonoLevantar.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnSonoLevantar.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
 
                 tipoEvento = "SONO";
                 subEvento = "DEITAR";
@@ -233,8 +247,11 @@ public class DiarioFragment extends Fragment {
         btnSonoLevantar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnSonoDeitar.setBackgroundColor(getResources().getColor(R.color.secondary));
-                btnSonoLevantar.setBackgroundColor(getResources().getColor(R.color.purple_500));
+                btnSonoDeitar.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnSonoDeitar.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+
+                btnSonoLevantar.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
+                btnSonoLevantar.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
 
                 tipoEvento = "SONO";
                 subEvento = "LEVANTAR";
@@ -246,10 +263,17 @@ public class DiarioFragment extends Fragment {
         btnBebidaCafe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.purple_500));
-                btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.secondary));
-                btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.secondary));
-                btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.secondary));
+                btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
+                btnBebidaCafe.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
+
+                btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnBebidaCha.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+
+                btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnBebidaRefrigerante.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+
+                btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnBebidaAlcool.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
 
                 tipoEvento = "BEBIDA";
                 subEvento = "CAFE";
@@ -259,10 +283,17 @@ public class DiarioFragment extends Fragment {
         btnBebidaCha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.secondary));
-                btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.purple_500));
-                btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.secondary));
-                btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.secondary));
+                btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnBebidaCafe.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+
+                btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
+                btnBebidaCha.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
+
+                btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnBebidaRefrigerante.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+
+                btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnBebidaAlcool.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
 
                 tipoEvento = "BEBIDA";
                 subEvento = "CHA";
@@ -272,10 +303,17 @@ public class DiarioFragment extends Fragment {
         btnBebidaRefrigerante.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.secondary));
-                btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.secondary));
-                btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.purple_500));
-                btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.secondary));
+                btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnBebidaCafe.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+
+                btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnBebidaCha.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+
+                btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
+                btnBebidaRefrigerante.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
+
+                btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnBebidaAlcool.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
 
                 tipoEvento = "BEBIDA";
                 subEvento = "REFRIGERANTE";
@@ -285,10 +323,17 @@ public class DiarioFragment extends Fragment {
         btnBebidaAlcool.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.secondary));
-                btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.secondary));
-                btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.secondary));
-                btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.purple_500));
+                btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnBebidaCafe.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+
+                btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnBebidaCha.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+
+                btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnBebidaRefrigerante.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+
+                btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
+                btnBebidaAlcool.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
 
                 tipoEvento = "BEBIDA";
                 subEvento = "ALCOOL";

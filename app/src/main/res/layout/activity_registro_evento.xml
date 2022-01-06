@@ -7,10 +7,11 @@
     tools:context=".activity.RegistroEventoActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
-        android:layout_width="372dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="12dp"
+        android:id="@+id/layoutCalendario"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,13 +19,18 @@
 
         <devs.mulham.horizontalcalendar.HorizontalCalendarView
             android:id="@+id/calendarView"
-            android:layout_width="368dp"
-            android:layout_height="80dp"
-            app:selectorColor="@android:color/holo_red_dark"
-            app:textColorNormal="@color/purple_200"
-            app:textColorSelected="@color/purple_200"
-            tools:layout_editor_absoluteX="2dp"
-            tools:layout_editor_absoluteY="3dp" />
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+
+            android:background="#0F184C"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.111"
+
+            app:selectorColor="#F3C641"
+            app:textColorNormal="#FFFFFF"
+            app:textColorSelected="#F3C641"
+            tools:layout_editor_absoluteX="0dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -34,9 +40,9 @@
         android:layout_height="85dp"
         android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
+        app:layout_constraintTop_toBottomOf="@+id/layoutCalendario">
 
         <Button
             android:id="@+id/btnEventoSono"
@@ -107,6 +113,9 @@
             android:layout_width="150dp"
             android:layout_height="40dp"
             android:text="Deitar"
+            app:cornerRadius="4dp"
+            android:backgroundTint="#F3C641"
+            android:textColor="#071025"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.076"
@@ -119,6 +128,9 @@
             android:layout_width="150dp"
             android:layout_height="40dp"
             android:text="Levantar"
+            app:cornerRadius="4dp"
+            android:backgroundTint="#0F184C"
+            android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.923"
@@ -131,6 +143,9 @@
             android:layout_width="150dp"
             android:layout_height="40dp"
             android:text="Café"
+            app:cornerRadius="4dp"
+            android:backgroundTint="#F3C641"
+            android:textColor="#071025"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.077"
@@ -143,6 +158,9 @@
             android:layout_width="150dp"
             android:layout_height="40dp"
             android:text="Chá"
+            app:cornerRadius="4dp"
+            android:backgroundTint="#0F184C"
+            android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.922"
@@ -155,6 +173,9 @@
             android:layout_width="150dp"
             android:layout_height="40dp"
             android:text="Álcool"
+            app:cornerRadius="4dp"
+            android:backgroundTint="#0F184C"
+            android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.924"
@@ -167,6 +188,9 @@
             android:layout_width="150dp"
             android:layout_height="40dp"
             android:text="Refrigerante"
+            app:cornerRadius="4dp"
+            android:backgroundTint="#0F184C"
+            android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.075"
@@ -186,11 +210,14 @@
 
     <EditText
         android:id="@+id/edtObservacao"
-        android:layout_width="370dp"
+        android:layout_width="340dp"
         android:layout_height="70dp"
-        android:ems="10"
-        android:gravity="start|top"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:background="@drawable/edit_text_border"
         android:hint="Observação"
+        android:paddingLeft="8dp"
+        android:paddingTop="1dp"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -201,13 +228,14 @@
         android:layout_width="150dp"
         android:layout_height="40dp"
         android:text="Salvar"
+        android:backgroundTint="#101951"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtObservacao"
         app:layout_constraintVertical_bias="0.031" />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
