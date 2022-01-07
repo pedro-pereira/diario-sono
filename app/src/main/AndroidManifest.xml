@@ -14,9 +14,6 @@
             android:name=".activity.PrincipalActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.GraficoActivity"
-            android:exported="false" />
-        <activity
             android:name=".activity.NovoUsuarioActivity"
             android:exported="false"
             android:theme="@style/ActionBarTheme"
@@ -36,7 +33,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -72,7 +72,7 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
 
         // Inflate the layout for this fragment
         // View view = inflater.inflate(R.layout.fragment_diario, container, false);
-        view = inflater.inflate(R.layout.activity_grafico, container, false);
+        view = inflater.inflate(R.layout.fragment_grafico, container, false);
 
         // get fragment manager so we can launch from fragment
         final FragmentManager fm = ((AppCompatActivity)getActivity()).getSupportFragmentManager();
@@ -145,7 +145,7 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
         db.collection("usuarios")
                 .document("ana")
                 .collection("eventos")
-                .orderBy("momentoFinal")
+                .orderBy("momento")
                 .startAfter(getDateForFirstDayOfTheWeek().getTime())
                 .get()
                 .addOnCompleteListener(this);
@@ -172,23 +172,30 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
         if (task.isSuccessful()) {
             for (QueryDocumentSnapshot document : task.getResult()) {
                 if (document.exists()) {
-                    Date dataMomentoFinal = document.getDate("momentoFinal");
+                    // Lógica para montar gréfico de linhas sobre o tipoEvento SONO - Início
+                    // Date dataMomentoFinal = document.getDate("momentoFinal");
+                    Date dataMomentoFinal = document.getDate("momento");
                     SimpleDateFormat sdf = new SimpleDateFormat("u");
                     String dayOfTheWeek = sdf.format(dataMomentoFinal).equals("7") ? "1" : String.valueOf(Integer.parseInt(sdf.format(dataMomentoFinal)) + 1);
-                    Integer duracao = Integer.parseInt(document.get("duracao").toString());
-                    values.add(new Entry(Float.parseFloat(dayOfTheWeek), duracao));
 
+                    if(document.get("tipoEvento").toString().equals("SONO") && document.get("subEvento").toString().equals("LEVANTAR")) {
+                        Integer duracao = Integer.parseInt(document.get("duracao").toString());
+                        values.add(new Entry(Float.parseFloat(dayOfTheWeek), duracao));
+                    }
+                    // Lógica para montar gréfico de linhas sobre o tipoEvento SONO - Fim
+
+                    // Lógica para montar tabela de eventos: EXERCICIO, REMEDIO, BEBIDA - Início
                     String tipoEvento = document.getString("tipoEvento");
-                    if(tipoEvento != null){
-                        switch (tipoEvento){
-                            case "exercicio": {
+                    if(tipoEvento != null) {
+                        switch (tipoEvento) {
+                            case "EXERCICIO": {
                                 View view = this.view.findViewById(R.id.halter);
                                 String check = "checkBox"+dayOfTheWeek;
                                 CheckBox checkBox = view.findViewById(getResources().getIdentifier(check, "id", getActivity().getPackageName()));
                                 checkBox.setChecked(true);
                                 break;
                             }
-                            case "remedio": {
+                            case "REMEDIO": {
                                 View view = this.view.findViewById(R.id.pilula);
 
                                 String check = "checkBox"+dayOfTheWeek;
@@ -196,7 +203,7 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
                                 checkBox.setChecked(true);
                                 break;
                             }
-                            case "bebida": {
+                            case "BEBIDA": {
                                 View view = this.view.findViewById(R.id.bebida);
                                 String check = "checkBox"+dayOfTheWeek;
 
@@ -206,8 +213,10 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
                             }
                         }
                     }
+                    // Lógica para montar tabela de eventos: EXERCICIO, REMEDIO, BEBIDA - Fim
                 }
             }
+
             LineDataSet set1;
             set1 = new LineDataSet(values, "");
             set1.setCircleColor(getResources().getColor(R.color.secondary));
