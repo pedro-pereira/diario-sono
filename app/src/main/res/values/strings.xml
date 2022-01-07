@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">diario-sono</string>
     <string name="title_activity_login">LoginActivity</string>
-    <string name="input_login">Usuário</string>
+    <string name="input_login">Login</string>
     <string name="input_senha">Senha</string>
     <string name="action_login">Entrar</string>
-    <string name="action_novo_usuario">Novo aqui? Cadastre-se</string>
+    <string name="action_novo_usuario">Criar cadastro</string>
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>

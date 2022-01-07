@@ -9,15 +9,28 @@
         android:roundIcon="@mipmap/ic_diariosono_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Diariosono">
+
         <activity
             android:name=".activity.PrincipalActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.RegistroEventoActivity"
-            android:exported="false" />
-        <activity
             android:name=".activity.GraficoActivity"
             android:exported="false" />
+        <activity
+            android:name=".activity.NovoUsuarioActivity"
+            android:exported="false"
+            android:theme="@style/ActionBarTheme"
+            android:label="Cadastro"/>
+        <activity
+            android:name=".activity.EditarPerfilActivity"
+            android:exported="false"
+            android:theme="@style/ActionBarTheme"
+            android:label="Editar perfil"/>
+        <activity
+            android:name=".activity.NotificacaoActivity"
+            android:exported="false"
+            android:theme="@style/ActionBarTheme"
+            android:label="Notificações"/>
         <activity
             android:name=".activity.LoginActivity"
             android:exported="true">
@@ -27,9 +40,5 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activity.NovoUsuarioActivity"
-            android:exported="false" />
     </application>
-
 </manifest>

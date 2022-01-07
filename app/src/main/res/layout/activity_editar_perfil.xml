@@ -105,7 +105,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/edit_text_border"
             android:hint="Usuário"
-            android:inputType="textPersonName"
+            android:inputType="text"
             android:paddingLeft="40px"
             android:textAlignment="viewStart"
             android:textColor="#131627"

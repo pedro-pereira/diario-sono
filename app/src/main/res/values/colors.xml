@@ -10,4 +10,15 @@
     <color name="primary">#262c51</color>
     <color name="secondary">#8C9CFF</color>
     <color name="darkSecondary">#131627</color>
+
+    <color name="botaoSelecionado">#F3C641</color>
+    <color name="textoBotaoSelecionado">#071025</color>
+    <color name="botaoNaoSelecionado">#0F184D</color>
+    <color name="textoBotaoNaoSelecionado">#FFFFFF</color>
+
+    <color name="barraSuperiorCadastro">#0F184C</color>
+    <color name="cinzaBorda">#D0D0D0</color>
+
+    <color name="corFundoCard">#A9BEE2</color>
+    <color name="corTextoCard">#0F184C</color>
 </resources>
