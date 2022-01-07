@@ -52,9 +52,10 @@ public class PerfilFragment extends Fragment {
         btnNotificacoes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Usuario u = ((PrincipalActivity) getActivity()).usuario;
                 Intent intent = new Intent(getActivity(), NotificacaoActivity.class);
+                intent.putExtra("usuario", u);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 
