@@ -1,5 +1,6 @@
 package br.ufc.smd.diario.fragment;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.icu.util.Calendar;
@@ -37,13 +38,17 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import br.ufc.smd.diario.R;
+import br.ufc.smd.diario.activity.EditarPerfilActivity;
+import br.ufc.smd.diario.activity.PrincipalActivity;
 import br.ufc.smd.diario.formatter.DayFormatter;
 import br.ufc.smd.diario.formatter.RemoveZeroFormatter;
+import br.ufc.smd.diario.model.Usuario;
 
 public class GraficoFragment extends Fragment implements OnCompleteListener<QuerySnapshot> {
 
     FirebaseFirestore db;
     ArrayList<Entry> valoresGrafico;
+    Usuario usuario;
 
     ImageView imgAndroid;
     AnimationDrawable mAnimation;
@@ -70,8 +75,7 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_grafico, container, false);
 
-        // get fragment manager so we can launch from fragment
-        final FragmentManager fm = ((AppCompatActivity)getActivity()).getSupportFragmentManager();
+        usuario = ((PrincipalActivity) getActivity()).usuario;
 
         chart = view.findViewById(R.id.chart1);
         chart.setVisibility(View.GONE);
@@ -143,7 +147,7 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void setData() {
         db.collection("usuarios")
-                .document("ana")
+                .document(usuario.getUsuario())
                 .collection("eventos")
                 .orderBy("momento")
                 .startAfter(getDateForFirstDayOfTheWeek().getTime())
@@ -173,7 +177,6 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
             for (QueryDocumentSnapshot document : task.getResult()) {
                 if (document.exists()) {
                     // Lógica para montar gréfico de linhas sobre o tipoEvento SONO - Início
-                    // Date dataMomentoFinal = document.getDate("momentoFinal");
                     Date dataMomentoFinal = document.getDate("momento");
                     SimpleDateFormat sdf = new SimpleDateFormat("u");
                     String dayOfTheWeek = sdf.format(dataMomentoFinal).equals("7") ? "1" : String.valueOf(Integer.parseInt(sdf.format(dataMomentoFinal)) + 1);
@@ -233,7 +236,5 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
         } else {
             Log.d("TAG", "Error getting documents: ", task.getException());
         }
-
-        Log.i("Teste values interno: ", String.valueOf(valoresGrafico.size()));
     }
 }
