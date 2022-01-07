@@ -23,10 +23,12 @@ import java.util.ArrayList;
 
 import br.ufc.smd.diario.formatter.NotificacaoAdapter;
 import br.ufc.smd.diario.model.Notificacao;
+import br.ufc.smd.diario.model.Usuario;
 
 public class NotificacaoActivity extends AppCompatActivity {
 
     FirebaseFirestore db;
+    Usuario usuario;
 
     private RecyclerView notificacaoRV;
 
@@ -40,6 +42,14 @@ public class NotificacaoActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        Intent quemChamou = this.getIntent();
+        if (quemChamou != null) {
+            Bundle params = quemChamou.getExtras();
+            if (params != null) {
+                usuario = (Usuario) params.getSerializable("usuario");
+            }
+        }
 
         notificacaoArrayList = new ArrayList<>();
 
@@ -77,6 +87,7 @@ public class NotificacaoActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 Intent intent = new Intent(NotificacaoActivity.this, PrincipalActivity.class);
+                intent.putExtra("usuario", usuario);
                 startActivity(intent);
                 finish();
                 return true;
