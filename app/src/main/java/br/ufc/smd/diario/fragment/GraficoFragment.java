@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 
@@ -43,15 +42,13 @@ import br.ufc.smd.diario.formatter.RemoveZeroFormatter;
 
 public class GraficoFragment extends Fragment implements OnCompleteListener<QuerySnapshot> {
 
+    FirebaseFirestore db;
+    ArrayList<Entry> valoresGrafico;
+
     ImageView imgAndroid;
+    AnimationDrawable mAnimation;
 
     private LineChart chart;
-
-    FirebaseFirestore db;
-
-    ArrayList<Entry> values;
-
-    AnimationDrawable mAnimation;
 
     View view;
 
@@ -68,10 +65,9 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         db = FirebaseFirestore.getInstance();
-        values = new ArrayList<>();
+        valoresGrafico = new ArrayList<>();
 
         // Inflate the layout for this fragment
-        // View view = inflater.inflate(R.layout.fragment_diario, container, false);
         view = inflater.inflate(R.layout.fragment_grafico, container, false);
 
         // get fragment manager so we can launch from fragment
@@ -100,38 +96,42 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
         // scaling can now only be done on x- and y-axis separately
         for (int i = 3; i < 12; i += 3) {
             LimitLine limitLine = new LimitLine(i);
-            limitLine.setLineColor(getResources().getColor(R.color.primary));
+            limitLine.setLineColor(getResources().getColor(R.color.graficoCorGrade));
             chart.getAxisLeft().addLimitLine(limitLine);
         }
         for (int i = 0; i < 7; i++) {
             LimitLine limitLine = new LimitLine(i);
-            limitLine.setLineColor(getResources().getColor(R.color.primary));
+            limitLine.setLineColor(getResources().getColor(R.color.graficoCorGrade));
             chart.getXAxis().addLimitLine(limitLine);
         }
         chart.setPinchZoom(false);
         chart.getXAxis().setLabelCount(7, true);
         chart.getXAxis().setDrawLabels(true);
-        chart.getXAxis().setTextColor(getResources().getColor(R.color.white));
-        chart.getXAxis().setGridColor(getResources().getColor(R.color.primary));
+        chart.getXAxis().setTextColor(getResources().getColor(R.color.graficoCorRotuloEixos));
+        chart.getXAxis().setGridColor(getResources().getColor(R.color.graficoCorFundo));
+
         chart.getXAxis().setAxisMaximum(7);
         chart.getXAxis().setAxisMinimum(1);
         chart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         chart.getXAxis().setTypeface(tipografia);
         chart.getXAxis().setTextSize(12);
         chart.getXAxis().setValueFormatter(new DayFormatter());
+
         chart.getAxisRight().setAxisMinimum(0);
         chart.getAxisRight().setAxisMaximum(12);
         chart.getAxisRight().setEnabled(false);
+
         chart.getAxisLeft().setAxisMinimum(0);
         chart.getAxisLeft().setAxisMaximum(12);
         chart.getAxisLeft().setLabelCount(5, true);
-        chart.getAxisLeft().setTextColor(getResources().getColor(R.color.white));
+        chart.getAxisLeft().setTextColor(getResources().getColor(R.color.graficoCorRotuloEixos));
         chart.getAxisLeft().setTypeface(tipografia);
         chart.getAxisLeft().setTextSize(12);
         chart.getAxisLeft().setDrawZeroLine(false);
         chart.getAxisLeft().setValueFormatter(new RemoveZeroFormatter());
+
         chart.setDrawGridBackground(true);
-        chart.setGridBackgroundColor(getResources().getColor(R.color.darkSecondary));
+        chart.setGridBackgroundColor(getResources().getColor(R.color.graficoCorFundo));
         chart.getAxisLeft().setDrawLimitLinesBehindData(true);
         chart.getXAxis().setDrawLimitLinesBehindData(true);
         chart.setDrawBorders(true);
@@ -180,7 +180,7 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
 
                     if(document.get("tipoEvento").toString().equals("SONO") && document.get("subEvento").toString().equals("LEVANTAR")) {
                         Integer duracao = Integer.parseInt(document.get("duracao").toString());
-                        values.add(new Entry(Float.parseFloat(dayOfTheWeek), duracao));
+                        valoresGrafico.add(new Entry(Float.parseFloat(dayOfTheWeek), duracao));
                     }
                     // Lógica para montar gréfico de linhas sobre o tipoEvento SONO - Fim
 
@@ -218,11 +218,11 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
             }
 
             LineDataSet set1;
-            set1 = new LineDataSet(values, "");
-            set1.setCircleColor(getResources().getColor(R.color.secondary));
-            set1.setCircleHoleColor(getResources().getColor(R.color.secondary));
-            set1.setCircleRadius(8);
-            set1.setColor(getResources().getColor(R.color.secondary));
+            set1 = new LineDataSet(valoresGrafico, "");
+            set1.setCircleColor(getResources().getColor(R.color.graficoCorPontoMarcado));
+            set1.setCircleHoleColor(getResources().getColor(R.color.graficoCorPontoMarcado));
+            set1.setCircleRadius(6);
+            set1.setColor(getResources().getColor(R.color.graficoCorLinhaEntrePontos));
             set1.setLineWidth(3);
             ArrayList<ILineDataSet> dataSets = new ArrayList<>();
             dataSets.add(set1);
@@ -234,6 +234,6 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
             Log.d("TAG", "Error getting documents: ", task.getException());
         }
 
-        Log.i("Teste values interno: ", String.valueOf(values.size()));
+        Log.i("Teste values interno: ", String.valueOf(valoresGrafico.size()));
     }
 }
