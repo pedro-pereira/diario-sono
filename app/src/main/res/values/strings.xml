@@ -13,4 +13,10 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="dash">-</string>
+
+    <string-array name="generos">
+        <item>Feminino</item>
+        <item>Masculino</item>
+        <item>Prefiro não informar</item>
+    </string-array>
 </resources>

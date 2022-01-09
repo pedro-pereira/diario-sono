@@ -39,7 +39,7 @@
         android:layout_marginTop="248dp"
         android:background="@drawable/edit_text_border"
         android:hint="@string/input_login"
-        android:minHeight="48dp"
+        android:minHeight="36dp"
         android:paddingLeft="16dp"
         android:selectAllOnFocus="true"
 
@@ -57,7 +57,7 @@
         android:hint="@string/input_senha"
         android:imeOptions="actionDone"
         android:inputType="textPassword"
-        android:minHeight="48dp"
+        android:minHeight="36dp"
         android:paddingLeft="16dp"
 
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +71,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="64dp"
         android:backgroundTint="#F3C641"
         android:enabled="true"
         android:text="@string/action_login"
