@@ -9,9 +9,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="primary">#262c51</color>
+    -->
+
     <color name="secondary">#8C9CFF</color>
     <color name="darkSecondary">#131627</color>
-    -->
+    <color name="white">#FFFFFFFF</color>
 
     <color name="botaoSelecionado">#F3C641</color>
     <color name="textoBotaoSelecionado">#071025</color>
@@ -29,4 +31,10 @@
     <color name="graficoCorGrade">#0F184C</color>
     <color name="graficoCorPontoMarcado">#0F184C</color>
     <color name="graficoCorLinhaEntrePontos">#0F184C</color>
+
+    <color name="dotAzul">#5DC5FF</color>
+    <color name="dotLaranja">#F76D0F</color>
+    <color name="dotVerde">#56D894</color>
+    <color name="dotVermelho">#FF002B</color>
+
 </resources>
