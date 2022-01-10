@@ -13,4 +13,12 @@
         <item name="android:background">@color/barraSuperiorCadastro</item>
     </style>
 
+    <style name="MyTimePicker" parent="@android:style/Widget.Material.TimePicker">
+        <!-- Text color -->
+        <item name="android:textColorPrimary">#0F184C</item>
+        <item name="android:textSize">20dp</item>
+        <!-- Divider color -->
+        <item name="colorControlNormal">#F3C641</item>
+    </style>
+
 </resources>
