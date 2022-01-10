@@ -13,14 +13,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
 public class PerfilFragment extends Fragment {
 
+    private TextView txtBoasVindas;
+
     private Button btnEditarPerfil;
     private Button btnNotificacoes;
     private Button btnSair;
+
+    Usuario usuario;
 
     public PerfilFragment() {
     }
@@ -35,9 +40,15 @@ public class PerfilFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_perfil, container, false);
 
+        usuario = ((PrincipalActivity) getActivity()).usuario;
+
+        txtBoasVindas    = view.findViewById(R.id.txtBoasVindas);
+
         btnEditarPerfil  = view.findViewById(R.id.btnEditarPerfil);
         btnNotificacoes  = view.findViewById(R.id.btnNotificacoes);
         btnSair          = view.findViewById(R.id.btnSair);
+
+        txtBoasVindas.setText(txtBoasVindas.getText() + usuario.getUsuario());
 
         btnEditarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
