@@ -45,23 +45,41 @@
             app:layout_constraintStart_toStartOf="@+id/edtNovoGenero"
             app:layout_constraintTop_toBottomOf="@+id/edtNovoNome" />
 
-        <EditText
-            android:id="@+id/edtNovoGenero"
-            android:layout_width="0dp"
-            android:layout_height="36dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edit_text_border"
-            android:hint="Genero"
-            android:inputType="textPersonName"
-            android:paddingLeft="40px"
-            android:textAlignment="viewStart"
-            android:textColor="#131627"
-            android:textColorLink="#FFFFFF"
-            android:textSize="16dp"
-            app:layout_constraintEnd_toEndOf="@+id/edtNovoCpf"
-            app:layout_constraintHorizontal_bias="0.563"
-            app:layout_constraintStart_toStartOf="@+id/edtNovoCpf"
-            app:layout_constraintTop_toBottomOf="@+id/edtNovoDataNascimento" />
+    <Spinner
+        android:id="@+id/edtNovoGenero"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edit_text_border"
+        android:hint="Genero"
+        android:inputType="textPersonName"
+        android:paddingLeft="40px"
+        android:textAlignment="viewStart"
+        android:textColor="#131627"
+        android:textColorLink="#FFFFFF"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/edtNovoCpf"
+        app:layout_constraintHorizontal_bias="0.563"
+        app:layout_constraintStart_toStartOf="@+id/edtNovoCpf"
+        app:layout_constraintTop_toBottomOf="@+id/edtNovoDataNascimento" />
+
+<!--    <EditText-->
+<!--            android:id="@+id/edtNovoGenero"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="36dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:background="@drawable/edit_text_border"-->
+<!--            android:hint="Genero"-->
+<!--            android:inputType="textPersonName"-->
+<!--            android:paddingLeft="40px"-->
+<!--            android:textAlignment="viewStart"-->
+<!--            android:textColor="#131627"-->
+<!--            android:textColorLink="#FFFFFF"-->
+<!--            android:textSize="16dp"-->
+<!--            app:layout_constraintEnd_toEndOf="@+id/edtNovoCpf"-->
+<!--            app:layout_constraintHorizontal_bias="0.563"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/edtNovoCpf"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/edtNovoDataNascimento" />-->
 
         <EditText
             android:id="@+id/edtNovoCpf"

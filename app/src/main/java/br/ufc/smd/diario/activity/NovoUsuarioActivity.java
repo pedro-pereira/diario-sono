@@ -1,17 +1,19 @@
 package br.ufc.smd.diario.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,13 +28,13 @@ public class NovoUsuarioActivity extends AppCompatActivity {
 
     private EditText edtNovoNome;
     private EditText edtNovoDataNascimento;
-    private EditText edtNovoGenero;
+    private Spinner spinnerGenero;
     private EditText edtNovoCpf;
     private EditText edtNovoTelefone;
     private EditText edtNovoLogin;
     private EditText edtNovoSenha;
     private EditText edtNovoConfirmarSenha;
-    private Button   btCriar;
+    private Button btCriar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,15 +46,20 @@ public class NovoUsuarioActivity extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
 
-        edtNovoNome    = findViewById(R.id.edtNovoNome);
-        edtNovoDataNascimento    = findViewById(R.id.edtNovoDataNascimento);
-        edtNovoGenero    = findViewById(R.id.edtNovoGenero);
-        edtNovoCpf    = findViewById(R.id.edtNovoCpf);
+        edtNovoNome = findViewById(R.id.edtNovoNome);
+        edtNovoDataNascimento = findViewById(R.id.edtNovoDataNascimento);
+        spinnerGenero = findViewById(R.id.edtNovoGenero);
+        edtNovoCpf = findViewById(R.id.edtNovoCpf);
         edtNovoTelefone = findViewById(R.id.edtNovoTelefone);
-        edtNovoLogin    = findViewById(R.id.edtNovoLogin);
-        edtNovoSenha    = findViewById(R.id.edtNovoSenha);
-        edtNovoConfirmarSenha    = findViewById(R.id.edtNovoConfirmarSenha);
-        btCriar         = findViewById(R.id.btCriar);
+        edtNovoLogin = findViewById(R.id.edtNovoLogin);
+        edtNovoSenha = findViewById(R.id.edtNovoSenha);
+        edtNovoConfirmarSenha = findViewById(R.id.edtNovoConfirmarSenha);
+        btCriar = findViewById(R.id.btCriar);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.generos, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerGenero.setAdapter(adapter);
 
         btCriar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +67,7 @@ public class NovoUsuarioActivity extends AppCompatActivity {
                 Usuario u = new Usuario();
                 u.setNome(edtNovoNome.getText().toString());
                 u.setNome(edtNovoDataNascimento.getText().toString());
-                u.setNome(edtNovoGenero.getText().toString());
+                u.setNome(spinnerGenero.getSelectedItem().toString());
                 u.setNome(edtNovoCpf.getText().toString());
                 u.setTelefone(edtNovoTelefone.getText().toString());
                 u.setUsuario(edtNovoLogin.getText().toString());
