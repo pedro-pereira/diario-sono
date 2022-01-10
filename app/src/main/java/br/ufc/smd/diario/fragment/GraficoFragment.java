@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -33,9 +34,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 import br.ufc.smd.diario.R;
 import br.ufc.smd.diario.activity.EditarPerfilActivity;
@@ -52,8 +55,8 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
 
     ImageView imgAndroid;
     AnimationDrawable mAnimation;
-
     private LineChart chart;
+    TextView txtTituloTabela, txtTituloGrafico;
 
     View view;
 
@@ -89,6 +92,18 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
         mAnimation = (AnimationDrawable) imgAndroid.getBackground();
         mAnimation.start();
         setData();
+
+        txtTituloTabela  = (TextView) view.findViewById(R.id.txtTituloTabela);
+        txtTituloGrafico = (TextView) view.findViewById(R.id.txtTituloGrafico);
+
+        Calendar c0 = getDateForFirstDayOfTheWeek();
+        String d0 = c0.getTime().getDate() +  "/" + (c0.getTime().getMonth() + 1) + "/" + (c0.getTime().getYear() + 1900);
+
+        c0.add(c0.DATE, 6);
+        String df = c0.getTime().getDate() +  "/" + (c0.getTime().getMonth() + 1) + "/" + (c0.getTime().getYear() + 1900);
+
+        txtTituloTabela.setText("Hábitos da semana" + ": " + d0 + " a " + df);
+        txtTituloGrafico.setText("Horas de sono: " + ": " + d0 + " a " + df);
 
         return view;
     }
