@@ -103,7 +103,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="369dp"
-        android:layout_height="82dp"
+        android:layout_height="90dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
@@ -203,22 +203,24 @@
     <TimePicker
         android:id="@+id/spnMomentoHora"
         android:layout_width="370dp"
-        android:layout_height="132dp"
+        android:layout_height="150dp"
         android:timePickerMode="spinner"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
-        tools:layout_editor_absoluteX="11dp" />
+        tools:layout_editor_absoluteX="11dp"
+        android:theme="@style/MyTimePicker"
+        />
 
     <EditText
         android:id="@+id/edtObservacao"
         android:layout_width="340dp"
-        android:layout_height="70dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="1dp"
         android:layout_marginRight="1dp"
         android:background="@drawable/edit_text_border"
         android:hint="Observação"
         android:paddingLeft="8dp"
         android:paddingTop="1dp"
-        android:inputType="textMultiLine"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spnMomentoHora" />

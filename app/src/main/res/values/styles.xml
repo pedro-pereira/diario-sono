@@ -12,6 +12,7 @@
     <style name="ActionBarTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:background">@color/barraSuperiorCadastro</item>
     </style>
+
     <style name="CustomCalendarDay" parent="TextAppearance.MaterialComponents.Caption">
         <item name="android:textSize">20sp</item>
         <item name="android:padding">20dp</item>
@@ -26,4 +27,13 @@
         <item name="android:layout_height">60sp</item>
         <item name="android:fontFamily">@font/roboto</item>
     </style>
+
+    <style name="MyTimePicker" parent="@android:style/Widget.Material.TimePicker">
+        <!-- Text color -->
+        <item name="android:textColorPrimary">#0F184C</item>
+        <item name="android:textSize">20dp</item>
+        <!-- Divider color -->
+        <item name="colorControlNormal">#F3C641</item>
+    </style>
+
 </resources>
