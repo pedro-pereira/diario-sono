@@ -44,8 +44,7 @@ captures/
 .idea/caches
 .idea/modules.xml
 .idea/vcs.xml
-
-.idea/deploymentTargetDropDown
+.idea/deploymentTargetDropDown.xml
 .idea/misc
 
 # Keystore files
