@@ -12,5 +12,18 @@
     <style name="ActionBarTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:background">@color/barraSuperiorCadastro</item>
     </style>
-
+    <style name="CustomCalendarDay" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">20sp</item>
+        <item name="android:padding">20dp</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+    <style name="CustomCalendarWeek" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">20sp</item>
+        <item name="android:labelTextSize">50dp</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:layout_margin">60dp</item>
+        <item name="android:layout_height">60sp</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
 </resources>
