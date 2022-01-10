@@ -16,7 +16,7 @@
         android:id="@+id/imageView2"
         android:layout_width="296dp"
         android:layout_height="64dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -26,9 +26,9 @@
         android:id="@+id/imageView3"
         android:layout_width="110dp"
         android:layout_height="110dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:srcCompat="@drawable/ic_logo_login" />
 
@@ -36,17 +36,17 @@
         android:id="@+id/edtLogin"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="248dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/edit_text_border"
         android:hint="@string/input_login"
         android:minHeight="36dp"
         android:paddingLeft="16dp"
-        android:selectAllOnFocus="true"
 
-        app:layout_constraintEnd_toEndOf="parent"
+        android:selectAllOnFocus="true"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
         app:layout_constraintHorizontal_bias="0.554"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <EditText
         android:id="@+id/edtSenha"
@@ -60,9 +60,9 @@
         android:minHeight="36dp"
         android:paddingLeft="16dp"
 
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/edtLogin"
         app:layout_constraintHorizontal_bias="0.572"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/edtLogin"
         app:layout_constraintTop_toBottomOf="@+id/edtLogin" />
 
     <Button
@@ -70,35 +70,30 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:backgroundTint="#F3C641"
         android:enabled="true"
         android:text="@string/action_login"
         android:textColor="#000000"
         app:cornerRadius="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtSenha"
-        app:layout_constraintVertical_bias="0.125" />
+        app:layout_constraintEnd_toEndOf="@+id/edtSenha"
+        app:layout_constraintStart_toStartOf="@+id/edtSenha"
+        app:layout_constraintTop_toBottomOf="@+id/edtSenha" />
 
     <Button
         android:id="@+id/btnNovoUsuario"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="#0F184C"
         android:enabled="true"
         android:text="@string/action_novo_usuario"
         android:textColor="#F3C641"
         app:cornerRadius="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnLogin"
+        app:layout_constraintStart_toStartOf="@+id/btnLogin"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin"
-        app:layout_constraintVertical_bias="0.912"
         app:strokeColor="#F3C641"
         app:strokeWidth="2dp" />
 
