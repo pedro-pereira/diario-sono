@@ -10,9 +10,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="primary">#262c51</color>
     -->
-
+    <!--
     <color name="secondary">#8C9CFF</color>
     <color name="darkSecondary">#131627</color>
+    -->
+
     <color name="white">#FFFFFFFF</color>
 
     <color name="botaoSelecionado">#F3C641</color>

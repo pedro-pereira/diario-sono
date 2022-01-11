@@ -80,16 +80,17 @@ public class LoginActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     if (task.getResult().isEmpty()) {
                                         Toast.makeText(LoginActivity.this, "Login ou senha errados...", Toast.LENGTH_LONG).show();
-                                        Log.d("TAG", "Login ou senha errados...");
                                     } else {
                                         for (QueryDocumentSnapshot document : task.getResult()) {
                                             if (document.exists()) {
                                                 u = new Usuario();
-                                                u.setUsuario(document.getData().get("usuario").toString());
                                                 u.setNome(document.getData().get("nome").toString());
-                                                u.setSenha(document.getData().get("senha").toString());
-                                                u.setEmail(document.getData().get("email").toString());
+                                                u.setDataNascimento(((com.google.firebase.Timestamp) document.getData().get("dataNascimento")).toDate());
+                                                u.setCpf(document.getData().get("cpf").toString());
                                                 u.setTelefone(document.getData().get("telefone").toString());
+                                                u.setUsuario(document.getData().get("usuario").toString());
+                                                u.setSenha(document.getData().get("senha").toString());
+
                                                 Log.d("TAG", document.getId() + " => " + document.getData());
 
                                                 if (u.getUsuario() != null) {

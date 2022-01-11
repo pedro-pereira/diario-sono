@@ -1,6 +1,5 @@
 package br.ufc.smd.diario.fragment;
 
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.icu.util.Calendar;
@@ -16,10 +15,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.LimitLine;
@@ -34,14 +31,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Locale;
 
 import br.ufc.smd.diario.R;
-import br.ufc.smd.diario.activity.EditarPerfilActivity;
 import br.ufc.smd.diario.activity.PrincipalActivity;
 import br.ufc.smd.diario.formatter.DayFormatter;
 import br.ufc.smd.diario.formatter.RemoveZeroFormatter;
@@ -91,6 +85,7 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
 
         mAnimation = (AnimationDrawable) imgAndroid.getBackground();
         mAnimation.start();
+
         setData();
 
         txtTituloTabela  = (TextView) view.findViewById(R.id.txtTituloTabela);
@@ -103,7 +98,7 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
         String df = c0.getTime().getDate() +  "/" + (c0.getTime().getMonth() + 1) + "/" + (c0.getTime().getYear() + 1900);
 
         txtTituloTabela.setText("Hábitos da semana" + ": " + d0 + " a " + df);
-        txtTituloGrafico.setText("Horas de sono: " + ": " + d0 + " a " + df);
+        txtTituloGrafico.setText("Horas de sono " + ": " + d0 + " a " + df);
 
         return view;
     }
