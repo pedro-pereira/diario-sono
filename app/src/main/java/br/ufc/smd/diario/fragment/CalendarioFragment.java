@@ -1,24 +1,18 @@
 package br.ufc.smd.diario.fragment;
 
-import android.app.ActionBar;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.CalendarView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -27,23 +21,25 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 
-import java.text.SimpleDateFormat;
+import java.lang.reflect.Field;
+import java.text.DateFormatSymbols;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
-import java.util.Locale;
 import java.util.TimeZone;
 
 import br.ufc.smd.diario.R;
 import br.ufc.smd.diario.activity.PrincipalActivity;
 import br.ufc.smd.diario.decorator.EventDecorator;
+import br.ufc.smd.diario.model.Usuario;
 
 public class CalendarioFragment extends Fragment {
+
     public MaterialCalendarView calendario;
     FirebaseFirestore db;
+    Usuario usuario;
+
     public CalendarioFragment() {
         super(R.layout.fragment_calendario);
     }
@@ -55,17 +51,37 @@ public class CalendarioFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_calendario, container, false);
 
-        calendario = (MaterialCalendarView) view.findViewById(R.id.calendarView);
+        usuario = ((PrincipalActivity) getActivity()).usuario;
+
+        calendario = view.findViewById(R.id.calendarView);
         calendario.setTopbarVisible(false);
         calendario.setClickable(false);
 
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Fortaleza/Brasil"));
         cal.setTime(new Date());
 
-        Toolbar myToolbarPrincipal = (Toolbar) view.findViewById(R.id.toolBar);
+        Toolbar myToolbarPrincipal = view.findViewById(R.id.toolBar);
         myToolbarPrincipal.setBackgroundColor(getResources().getColor(R.color.barraSuperiorCadastro));
         myToolbarPrincipal.setTitleTextColor(getResources().getColor(R.color.white));
-        myToolbarPrincipal.setTitle(new SimpleDateFormat("MMMM").format(cal.getTime()).substring(0,1).toUpperCase().concat(new SimpleDateFormat("MMMM").format(cal.getTime()).substring(1)));
+
+        String[] months = new DateFormatSymbols().getMonths();
+        String titulo = months[cal.get(Calendar.MONTH)] + " / " + cal.get(Calendar.YEAR);
+        myToolbarPrincipal.setTitle(titulo);
+        Log.i("RESUMO 1", titulo);
+
+        calendario.setOnMonthChangedListener((widget, date) -> {
+            try {
+                Field currentMonthField = MaterialCalendarView.class.getDeclaredField("currentMonth");
+                currentMonthField.setAccessible(true);
+                int currentMonth = ((CalendarDay) currentMonthField.get(widget)).getMonth();
+
+                // Do something, currentMonth is between 1 and 12.
+                String titulo2 = months[currentMonth - 1] + " / " + String.valueOf(((CalendarDay) currentMonthField.get(widget)).getYear());
+                myToolbarPrincipal.setTitle(titulo2);
+            } catch (NoSuchFieldException | IllegalAccessException e) {
+                // Failed to get field value, maybe library was changed.
+            }
+        });
 
         db = FirebaseFirestore.getInstance();
         setData();
@@ -75,7 +91,7 @@ public class CalendarioFragment extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void setData() {
         db.collection("usuarios")
-                .document("ana")
+                .document(usuario.getUsuario())
                 .collection("eventos")
                 .orderBy("momento")
                 .get()
@@ -84,7 +100,6 @@ public class CalendarioFragment extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void onComplete(@NonNull Task<QuerySnapshot> task) {
-        Log.i("TAG", "2: ");
         if (task.isSuccessful()) {
 
             Collection<CalendarDay> datasExercicio = new ArrayList<>();

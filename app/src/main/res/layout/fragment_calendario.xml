@@ -12,7 +12,7 @@
         android:layout_height="50dp"
         android:layout_marginBottom="164dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/layoutCalendario"
@@ -28,12 +28,12 @@
             android:id="@+id/calendarView"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            android:background="@color/darkSecondary"
+            android:background="#FFFFFF"
             app:mcv_dateTextAppearance="@style/CustomCalendarWeek"
             app:mcv_headerTextAppearance="@style/CustomCalendarWeek"
-            app:mcv_selectionColor="#00F"
+            app:mcv_selectionColor="#F3C641"
             app:mcv_selectionMode="none"
-            app:mcv_showOtherDates="all"
+            app:mcv_showOtherDates="none"
             app:mcv_weekDayTextAppearance="@style/CustomCalendarDay" />
 
     </LinearLayout>

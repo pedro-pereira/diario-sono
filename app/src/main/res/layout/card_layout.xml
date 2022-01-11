@@ -62,7 +62,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             android:textColor="#FFFFFF" />
-
+<!--
         <TextView
             android:id="@+id/txtHabilitado"
             android:layout_width="match_parent"
@@ -71,6 +71,6 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             android:textColor="#FFFFFF"/>
-
+-->
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

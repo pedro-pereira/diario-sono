@@ -8,6 +8,20 @@ android:background="#FFFFFF"
 android:scrollbarAlwaysDrawHorizontalTrack="true"
 tools:context=".fragment.PerfilFragment">
 
+    <TextView
+        android:id="@+id/txtBoasVindas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/btnEditarPerfil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        android:text="Bem-vind@, \n"
+        android:textSize="40dp"
+        android:textColor="#0F184C"
+        android:gravity="center"/>
+
     <Button
         android:id="@+id/btnEditarPerfil"
         android:layout_width="271dp"
