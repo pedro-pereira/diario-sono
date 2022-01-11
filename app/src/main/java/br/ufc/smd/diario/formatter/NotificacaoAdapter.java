@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import br.ufc.smd.diario.model.Notificacao;
@@ -38,8 +39,12 @@ public class NotificacaoAdapter extends RecyclerView.Adapter<NotificacaoAdapter.
         // to set data to textview and imageview of each card layout
         Notificacao notificacao = notificacaoArrayList.get(position);
         holder.txtDescricao.setText(notificacao.getDescricao());
-        holder.txtDataCadastro.setText("" + notificacao.getDataCadastro());
-        holder.txtHabilitado.setText(String.valueOf(notificacao.isHabilitado()));
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String dataNotificacaoFormatada = sdf.format(notificacao.getDataCadastro());
+
+        holder.txtDataCadastro.setText("Data da notificação: " + dataNotificacaoFormatada);
+        // holder.txtHabilitado.setText(String.valueOf(notificacao.isHabilitado()));
     }
 
     @Override
@@ -57,7 +62,7 @@ public class NotificacaoAdapter extends RecyclerView.Adapter<NotificacaoAdapter.
             super(itemView);
             txtDescricao = itemView.findViewById(R.id.txtDescricao);
             txtDataCadastro = itemView.findViewById(R.id.txtDataCadastro);
-            txtHabilitado = itemView.findViewById(R.id.txtHabilitado);
+            // txtHabilitado = itemView.findViewById(R.id.txtHabilitado);
         }
     }
 }
