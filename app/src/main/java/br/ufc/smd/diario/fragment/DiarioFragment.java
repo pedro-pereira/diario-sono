@@ -139,8 +139,8 @@ public class DiarioFragment extends Fragment {
         subEvento = "DEITAR";
 
         momentoData = Calendar.getInstance();
-        momentoHora = 0;
-        momentoMinuto = 0;
+        momentoHora = momentoData.getTime().getHours();
+        momentoMinuto = momentoData.getTime().getMinutes();
 
         btnSalvar       = view.findViewById(R.id.btnSalvar);
         usuario = ((PrincipalActivity) getActivity()).usuario;
