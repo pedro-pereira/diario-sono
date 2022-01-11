@@ -138,7 +138,7 @@ public class DiarioFragment extends Fragment {
         tipoEvento = "SONO";
         subEvento = "DEITAR";
 
-        momentoData = null;
+        momentoData = Calendar.getInstance();
         momentoHora = 0;
         momentoMinuto = 0;
 
