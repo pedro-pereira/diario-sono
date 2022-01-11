@@ -45,7 +45,7 @@ captures/
 .idea/modules.xml
 .idea/vcs.xml
 .idea/deploymentTargetDropDown.xml
-.idea/misc
+.idea/misc.xml
 
 # Keystore files
 # Uncomment the following lines if you do not want to check your keystore files in.
@@ -69,4 +69,3 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
-.idea/deploymentTargetDropDown.xml
