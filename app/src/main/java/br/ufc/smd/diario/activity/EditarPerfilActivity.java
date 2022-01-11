@@ -3,6 +3,7 @@ package br.ufc.smd.diario.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
@@ -85,32 +86,43 @@ public class EditarPerfilActivity extends AppCompatActivity {
         btCriar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Usuario u = new Usuario();
-                u.setNome(edtNovoNome.getText().toString());
-                u.setDataNascimento(     new Date(edtNovoDataNascimento.getText().toString()));
-                u.setCpf(edtNovoCpf.getText().toString());
-                u.setTelefone(edtNovoTelefone.getText().toString());
-                u.setUsuario(edtNovoLogin.getText().toString());
-                u.setSenha(edtNovoSenha.getText().toString());
+                if( TextUtils.isEmpty(edtNovoNome.getText()) ||
+                    TextUtils.isEmpty(edtNovoDataNascimento.getText()) ||
+                    TextUtils.isEmpty(edtNovoCpf.getText()) ||
+                    TextUtils.isEmpty(edtNovoTelefone.getText()) ||
+                    TextUtils.isEmpty(edtNovoLogin.getText()) ||
+                    TextUtils.isEmpty(edtNovoSenha.getText()) ||
+                    TextUtils.isEmpty(edtNovoConfirmarSenha.getText())
+                ) {
+                    Toast.makeText(EditarPerfilActivity.this, "Todos os campos são obrigatórios.", Toast.LENGTH_LONG).show();
+                } else {
+                    Usuario u = new Usuario();
+                    u.setNome(edtNovoNome.getText().toString());
+                    u.setDataNascimento(new Date(edtNovoDataNascimento.getText().toString()));
+                    u.setCpf(edtNovoCpf.getText().toString());
+                    u.setTelefone(edtNovoTelefone.getText().toString());
+                    u.setUsuario(edtNovoLogin.getText().toString());
+                    u.setSenha(edtNovoSenha.getText().toString());
 
-                db.collection("usuarios")
+                    db.collection("usuarios")
                         .document(u.getUsuario())
                         .set(u).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(EditarPerfilActivity.this, "Perfil alterado...", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(EditarPerfilActivity.this, PrincipalActivity.class);
-                        intent.putExtra("usuario", u);
-                        startActivity(intent);
-                        finish();
-                    }
-                })
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(EditarPerfilActivity.this, "Perfil alterado...", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(EditarPerfilActivity.this, PrincipalActivity.class);
+                                intent.putExtra("usuario", u);
+                                startActivity(intent);
+                                finish();
+                            }
+                        })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 Log.d("TAG", "Erro ao editar perfil...", e);
                             }
                         });
+                }
             }
         });
     }
