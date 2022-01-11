@@ -23,6 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 import br.ufc.smd.diario.R;
 import br.ufc.smd.diario.model.Usuario;
@@ -98,11 +99,20 @@ public class EditarPerfilActivity extends AppCompatActivity {
                 } else {
                     Usuario u = new Usuario();
                     u.setNome(edtNovoNome.getText().toString());
-                    u.setDataNascimento(new Date(edtNovoDataNascimento.getText().toString()));
                     u.setCpf(edtNovoCpf.getText().toString());
                     u.setTelefone(edtNovoTelefone.getText().toString());
                     u.setUsuario(edtNovoLogin.getText().toString());
                     u.setSenha(edtNovoSenha.getText().toString());
+
+                    try {
+                        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                        formatador.setTimeZone(TimeZone.getTimeZone("UTC-3"));
+                        Date dataNascimento = formatador.parse(edtNovoDataNascimento.getText().toString() + " 03:00:00");
+                        u.setDataNascimento(dataNascimento);
+                    } catch (Exception e) {
+                        Toast.makeText(EditarPerfilActivity.this, "Erro no formato da data de nascimento...", Toast.LENGTH_LONG).show();
+                        return;
+                    }
 
                     db.collection("usuarios")
                         .document(u.getUsuario())
