@@ -65,7 +65,6 @@ public class NotificacaoActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("RESUMO", document.getId() + " => " + document.getData());
                                 notificacaoArrayList.add(new Notificacao(document.getData().get("descricao").toString(),
                                                                         ((com.google.firebase.Timestamp) document.getData().get("dataCadastro")).toDate(),
                                                                         (boolean) document.getData().get("habilitado")));

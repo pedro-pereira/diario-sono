@@ -7,11 +7,11 @@
     android:layout_margin="5dp"
     app:cardBackgroundColor="@color/corFundoCard"
     app:cardCornerRadius="8dp"
-    app:cardElevation="8dp"
+    app:cardElevation="10dp"
     app:cardMaxElevation="10dp"
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true"
-    android:background="@color/corFundoCard" >
+    android:background="@color/corFundoCard">
 
     <!--
         In the above cardview widget
@@ -27,7 +27,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content" >
 
         <!--ImageVIew to display our Course Image-->
         <!--
@@ -48,6 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -59,9 +60,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/txtDescricao"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:textColor="#FFFFFF" />
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:textColor="#FFFFFF"
+            android:gravity="right"/>
 <!--
         <TextView
             android:id="@+id/txtHabilitado"
