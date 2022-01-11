@@ -419,20 +419,19 @@ public class DiarioFragment extends Fragment {
                                                     .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                                         @Override
                                                         public void onSuccess(DocumentReference documentReference) {
-                                                            Toast.makeText(getActivity(), "Novo evento com ID: ..." + documentReference.getId(), Toast.LENGTH_SHORT).show();
+                                                            Toast.makeText(getActivity(), "Novo evento cadastrado...", Toast.LENGTH_LONG).show();
                                                         }
                                                     })
                                                     .addOnFailureListener(new OnFailureListener() {
                                                         @Override
                                                         public void onFailure(@NonNull Exception e) {
-                                                            Toast.makeText(getActivity(), "Erro ao cadastrar evento de sono...", Toast.LENGTH_SHORT).show();
+                                                            Toast.makeText(getActivity(), "Erro ao cadastrar evento de sono...", Toast.LENGTH_LONG).show();
                                                         }
                                                     });
                                         } else {
                                             Toast.makeText(getActivity(), "Você precisa primeiro cadastrar um evento 'DEITAR', antes de cadastrar um evento 'LEVANTAR'", Toast.LENGTH_LONG).show();
                                             return;
                                         }
-
                                     } else {
                                         Log.i("RESUMO", "Error getting documents: ", task.getException());
                                     }
@@ -446,7 +445,7 @@ public class DiarioFragment extends Fragment {
                             .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
-                                    Toast.makeText(getActivity(), "Novo evento com ID: ..." + documentReference.getId(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), "Novo evento cadastrado...", Toast.LENGTH_LONG).show();
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
