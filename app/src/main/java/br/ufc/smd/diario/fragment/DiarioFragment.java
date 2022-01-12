@@ -420,6 +420,7 @@ public class DiarioFragment extends Fragment {
                                                         @Override
                                                         public void onSuccess(DocumentReference documentReference) {
                                                             Toast.makeText(getActivity(), "Novo evento cadastrado...", Toast.LENGTH_LONG).show();
+                                                            edtObservacao.setText("");
                                                         }
                                                     })
                                                     .addOnFailureListener(new OnFailureListener() {
@@ -446,6 +447,7 @@ public class DiarioFragment extends Fragment {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
                                     Toast.makeText(getActivity(), "Novo evento cadastrado...", Toast.LENGTH_LONG).show();
+                                    edtObservacao.setText("");
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
