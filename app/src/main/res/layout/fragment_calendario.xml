@@ -17,17 +17,15 @@
     <LinearLayout
         android:id="@+id/layoutCalendario"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="@+id/toolBar"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="0dp"
+        android:layout_height="400dp"
+        android:layout_alignParentTop="true"
         android:layout_marginTop="50dp"
         android:orientation="vertical">
 
         <com.prolificinteractive.materialcalendarview.MaterialCalendarView
             android:id="@+id/calendarView"
             android:layout_width="fill_parent"
-            android:layout_height="match_parent"
+            android:layout_height="415dp"
             android:background="#FFFFFF"
             app:mcv_dateTextAppearance="@style/CustomCalendarWeek"
             app:mcv_headerTextAppearance="@style/CustomCalendarWeek"
@@ -38,4 +36,101 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/plainText2"
+        android:textColor="@color/dotAzul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutCalendario"
+        android:textSize="50dp"
+        android:layout_marginLeft="20dp"
+        android:text="•" />
+    <TextView
+        android:id="@+id/plainText3"
+        android:textColor="@color/dotVermelho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/plainText2"
+        android:layout_marginTop="-40dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="50dp"
+        android:text="•" />
+
+    <TextView
+        android:id="@+id/plainText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/plainText3"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="-40dp"
+        android:text="•"
+        android:textColor="@color/dotLaranja"
+        android:textSize="50dp" />
+
+    <TextView
+        android:id="@+id/plainText5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/plainText4"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="-40dp"
+        android:text="•"
+        android:textColor="@color/dotVerde"
+        android:textSize="50dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:textColor="@color/dotVermelho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView7"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="06dp"
+        android:layout_toEndOf="@+id/plainText5"
+        android:fontFamily="@font/roboto"
+        android:textSize="15dp"
+        android:textFontWeight="600"
+        android:text="Bebida" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutCalendario"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
+        android:layout_toEndOf="@+id/plainText4"
+        android:fontFamily="@font/roboto"
+        android:text="Sono"
+        android:textColor="@color/dotAzul"
+        android:textFontWeight="600"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:textColor="@color/dotVerde"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView9"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="06dp"
+        android:layout_toEndOf="@+id/plainText3"
+        android:fontFamily="@font/roboto"
+        android:textFontWeight="600"
+        android:textSize="15dp"
+        android:text="Remédio" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:textColor="@color/dotLaranja"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView6"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="06dp"
+        android:layout_toEndOf="@+id/plainText2"
+        android:fontFamily="@font/roboto"
+        android:textSize="15dp"
+        android:textFontWeight="600"
+        android:text="Exercício" />
 </RelativeLayout>
