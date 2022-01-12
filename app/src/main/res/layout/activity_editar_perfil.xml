@@ -25,7 +25,8 @@
         app:layout_constraintHorizontal_bias="0.563"
         app:layout_constraintStart_toStartOf="@+id/edtNovoDataNascimento"
         app:layout_constraintTop_toTopOf="parent"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:maxLength="50" />
 
     <EditText
         android:id="@+id/edtNovoDataNascimento"
@@ -80,7 +81,8 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="@+id/edtNovoLogin"
         app:layout_constraintTop_toBottomOf="@+id/edtNovoCpf"
-        android:inputType="phone" />
+        android:inputType="phone"
+        android:maxLength="11" />
 
     <EditText
         android:id="@+id/edtNovoLogin"
@@ -98,7 +100,8 @@
         app:layout_constraintEnd_toEndOf="@+id/edtNovoSenha"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="@+id/edtNovoSenha"
-        app:layout_constraintTop_toBottomOf="@+id/edtNovoTelefone" />
+        app:layout_constraintTop_toBottomOf="@+id/edtNovoTelefone"
+        android:maxLength="20" />
 
     <EditText
         android:id="@+id/edtNovoSenha"
@@ -116,7 +119,8 @@
         app:layout_constraintHorizontal_bias="0.563"
         app:layout_constraintStart_toStartOf="@+id/btCriar"
         app:layout_constraintTop_toBottomOf="@+id/edtNovoLogin"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:maxLength="8" />
 
     <EditText
         android:id="@+id/edtNovoConfirmarSenha"
@@ -134,7 +138,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/btCriar"
         app:layout_constraintTop_toBottomOf="@+id/edtNovoSenha"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:maxLength="8" />
 
     <Button
         android:id="@+id/btCriar"
