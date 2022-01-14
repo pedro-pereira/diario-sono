@@ -110,7 +110,7 @@ public class NovoUsuarioActivity extends AppCompatActivity {
                         public void onSuccess(Void aVoid) {
 
                             // Teste de cadastro em tópico para notificação - Início
-                            /*
+
                             FirebaseMessaging.getInstance().subscribeToTopic("centralDeAlertas")
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
@@ -123,7 +123,7 @@ public class NovoUsuarioActivity extends AppCompatActivity {
                                             Toast.makeText(NovoUsuarioActivity.this, msg, Toast.LENGTH_LONG).show();
                                         }
                                     });
-                            */
+
                             // Teste de cadastro em tópico para notificação - Fim
 
                             Toast.makeText(NovoUsuarioActivity.this, "Novo usuário cadastrado...", Toast.LENGTH_LONG).show();
@@ -214,5 +214,4 @@ public class NovoUsuarioActivity extends AppCompatActivity {
             }
         }
     };
-
 }
