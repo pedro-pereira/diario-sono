@@ -17,9 +17,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -105,6 +108,24 @@ public class NovoUsuarioActivity extends AppCompatActivity {
                             .set(u).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
+
+                            // Teste de cadastro em tópico para notificação - Início
+                            /*
+                            FirebaseMessaging.getInstance().subscribeToTopic("centralDeAlertas")
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            String msg = "Você está cadastro na central de alertas...";
+                                            if (!task.isSuccessful()) {
+                                                msg = "Erro ao cadastrar na central de alertas.";
+                                            }
+                                            Log.d("RESUMO", msg);
+                                            Toast.makeText(NovoUsuarioActivity.this, msg, Toast.LENGTH_LONG).show();
+                                        }
+                                    });
+                            */
+                            // Teste de cadastro em tópico para notificação - Fim
+
                             Toast.makeText(NovoUsuarioActivity.this, "Novo usuário cadastrado...", Toast.LENGTH_LONG).show();
 
                             Intent intent = new Intent(NovoUsuarioActivity.this, LoginActivity.class);
