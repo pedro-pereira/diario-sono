@@ -10,9 +10,11 @@
 package br.ufc.smd.diario.activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -75,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                         .whereEqualTo("senha", senha)
                         .get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @RequiresApi(api = Build.VERSION_CODES.O)
                             @Override
                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                 if (task.isSuccessful()) {
@@ -91,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
                                                 u.setUsuario(document.getData().get("usuario").toString());
                                                 u.setSenha(document.getData().get("senha").toString());
 
-                                                Log.d("TAG", document.getId() + " => " + document.getData());
+                                                // Log.d("TAG", document.getId() + " => " + document.getData());
 
                                                 if (u.getUsuario() != null) {
                                                     // RegistroEventoActivity
