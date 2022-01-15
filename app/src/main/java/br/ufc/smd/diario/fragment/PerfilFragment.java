@@ -1,6 +1,7 @@
 package br.ufc.smd.diario.fragment;
 
 import br.ufc.smd.diario.R;
+import br.ufc.smd.diario.activity.ConfiguracaoActivity;
 import br.ufc.smd.diario.activity.EditarPerfilActivity;
 import br.ufc.smd.diario.activity.LoginActivity;
 import br.ufc.smd.diario.activity.NotificacaoActivity;
@@ -25,6 +26,8 @@ public class PerfilFragment extends Fragment {
     private Button btnNotificacoes;
     private Button btnSair;
 
+    private Button btnConfiguracao;
+
     Usuario usuario;
 
     public PerfilFragment() {
@@ -47,6 +50,8 @@ public class PerfilFragment extends Fragment {
         btnEditarPerfil  = view.findViewById(R.id.btnEditarPerfil);
         btnNotificacoes  = view.findViewById(R.id.btnNotificacoes);
         btnSair          = view.findViewById(R.id.btnSair);
+
+        btnConfiguracao          = view.findViewById(R.id.btnConfiguracao);
 
         txtBoasVindas.setText(txtBoasVindas.getText() + usuario.getUsuario());
 
@@ -75,6 +80,16 @@ public class PerfilFragment extends Fragment {
             public void onClick(View view) {
                 ((PrincipalActivity) getActivity()).usuario = null;
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnConfiguracao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Usuario u = ((PrincipalActivity) getActivity()).usuario;
+                Intent intent = new Intent(getActivity(), ConfiguracaoActivity.class);
+                intent.putExtra("usuario", u);
                 startActivity(intent);
             }
         });

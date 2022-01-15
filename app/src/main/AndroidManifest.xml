@@ -10,13 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Diariosono">
 
-        <service
-            android:name=".util.FMService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-            </intent-filter>
-        </service>
+        <receiver
+            android:name=".activity.NotificationReceiver"></receiver>
 
         <activity
             android:name=".activity.PrincipalActivity"
@@ -36,6 +31,11 @@
             android:exported="false"
             android:theme="@style/ActionBarTheme"
             android:label="Notificações"/>
+        <activity
+            android:name=".activity.ConfiguracaoActivity"
+            android:exported="false"
+            android:theme="@style/ActionBarTheme"
+            android:label="Configurações"/>
         <activity
             android:name=".activity.LoginActivity"
             android:exported="true">

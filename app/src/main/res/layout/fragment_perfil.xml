@@ -40,7 +40,7 @@ tools:context=".fragment.PerfilFragment">
         android:id="@+id/btnNotificacoes"
         android:layout_width="271dp"
         android:layout_height="55dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="28dp"
         android:backgroundTint="#0F184C"
         android:text="Notificações"
         android:textColor="#FFFFFF"
@@ -54,17 +54,31 @@ tools:context=".fragment.PerfilFragment">
         android:id="@+id/btnSair"
         android:layout_width="120dp"
         android:layout_height="55dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="28dp"
         android:backgroundTint="#0F184C"
         android:text="Sair"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:cornerRadius="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnNotificacoes"
-        app:layout_constraintVertical_bias="0.005" />
+        app:layout_constraintTop_toBottomOf="@+id/btnNotificacoes" />
+
+    <Button
+        android:id="@+id/btnConfiguracao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#0F184C"
+        android:text="Configurações"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:cornerRadius="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSair"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
