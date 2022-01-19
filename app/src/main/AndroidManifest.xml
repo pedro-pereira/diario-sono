@@ -15,17 +15,25 @@
 
         <activity
             android:name=".activity.PrincipalActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.ListaEventosActivity"
+            android:exported="false"
+            android:theme="@style/ActionBarTheme"
+            android:label="Eventos diários"/>
         <activity
             android:name=".activity.NovoUsuarioActivity"
             android:exported="false"
             android:theme="@style/ActionBarTheme"
-            android:label="Cadastro"/>
+            android:label="Cadastro"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.EditarPerfilActivity"
             android:exported="false"
             android:theme="@style/ActionBarTheme"
-            android:label="Editar perfil"/>
+            android:label="Editar perfil"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.NotificacaoActivity"
             android:exported="false"
@@ -38,7 +46,8 @@
             android:label="Configurações"/>
         <activity
             android:name=".activity.LoginActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
