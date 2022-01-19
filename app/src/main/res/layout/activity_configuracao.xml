@@ -5,12 +5,15 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context=".activity.ConfiguracaoActivity">
+tools:context=".activity.ConfiguracaoActivity"
+android:background="#FFFFFF">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="380dp"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         app:cardBackgroundColor="@color/corFundoCard"
         app:cardCornerRadius="8dp"
         app:cardElevation="10dp"
@@ -20,11 +23,14 @@ tools:context=".activity.ConfiguracaoActivity">
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintVertical_bias="0.07">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="367dp"
             android:layout_height="wrap_content"
+            android:background="@color/corFundoCard"
             android:paddingBottom="16dp">
 
             <Switch
@@ -33,10 +39,10 @@ tools:context=".activity.ConfiguracaoActivity">
                 android:layout_height="32dp"
                 android:layout_marginTop="16dp"
                 android:text="Lembrete sono"
+                android:theme="@style/SwitchStyle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:theme="@style/SwitchStyle" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Switch
                 android:id="@+id/swtLembreteExercicio"
@@ -44,10 +50,10 @@ tools:context=".activity.ConfiguracaoActivity">
                 android:layout_height="32dp"
                 android:layout_marginTop="16dp"
                 android:text="Lembrete exercício"
+                android:theme="@style/SwitchStyle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/swtLembreteSono"
-                android:theme="@style/SwitchStyle" />
+                app:layout_constraintTop_toBottomOf="@+id/swtLembreteSono" />
 
             <Switch
                 android:id="@+id/swtLembreteRemedio"
@@ -55,10 +61,10 @@ tools:context=".activity.ConfiguracaoActivity">
                 android:layout_height="32dp"
                 android:layout_marginTop="16dp"
                 android:text="Lembrete remédio"
+                android:theme="@style/SwitchStyle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/swtLembreteExercicio"
-                android:theme="@style/SwitchStyle" />
+                app:layout_constraintTop_toBottomOf="@+id/swtLembreteExercicio" />
 
             <Switch
                 android:id="@+id/swtLembreteBebida"
@@ -67,10 +73,10 @@ tools:context=".activity.ConfiguracaoActivity">
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:text="Lembrete bebida"
+                android:theme="@style/SwitchStyle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/swtLembreteRemedio"
-                android:theme="@style/SwitchStyle" />
+                app:layout_constraintTop_toBottomOf="@+id/swtLembreteRemedio" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
