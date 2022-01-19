@@ -7,6 +7,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.provider.Settings;
 
 import androidx.core.app.NotificationCompat;
@@ -17,15 +18,28 @@ public class NotificationReceiver extends BroadcastReceiver {
 
     public String titulo;
     public String mensagem;
+    public int requestCode = 0;
+    public String acao = null;
 
     @Override
     public void onReceive(Context context, Intent intent) {
 
         NotificationHelper notificationHelper = new NotificationHelper(context);
 
+        Intent quemChamou = intent;
+        if (quemChamou != null) {
+            Bundle params = quemChamou.getExtras();
+            if (params != null) {
+                titulo = params.getString("titulo");
+                mensagem = params.getString("mensagem");
+                requestCode = params.getInt("requestCode");
+                acao = params.getString("acao");
+            }
+        }
+
         notificationHelper.setTitulo(titulo);
         notificationHelper.setMensagem(mensagem);
-        notificationHelper.createNotification();
+        notificationHelper.createNotification(requestCode, acao);
     }
 
     public String getTitulo() {
@@ -57,13 +71,16 @@ class NotificationHelper {
         mContext = context;
     }
 
-    void createNotification() {
+    void createNotification(int requestCode, String acao) {
         Intent intent = new Intent(mContext , LoginActivity.class);
+
+        if(acao != null)
+            intent.setAction(acao);
 
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         PendingIntent resultPendingIntent = PendingIntent.getActivity(mContext,
-                0 /* Request code */, intent,
+                requestCode /* Request code */, intent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(mContext, NOTIFICATION_CHANNEL_ID);
@@ -88,7 +105,7 @@ class NotificationHelper {
             mNotificationManager.createNotificationChannel(notificationChannel);
         }
         assert mNotificationManager != null;
-        mNotificationManager.notify(0 /* Request Code */, mBuilder.build());
+        mNotificationManager.notify(requestCode /* Request Code */, mBuilder.build());
     }
 
     public String getTitulo() {

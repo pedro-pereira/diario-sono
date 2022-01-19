@@ -14,6 +14,15 @@
     <string name="tab_text_2">Tab 2</string>
     <string name="dash">-</string>
 
+    <string name="tituloLembreteSono">Lembrete do sono</string>
+    <string name="mensagemLembreteSono">Que horas você dormiu?</string>
+    <string name="tituloLembreteExercicio">Lembrete de exercício</string>
+    <string name="mensagemLembreteExercicio">Quando você malhou?</string>
+    <string name="tituloLembreteRemedio">Lembrete de remédio</string>
+    <string name="mensagemLembreteRemedio">Quando você se drogou?</string>
+    <string name="tituloLembreteBebida">Lembrete de bebida</string>
+    <string name="mensagemLembreteBebida">Quando você bebeu?</string>
+
     <string-array name="generos">
         <item>Feminino</item>
         <item>Masculino</item>
