@@ -1,5 +1,6 @@
 package br.ufc.smd.diario.fragment;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,13 +14,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+import com.prolificinteractive.materialcalendarview.OnDateLongClickListener;
 
 import java.lang.reflect.Field;
 import java.text.DateFormatSymbols;
@@ -30,6 +31,7 @@ import java.util.Date;
 import java.util.TimeZone;
 
 import br.ufc.smd.diario.R;
+import br.ufc.smd.diario.activity.ListaEventosActivity;
 import br.ufc.smd.diario.activity.PrincipalActivity;
 import br.ufc.smd.diario.decorator.EventDecorator;
 import br.ufc.smd.diario.model.Usuario;
@@ -40,6 +42,8 @@ public class CalendarioFragment extends Fragment {
     FirebaseFirestore db;
     Usuario usuario;
 
+    View view;
+
     public CalendarioFragment() {
         super(R.layout.fragment_calendario);
     }
@@ -47,15 +51,15 @@ public class CalendarioFragment extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        FirebaseApp.initializeApp(getActivity());
+        // FirebaseApp.initializeApp(getActivity());
 
-        View view = inflater.inflate(R.layout.fragment_calendario, container, false);
+        view = inflater.inflate(R.layout.fragment_calendario, container, false);
 
         usuario = ((PrincipalActivity) getActivity()).usuario;
 
         calendario = view.findViewById(R.id.calendarView);
         calendario.setTopbarVisible(false);
-        calendario.setClickable(false);
+        calendario.setClickable(true);
 
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Fortaleza/Brasil"));
         cal.setTime(new Date());
@@ -67,7 +71,21 @@ public class CalendarioFragment extends Fragment {
         String[] months = new DateFormatSymbols().getMonths();
         String titulo = months[cal.get(Calendar.MONTH)] + " / " + cal.get(Calendar.YEAR);
         myToolbarPrincipal.setTitle(titulo);
-        Log.i("RESUMO 1", titulo);
+
+        // Implementação de click na data escolhida - Início
+        calendario.setOnDateLongClickListener(new OnDateLongClickListener() {
+            @Override
+            public void onDateLongClick(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date) {
+                Calendar c = Calendar.getInstance();
+                c.set(date.getYear(), date.getMonth() - 1, date.getDay());
+
+                Intent intentListaEventos = new Intent(getActivity(), ListaEventosActivity.class);
+                intentListaEventos.putExtra("usuario", usuario);
+                intentListaEventos.putExtra("dataSelecionada", c);
+                startActivity(intentListaEventos);
+            }
+        });
+        // Implementação de click na data escolhida - fim
 
         calendario.setOnMonthChangedListener((widget, date) -> {
             try {
@@ -137,10 +155,11 @@ public class CalendarioFragment extends Fragment {
                     }
                 }
             }
-            calendario.addDecorator(new EventDecorator(getResources().getColor(R.color.dotLaranja), datasExercicio));
-            calendario.addDecorator(new EventDecorator(getResources().getColor(R.color.dotVerde), datasRemedio));
-            calendario.addDecorator(new EventDecorator(getResources().getColor(R.color.dotVermelho), datasBebida));
-            calendario.addDecorator(new EventDecorator(getResources().getColor(R.color.dotAzul), datasSono));
+
+            calendario.addDecorator(new EventDecorator(view.getResources().getColor(R.color.dotLaranja) , datasExercicio));
+            calendario.addDecorator(new EventDecorator(view.getResources().getColor(R.color.dotVerde)   , datasRemedio));
+            calendario.addDecorator(new EventDecorator(view.getResources().getColor(R.color.dotVermelho), datasBebida));
+            calendario.addDecorator(new EventDecorator(view.getResources().getColor(R.color.dotAzul)    , datasSono));
         } else {
             Log.d("TAG", "Error getting documents: ", task.getException());
         }
