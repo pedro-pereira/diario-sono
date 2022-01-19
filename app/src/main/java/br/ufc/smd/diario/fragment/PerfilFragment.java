@@ -1,3 +1,5 @@
+// https://www.viralandroid.com/2016/03/android-material-design-profile-screen-xml-ui-design.html
+
 package br.ufc.smd.diario.fragment;
 
 import br.ufc.smd.diario.R;
@@ -13,7 +15,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -22,11 +23,10 @@ public class PerfilFragment extends Fragment {
 
     private TextView txtBoasVindas;
 
-    private Button btnEditarPerfil;
-    private Button btnNotificacoes;
-    private Button btnSair;
-
-    private Button btnConfiguracao;
+    private TextView txtEditarPerfil;
+    private TextView txtNotificacoes;
+    private TextView txtConfiguracoes;
+    private TextView txtSair;
 
     Usuario usuario;
 
@@ -46,16 +46,14 @@ public class PerfilFragment extends Fragment {
         usuario = ((PrincipalActivity) getActivity()).usuario;
 
         txtBoasVindas    = view.findViewById(R.id.txtBoasVindas);
+        txtEditarPerfil  = view.findViewById(R.id.txtEditarPerfil);
+        txtNotificacoes  = view.findViewById(R.id.txtNotificacoes);
+        txtConfiguracoes = view.findViewById(R.id.txtConfiguracoes);
+        txtSair          = view.findViewById(R.id.txtSair);
 
-        btnEditarPerfil  = view.findViewById(R.id.btnEditarPerfil);
-        btnNotificacoes  = view.findViewById(R.id.btnNotificacoes);
-        btnSair          = view.findViewById(R.id.btnSair);
+        txtBoasVindas.setText("Olá, \n" + usuario.getUsuario());
 
-        btnConfiguracao          = view.findViewById(R.id.btnConfiguracao);
-
-        txtBoasVindas.setText(txtBoasVindas.getText() + usuario.getUsuario());
-
-        btnEditarPerfil.setOnClickListener(new View.OnClickListener() {
+        txtEditarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Usuario u = ((PrincipalActivity) getActivity()).usuario;
@@ -65,7 +63,7 @@ public class PerfilFragment extends Fragment {
             }
         });
 
-        btnNotificacoes.setOnClickListener(new View.OnClickListener() {
+        txtNotificacoes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Usuario u = ((PrincipalActivity) getActivity()).usuario;
@@ -75,21 +73,21 @@ public class PerfilFragment extends Fragment {
             }
         });
 
-        btnSair.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((PrincipalActivity) getActivity()).usuario = null;
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        btnConfiguracao.setOnClickListener(new View.OnClickListener() {
+        txtConfiguracoes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Usuario u = ((PrincipalActivity) getActivity()).usuario;
                 Intent intent = new Intent(getActivity(), ConfiguracaoActivity.class);
                 intent.putExtra("usuario", u);
+                startActivity(intent);
+            }
+        });
+
+        txtSair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((PrincipalActivity) getActivity()).usuario = null;
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
             }
         });
