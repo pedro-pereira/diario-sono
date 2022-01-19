@@ -27,6 +27,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import br.ufc.smd.diario.R;
 import br.ufc.smd.diario.model.Usuario;
@@ -97,7 +98,20 @@ public class LoginActivity extends AppCompatActivity {
                                                 // Log.d("TAG", document.getId() + " => " + document.getData());
 
                                                 if (u.getUsuario() != null) {
-                                                    // RegistroEventoActivity
+
+                                                    // Teste de cadastro em tópico para notificação - Início
+                                                    FirebaseMessaging.getInstance().subscribeToTopic("centralDeAlertas")
+                                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                @Override
+                                                                public void onComplete(@NonNull Task<Void> task) {
+                                                                    String msg = "Você está cadastro na central de alertas...";
+                                                                    if (!task.isSuccessful()) {
+                                                                        msg = "Erro ao cadastrar na central de alertas.";
+                                                                    }
+                                                                }
+                                                            });
+                                                    // Teste de cadastro em tópico para notificação - Fim
+
                                                     Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
                                                     intent.putExtra("usuario", u);
                                                     startActivity(intent);

@@ -16,12 +16,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -78,11 +75,6 @@ public class NovoUsuarioActivity extends AppCompatActivity {
                 ) {
                     Toast.makeText(NovoUsuarioActivity.this, "Todos os campos são obrigatórios.", Toast.LENGTH_LONG).show();
 
-                    /*
-                    Toast toast = Toast.makeText(NovoUsuarioActivity.this, "Todos os campos são obrigatórios.", Toast.LENGTH_LONG);
-                    toast.setGravity(Gravity.CENTER, 0, 0);
-                    toast.show();
-                     */
                 } else {
                     Usuario u = new Usuario();
                     u.setNome(edtNovoNome.getText().toString());
