@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutCalendario"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,14 +20,15 @@
         <devs.mulham.horizontalcalendar.HorizontalCalendarView
             android:id="@+id/calendarView"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="80dp"
 
             android:background="#0F184C"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.111"
 
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             app:selectorColor="#F3C641"
+            app:sizeMiddleText="14dp"
             app:textColorNormal="#FFFFFF"
             app:textColorSelected="#F3C641"
             tools:layout_editor_absoluteX="0dp" />
@@ -102,20 +103,20 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
-        android:layout_width="369dp"
-        android:layout_height="90dp"
+        android:layout_width="374dp"
+        android:layout_height="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
         <Button
             android:id="@+id/btnSonoDeitar"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:text="Deitar"
-            app:cornerRadius="4dp"
+            android:layout_width="165dp"
+            android:layout_height="50dp"
             android:backgroundTint="#F3C641"
+            android:text="Deitar"
             android:textColor="#071025"
+            app:cornerRadius="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.076"
@@ -125,12 +126,12 @@
 
         <Button
             android:id="@+id/btnSonoLevantar"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:text="Levantar"
-            app:cornerRadius="4dp"
+            android:layout_width="165dp"
+            android:layout_height="50dp"
             android:backgroundTint="#0F184C"
+            android:text="Levantar"
             android:textColor="#FFFFFF"
+            app:cornerRadius="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.923"
@@ -140,12 +141,12 @@
 
         <Button
             android:id="@+id/btnBebidaCafe"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:text="Café"
-            app:cornerRadius="4dp"
+            android:layout_width="165dp"
+            android:layout_height="50dp"
             android:backgroundTint="#F3C641"
+            android:text="Café"
             android:textColor="#071025"
+            app:cornerRadius="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.077"
@@ -155,12 +156,12 @@
 
         <Button
             android:id="@+id/btnBebidaCha"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:text="Chá"
-            app:cornerRadius="4dp"
+            android:layout_width="165dp"
+            android:layout_height="50dp"
             android:backgroundTint="#0F184C"
+            android:text="Chá"
             android:textColor="#FFFFFF"
+            app:cornerRadius="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.922"
@@ -170,33 +171,33 @@
 
         <Button
             android:id="@+id/btnBebidaAlcool"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:text="Álcool"
-            app:cornerRadius="4dp"
+            android:layout_width="165dp"
+            android:layout_height="50dp"
             android:backgroundTint="#0F184C"
+            android:text="Álcool"
             android:textColor="#FFFFFF"
+            app:cornerRadius="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.924"
+            app:layout_constraintHorizontal_bias="0.928"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.837" />
+            app:layout_constraintVertical_bias="1.0" />
 
         <Button
             android:id="@+id/btnBebidaRefrigerante"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:text="Refrigerante"
-            app:cornerRadius="4dp"
+            android:layout_width="165dp"
+            android:layout_height="50dp"
             android:backgroundTint="#0F184C"
+            android:text="Refrigerante"
             android:textColor="#FFFFFF"
+            app:cornerRadius="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.075"
+            app:layout_constraintHorizontal_bias="0.073"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.837" />
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -204,40 +205,42 @@
         android:id="@+id/spnMomentoHora"
         android:layout_width="370dp"
         android:layout_height="150dp"
+        android:layout_marginTop="0dp"
+        android:theme="@style/MyTimePicker"
         android:timePickerMode="spinner"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
-        tools:layout_editor_absoluteX="11dp"
-        android:theme="@style/MyTimePicker"
-        />
+        tools:layout_editor_absoluteX="11dp" />
 
     <EditText
         android:id="@+id/edtObservacao"
         android:layout_width="340dp"
         android:layout_height="40dp"
         android:layout_marginLeft="1dp"
+        android:layout_marginTop="2dp"
         android:layout_marginRight="1dp"
         android:background="@drawable/edit_text_border"
         android:hint="Observação"
+        android:inputType="text"
         android:paddingLeft="8dp"
         android:paddingTop="1dp"
-        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spnMomentoHora" />
 
     <Button
         android:id="@+id/btnSalvar"
         android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:text="Salvar"
+        android:layout_height="50dp"
         android:backgroundTint="#101951"
+        android:text="Salvar"
         android:textColor="#FFFFFF"
         app:cornerRadius="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintHorizontal_bias="0.934"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtObservacao"
-        app:layout_constraintVertical_bias="0.031" />
+        app:layout_constraintVertical_bias="0.024" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

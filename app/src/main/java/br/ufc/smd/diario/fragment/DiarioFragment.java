@@ -1,17 +1,22 @@
 package br.ufc.smd.diario.fragment;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,6 +35,7 @@ import java.util.Map;
 
 import br.ufc.smd.diario.R;
 import br.ufc.smd.diario.activity.PrincipalActivity;
+import br.ufc.smd.diario.model.Evento;
 import br.ufc.smd.diario.model.Usuario;
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
@@ -61,6 +67,16 @@ public class DiarioFragment extends Fragment {
     int momentoMinuto;
 
     public Usuario usuario;
+    Evento evento;
+
+    Drawable drawableEventoSonoHabilitado;
+    Drawable drawableEventoSonoDesabilitado;
+    Drawable drawableEventoExercicioHabilitado;
+    Drawable drawableEventoExercicioDesabilitado;
+    Drawable drawableEventoRemedioHabilitado;
+    Drawable drawableEventoRemedioDesabilitado;
+    Drawable drawableEventoBebidaHabilitado;
+    Drawable drawableEventoBebidaDesabilitado;
 
     public DiarioFragment() {
     }
@@ -70,26 +86,26 @@ public class DiarioFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         db = FirebaseFirestore.getInstance();
 
         // Inflate the layout for this fragment
-        // View view = inflater.inflate(R.layout.fragment_diario, container, false); activity_registro_evento
         View view = inflater.inflate(R.layout.fragment_diario, container, false);
 
         // get fragment manager so we can launch from fragment
         // final FragmentManager fm = ((AppCompatActivity)getActivity()).getSupportFragmentManager();
 
-        final Drawable drawableEventoSonoHabilitado        = getResources().getDrawable(R.drawable.ic_dormir_habilitado);
-        final Drawable drawableEventoSonoDesabilitado      = getResources().getDrawable(R.drawable.ic_dormir_desabilitado);
-        final Drawable drawableEventoExercicioHabilitado   = getResources().getDrawable(R.drawable.ic_exercicio_habilitado);
-        final Drawable drawableEventoExercicioDesabilitado = getResources().getDrawable(R.drawable.ic_exercicio_desabilitado);
-        final Drawable drawableEventoRemedioHabilitado     = getResources().getDrawable(R.drawable.ic_remedio_habilitado);
-        final Drawable drawableEventoRemedioDesabilitado   = getResources().getDrawable(R.drawable.ic_remedio_desabilitado);
-        final Drawable drawableEventoBebidaHabilitado      = getResources().getDrawable(R.drawable.ic_bebida_habilitado);
-        final Drawable drawableEventoBebidaDesabilitado    = getResources().getDrawable(R.drawable.ic_bebida_desabilitado);
+        drawableEventoSonoHabilitado        = getResources().getDrawable(R.drawable.ic_dormir_habilitado);
+        drawableEventoSonoDesabilitado      = getResources().getDrawable(R.drawable.ic_dormir_desabilitado);
+        drawableEventoExercicioHabilitado   = getResources().getDrawable(R.drawable.ic_exercicio_habilitado);
+        drawableEventoExercicioDesabilitado = getResources().getDrawable(R.drawable.ic_exercicio_desabilitado);
+        drawableEventoRemedioHabilitado     = getResources().getDrawable(R.drawable.ic_remedio_habilitado);
+        drawableEventoRemedioDesabilitado   = getResources().getDrawable(R.drawable.ic_remedio_desabilitado);
+        drawableEventoBebidaHabilitado      = getResources().getDrawable(R.drawable.ic_bebida_habilitado);
+        drawableEventoBebidaDesabilitado    = getResources().getDrawable(R.drawable.ic_bebida_desabilitado);
 
         btnEventoSono         = view.findViewById(R.id.btnEventoSono);
         btnEventoExercicio    = view.findViewById(R.id.btnEventoExercicio);
@@ -107,36 +123,7 @@ public class DiarioFragment extends Fragment {
 
         spnMomentoHora        = view.findViewById(R.id.spnMomentoHora);
 
-        btnBebidaCafe.setVisibility(View.INVISIBLE);
-        btnBebidaCha.setVisibility(View.INVISIBLE);
-        btnBebidaRefrigerante.setVisibility(View.INVISIBLE);
-        btnBebidaAlcool.setVisibility(View.INVISIBLE);
-
-        btnSonoDeitar.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
-        btnSonoDeitar.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
-
-        btnSonoLevantar.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-        btnSonoLevantar.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-        btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
-        btnBebidaCafe.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
-
-        btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-        btnBebidaCha.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-        btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-        btnBebidaRefrigerante.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-        btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-        btnBebidaAlcool.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-        btnEventoSono.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoSonoHabilitado , null, null);
-        btnEventoExercicio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoExercicioDesabilitado , null, null);
-        btnEventoRemedio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoRemedioDesabilitado , null, null);
-        btnEventoBebida.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoBebidaDesabilitado , null, null);
-
-        tipoEvento = "SONO";
-        subEvento = "DEITAR";
+        tratarTelaPorEvento("SONO", "DEITAR");
 
         momentoData = Calendar.getInstance();
         momentoHora = momentoData.getTime().getHours();
@@ -148,84 +135,28 @@ public class DiarioFragment extends Fragment {
         btnEventoSono.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnSonoDeitar.setVisibility(View.VISIBLE);
-                btnSonoLevantar.setVisibility(View.VISIBLE);
-
-                btnBebidaCafe.setVisibility(View.INVISIBLE);
-                btnBebidaCha.setVisibility(View.INVISIBLE);
-                btnBebidaRefrigerante.setVisibility(View.INVISIBLE);
-                btnBebidaAlcool.setVisibility(View.INVISIBLE);
-
-                btnEventoSono.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoSonoHabilitado , null, null);
-                btnEventoExercicio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoExercicioDesabilitado , null, null);
-                btnEventoRemedio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoRemedioDesabilitado , null, null);
-                btnEventoBebida.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoBebidaDesabilitado , null, null);
-
-                tipoEvento = "SONO";
-                subEvento = "DEITAR";
+                tratarTelaPorEvento("SONO", "DEITAR");
             }
         });
 
         btnEventoExercicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnSonoDeitar.setVisibility(View.INVISIBLE);
-                btnSonoLevantar.setVisibility(View.INVISIBLE);
-
-                btnBebidaCafe.setVisibility(View.INVISIBLE);
-                btnBebidaCha.setVisibility(View.INVISIBLE);
-                btnBebidaRefrigerante.setVisibility(View.INVISIBLE);
-                btnBebidaAlcool.setVisibility(View.INVISIBLE);
-
-                btnEventoSono.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoSonoDesabilitado , null, null);
-                btnEventoExercicio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoExercicioHabilitado , null, null);
-                btnEventoRemedio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoRemedioDesabilitado , null, null);
-                btnEventoBebida.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoBebidaDesabilitado , null, null);
-
-                tipoEvento = "EXERCICIO";
-                subEvento = "NaN";
+                tratarTelaPorEvento("EXERCICIO", "NaN");
             }
         });
 
         btnEventoRemedio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnSonoDeitar.setVisibility(View.INVISIBLE);
-                btnSonoLevantar.setVisibility(View.INVISIBLE);
-
-                btnBebidaCafe.setVisibility(View.INVISIBLE);
-                btnBebidaCha.setVisibility(View.INVISIBLE);
-                btnBebidaRefrigerante.setVisibility(View.INVISIBLE);
-                btnBebidaAlcool.setVisibility(View.INVISIBLE);
-
-                btnEventoSono.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoSonoDesabilitado , null, null);
-                btnEventoExercicio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoExercicioDesabilitado , null, null);
-                btnEventoRemedio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoRemedioHabilitado , null, null);
-                btnEventoBebida.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoBebidaDesabilitado , null, null);
-
-                tipoEvento = "REMEDIO";
-                subEvento = "NaN";
+                tratarTelaPorEvento("REMEDIO", "NaN");
             }
         });
 
         btnEventoBebida.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnSonoDeitar.setVisibility(View.INVISIBLE);
-                btnSonoLevantar.setVisibility(View.INVISIBLE);
-
-                btnBebidaCafe.setVisibility(View.VISIBLE);
-                btnBebidaCha.setVisibility(View.VISIBLE);
-                btnBebidaRefrigerante.setVisibility(View.VISIBLE);
-                btnBebidaAlcool.setVisibility(View.VISIBLE);
-
-                btnEventoSono.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoSonoDesabilitado , null, null);
-                btnEventoExercicio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoExercicioDesabilitado , null, null);
-                btnEventoRemedio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoRemedioDesabilitado , null, null);
-                btnEventoBebida.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoBebidaHabilitado , null, null);
-
-                tipoEvento = "BEBIDA";
-                subEvento = "CAFE";
+                tratarTelaPorEvento("BEBIDA", "CAFE");
             }
         });
 
@@ -233,28 +164,14 @@ public class DiarioFragment extends Fragment {
         btnSonoDeitar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnSonoDeitar.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
-                btnSonoDeitar.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
-
-                btnSonoLevantar.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnSonoLevantar.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-                tipoEvento = "SONO";
-                subEvento = "DEITAR";
+                tratarTelaPorEvento("SONO", "DEITAR");
             }
         });
 
         btnSonoLevantar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnSonoDeitar.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnSonoDeitar.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-                btnSonoLevantar.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
-                btnSonoLevantar.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
-
-                tipoEvento = "SONO";
-                subEvento = "LEVANTAR";
+                tratarTelaPorEvento("SONO", "LEVANTAR");
             }
         });
         // "Aba" de registro de sono - Fim
@@ -263,80 +180,28 @@ public class DiarioFragment extends Fragment {
         btnBebidaCafe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
-                btnBebidaCafe.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
-
-                btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnBebidaCha.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-                btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnBebidaRefrigerante.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-                btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnBebidaAlcool.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-                tipoEvento = "BEBIDA";
-                subEvento = "CAFE";
+                tratarTelaPorEvento("BEBIDA", "CAFE");
             }
         });
 
         btnBebidaCha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnBebidaCafe.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-                btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
-                btnBebidaCha.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
-
-                btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnBebidaRefrigerante.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-                btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnBebidaAlcool.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-                tipoEvento = "BEBIDA";
-                subEvento = "CHA";
+                tratarTelaPorEvento("BEBIDA", "CHA");
             }
         });
 
         btnBebidaRefrigerante.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnBebidaCafe.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-                btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnBebidaCha.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-                btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
-                btnBebidaRefrigerante.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
-
-                btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnBebidaAlcool.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-                tipoEvento = "BEBIDA";
-                subEvento = "REFRIGERANTE";
+                tratarTelaPorEvento("BEBIDA", "REFRIGERANTE");
             }
         });
 
         btnBebidaAlcool.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnBebidaCafe.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-                btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnBebidaCha.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-                btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnBebidaRefrigerante.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-                btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
-                btnBebidaAlcool.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
-
-                tipoEvento = "BEBIDA";
-                subEvento = "ALCOOL";
+                tratarTelaPorEvento("BEBIDA", "ALCOOL");
             }
         });
         // "Aba" de registro de bebida - Fim
@@ -352,19 +217,12 @@ public class DiarioFragment extends Fragment {
 
         // on below line we are setting up our horizontal calendar view and passing id our calendar view to it.
         HorizontalCalendar horizontalCalendar = new HorizontalCalendar.Builder(view, R.id.calendarView)
-                // on below line we are adding a range as start date and end date to our calendar.
-                .range(startDate, endDate)
-                // on below line we are providing a number of dates which will be visible on the screen at a time.
-                .datesNumberOnScreen(5)
-                // at last we are calling a build method to build our horizontal recycler view.
-                .build();
-        // on below line we are setting calendar listener to our calendar view.
-        horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
-            @Override
-            public void onDateSelected(Calendar date, int position) {
-                momentoData = date;
-            }
-        });
+                    // on below line we are adding a range as start date and end date to our calendar.
+                    .range(startDate, endDate)
+                    // on below line we are providing a number of dates which will be visible on the screen at a time.
+                    .datesNumberOnScreen(5)
+                    // at last we are calling a build method to build our horizontal recycler view.
+                    .build();
         // Componente de Data - Fim
 
         // Componente de Hora - Início
@@ -377,6 +235,39 @@ public class DiarioFragment extends Fragment {
             }
         });
         // Componente de Hora - Fim
+
+        // Trata cenário de edição de evento - Início
+        Intent quemChamou = getActivity().getIntent();
+        if (quemChamou != null) {
+            Bundle params = quemChamou.getExtras();
+            if (params != null) {
+                evento = (Evento) params.getSerializable("eventoSelecionado");
+            }
+            if(evento != null) {
+                tratarTelaPorEvento(evento.getTipoEvento(), evento.getSubEvento());
+
+                spnMomentoHora.setHour(evento.getMomento().getHours());
+                spnMomentoHora.setMinute(evento.getMomento().getMinutes());
+                edtObservacao.setText(evento.getObservacao());
+
+                Calendar todayDateEdit = Calendar.getInstance();
+                todayDateEdit.set(evento.getMomento().getYear(), evento.getMomento().getMonth(), evento.getMomento().getDate());
+
+                Log.i("RESUMO TODAY ", todayDateEdit.toString());
+
+                horizontalCalendar.getSelectedDate().set(evento.getMomento().getYear(), evento.getMomento().getMonth(), evento.getMomento().getDate());
+                horizontalCalendar.refresh();
+            }
+        }
+        // Trata cenário de edição de evento - Fim
+
+        // on below line we are setting calendar listener to our calendar view.
+        horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
+            @Override
+            public void onDateSelected(Calendar date, int position) {
+                momentoData = date;
+            }
+        });
 
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -461,4 +352,144 @@ public class DiarioFragment extends Fragment {
         });
         return view;
     }
+
+    // Método para exibir/ocultar botões baseado no tipo de evento + sub-evento - Início
+    public void tratarTelaPorEvento(String tipoEvento, String subEvento) {
+
+        this.tipoEvento = tipoEvento;
+        this.subEvento = subEvento;
+
+        if(tipoEvento.equals("SONO")) {
+            btnSonoDeitar.setVisibility(View.VISIBLE);
+            btnSonoLevantar.setVisibility(View.VISIBLE);
+
+            btnBebidaCafe.setVisibility(View.INVISIBLE);
+            btnBebidaCha.setVisibility(View.INVISIBLE);
+            btnBebidaRefrigerante.setVisibility(View.INVISIBLE);
+            btnBebidaAlcool.setVisibility(View.INVISIBLE);
+
+            btnEventoSono.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoSonoHabilitado , null, null);
+            btnEventoExercicio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoExercicioDesabilitado , null, null);
+            btnEventoRemedio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoRemedioDesabilitado , null, null);
+            btnEventoBebida.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoBebidaDesabilitado , null, null);
+
+            if(subEvento.equals("DEITAR")) {
+                btnSonoDeitar.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
+                btnSonoDeitar.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
+
+                btnSonoLevantar.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnSonoLevantar.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+            }
+
+            if(subEvento.equals("LEVANTAR")) {
+                btnSonoDeitar.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnSonoDeitar.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+
+                btnSonoLevantar.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
+                btnSonoLevantar.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
+            }
+        }
+
+        if(tipoEvento.equals("EXERCICIO")) {
+            btnSonoDeitar.setVisibility(View.INVISIBLE);
+            btnSonoLevantar.setVisibility(View.INVISIBLE);
+
+            btnBebidaCafe.setVisibility(View.INVISIBLE);
+            btnBebidaCha.setVisibility(View.INVISIBLE);
+            btnBebidaRefrigerante.setVisibility(View.INVISIBLE);
+            btnBebidaAlcool.setVisibility(View.INVISIBLE);
+
+            btnEventoSono.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoSonoDesabilitado, null, null);
+            btnEventoExercicio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoExercicioHabilitado, null, null);
+            btnEventoRemedio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoRemedioDesabilitado, null, null);
+            btnEventoBebida.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoBebidaDesabilitado, null, null);
+        }
+
+        if(tipoEvento.equals("REMEDIO")) {
+            btnSonoDeitar.setVisibility(View.INVISIBLE);
+            btnSonoLevantar.setVisibility(View.INVISIBLE);
+
+            btnBebidaCafe.setVisibility(View.INVISIBLE);
+            btnBebidaCha.setVisibility(View.INVISIBLE);
+            btnBebidaRefrigerante.setVisibility(View.INVISIBLE);
+            btnBebidaAlcool.setVisibility(View.INVISIBLE);
+
+            btnEventoSono.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoSonoDesabilitado, null, null);
+            btnEventoExercicio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoExercicioDesabilitado, null, null);
+            btnEventoRemedio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoRemedioHabilitado, null, null);
+            btnEventoBebida.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoBebidaDesabilitado, null, null);
+        }
+
+        if(tipoEvento.equals("BEBIDA")) {
+            btnSonoDeitar.setVisibility(View.INVISIBLE);
+            btnSonoLevantar.setVisibility(View.INVISIBLE);
+
+            btnBebidaCafe.setVisibility(View.VISIBLE);
+            btnBebidaCha.setVisibility(View.VISIBLE);
+            btnBebidaRefrigerante.setVisibility(View.VISIBLE);
+            btnBebidaAlcool.setVisibility(View.VISIBLE);
+
+            btnEventoSono.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoSonoDesabilitado, null, null);
+            btnEventoExercicio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoExercicioDesabilitado, null, null);
+            btnEventoRemedio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoRemedioDesabilitado, null, null);
+            btnEventoBebida.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoBebidaHabilitado, null, null);
+
+            if(subEvento.equals("CAFE")) {
+                btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
+                btnBebidaCafe.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
+
+                btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnBebidaCha.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+
+                btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnBebidaRefrigerante.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+
+                btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnBebidaAlcool.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+            }
+
+            if(subEvento.equals("CHA")) {
+                btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnBebidaCafe.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+
+                btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
+                btnBebidaCha.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
+
+                btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnBebidaRefrigerante.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+
+                btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnBebidaAlcool.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+            }
+
+            if(subEvento.equals("REFRIGERANTE")) {
+                btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnBebidaCafe.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+
+                btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnBebidaCha.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+
+                btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
+                btnBebidaRefrigerante.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
+
+                btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnBebidaAlcool.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+            }
+
+            if(subEvento.equals("ALCOOL")) {
+                btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnBebidaCafe.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+
+                btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnBebidaCha.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+
+                btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
+                btnBebidaRefrigerante.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+
+                btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
+                btnBebidaAlcool.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
+            }
+        }
+    }
+    // Método para exibir/ocultar botões baseado no tipo de evento + sub-evento - Fim
 }
