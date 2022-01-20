@@ -5,190 +5,86 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/txtDia1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:text="D"
-        android:textColor="#0F184C"
-        app:layout_constraintBottom_toTopOf="@+id/checkBox1"
+    <CheckBox
+        android:id="@+id/chkIconeExercicio"
+        android:layout_width="@dimen/celulaWidth"
+        android:layout_height="@dimen/celulaHeight"
+        android:background="@drawable/ic_grafico_exercicio_chk"
+        android:button="@null"
+        android:clickable="false"
+        tools:layout_editor_absoluteY="17dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.666" />
-
-    <TextView
-        android:id="@+id/txtDia2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:fontFamily="@font/roboto"
-        android:text="S"
-        android:textColor="#0F184C"
-        app:layout_constraintBottom_toTopOf="@+id/checkBox2"
-        app:layout_constraintStart_toEndOf="@+id/txtDia1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.666" />
-
-    <TextView
-        android:id="@+id/txtDia3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:text="T"
-        android:textColor="#0F184C"
-        app:layout_constraintBottom_toTopOf="@+id/checkBox3"
-        app:layout_constraintStart_toEndOf="@+id/txtDia2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.666" />
-
-    <TextView
-        android:id="@+id/txtDia4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:text="Q"
-        android:textColor="#0F184C"
-        app:layout_constraintBottom_toTopOf="@+id/checkBox4"
-        app:layout_constraintStart_toEndOf="@+id/txtDia3"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.666" />
-
-    <TextView
-        android:id="@+id/txtDia5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:text="Q"
-        android:textColor="#0F184C"
-        app:layout_constraintBottom_toTopOf="@+id/checkBox5"
-        app:layout_constraintStart_toEndOf="@+id/txtDia4"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.666" />
-
-    <TextView
-        android:id="@+id/txtDia6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:text="S"
-        android:textColor="#0F184C"
-        app:layout_constraintBottom_toTopOf="@+id/checkBox6"
-        app:layout_constraintStart_toEndOf="@+id/txtDia5"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.666" />
-
-    <TextView
-        android:id="@+id/txtDia7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:text="S"
-        android:textColor="#0F184C"
-        app:layout_constraintBottom_toTopOf="@+id/checkBox7"
-        app:layout_constraintStart_toEndOf="@+id/txtDia6"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.666" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="40dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_grafico_exercicio"
-        android:layout_marginStart="12dp"/>
+        android:layout_marginStart="42dp"
+        android:layout_alignParentStart="true" />
 
     <CheckBox
         android:id="@+id/checkBox1"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="40dp"
-        android:layout_toEndOf="@+id/imageView"
+        android:layout_width="@dimen/celulaWidth"
+        android:layout_height="@dimen/celulaHeight"
         android:background="@drawable/custom_selector"
         android:button="@null"
         android:clickable="false"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/chkIconeExercicio"
+        tools:layout_editor_absoluteY="17dp" />
 
     <CheckBox
         android:id="@+id/checkBox2"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="40dp"
-        android:layout_toEndOf="@+id/imageView"
+        android:layout_width="@dimen/celulaWidth"
+        android:layout_height="@dimen/celulaHeight"
         android:background="@drawable/custom_selector"
         android:button="@null"
-        app:layout_constraintStart_toEndOf="@+id/checkBox1"
-        app:layout_constraintTop_toTopOf="parent"
-        android:clickable="false" />
+        android:clickable="false"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBox1"
+        app:layout_constraintStart_toEndOf="@+id/checkBox1" />
 
     <CheckBox
         android:id="@+id/checkBox3"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="40dp"
-        android:layout_toEndOf="@+id/imageView"
+        android:layout_width="@dimen/celulaWidth"
+        android:layout_height="@dimen/celulaHeight"
         android:background="@drawable/custom_selector"
         android:button="@null"
-        app:layout_constraintStart_toEndOf="@+id/checkBox2"
-        app:layout_constraintTop_toTopOf="parent"
-        android:clickable="false" />
+        android:clickable="false"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBox2"
+        app:layout_constraintStart_toEndOf="@+id/checkBox2" />
 
     <CheckBox
         android:id="@+id/checkBox4"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="40dp"
-        android:layout_toEndOf="@+id/imageView"
+        android:layout_width="@dimen/celulaWidth"
+        android:layout_height="@dimen/celulaHeight"
         android:background="@drawable/custom_selector"
         android:button="@null"
-        app:layout_constraintStart_toEndOf="@+id/checkBox3"
-        app:layout_constraintTop_toTopOf="parent"
-        android:clickable="false" />
+        android:clickable="false"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBox3"
+        app:layout_constraintStart_toEndOf="@+id/checkBox3" />
 
     <CheckBox
         android:id="@+id/checkBox5"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="40dp"
-        android:layout_toEndOf="@+id/imageView"
+        android:layout_width="@dimen/celulaWidth"
+        android:layout_height="@dimen/celulaHeight"
         android:background="@drawable/custom_selector"
         android:button="@null"
-        app:layout_constraintStart_toEndOf="@+id/checkBox4"
-        app:layout_constraintTop_toTopOf="parent"
-        android:clickable="false" />
+        android:clickable="false"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBox4"
+        app:layout_constraintStart_toEndOf="@+id/checkBox4" />
 
     <CheckBox
         android:id="@+id/checkBox6"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="40dp"
-        android:layout_toEndOf="@+id/imageView"
+        android:layout_width="@dimen/celulaWidth"
+        android:layout_height="@dimen/celulaHeight"
         android:background="@drawable/custom_selector"
         android:button="@null"
-        app:layout_constraintStart_toEndOf="@+id/checkBox5"
-        app:layout_constraintTop_toTopOf="parent"
-        android:clickable="false" />
+        android:clickable="false"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBox5"
+        app:layout_constraintStart_toEndOf="@+id/checkBox5" />
 
     <CheckBox
         android:id="@+id/checkBox7"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="@dimen/celulaWidth"
+        android:layout_height="@dimen/celulaHeight"
         android:background="@drawable/custom_selector"
         android:button="@null"
-        app:layout_constraintStart_toEndOf="@+id/checkBox6"
-        app:layout_constraintTop_toTopOf="parent"
-        android:clickable="false" />
+        android:clickable="false"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBox6"
+        app:layout_constraintStart_toEndOf="@+id/checkBox6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

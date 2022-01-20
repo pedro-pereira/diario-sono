@@ -5,34 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="12dp"
+    <CheckBox
+        android:id="@+id/chkIconeRemedio"
+        android:layout_width="@dimen/celulaWidth"
+        android:layout_height="@dimen/celulaHeight"
+        android:background="@drawable/ic_grafico_remedio_chk"
+        android:button="@null"
+        android:clickable="false"
+        tools:layout_editor_absoluteY="17dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_grafico_remedio"
-        tools:layout_editor_absoluteY="16dp" />
+        android:layout_marginStart="42dp"
+        android:layout_alignParentStart="true" />
 
     <CheckBox
         android:id="@+id/checkBox1"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="12dp"
-        android:layout_toEndOf="@+id/imageView"
+        android:layout_width="@dimen/celulaWidth"
+        android:layout_height="@dimen/celulaHeight"
+        android:layout_toEndOf="@+id/chkIconeRemedio"
         android:background="@drawable/custom_selector"
         android:button="@null"
         android:clickable="false"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/chkIconeRemedio"
         tools:layout_editor_absoluteY="17dp" />
 
     <CheckBox
         android:id="@+id/checkBox2"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="12dp"
-        android:layout_toEndOf="@+id/imageView"
+        android:layout_width="@dimen/celulaWidth"
+        android:layout_height="@dimen/celulaHeight"
         android:background="@drawable/custom_selector"
         android:button="@null"
         android:clickable="false"
@@ -41,10 +40,8 @@
 
     <CheckBox
         android:id="@+id/checkBox3"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="12dp"
-        android:layout_toEndOf="@+id/imageView"
+        android:layout_width="@dimen/celulaWidth"
+        android:layout_height="@dimen/celulaHeight"
         android:background="@drawable/custom_selector"
         android:button="@null"
         android:clickable="false"
@@ -53,10 +50,8 @@
 
     <CheckBox
         android:id="@+id/checkBox4"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="12dp"
-        android:layout_toEndOf="@+id/imageView"
+        android:layout_width="@dimen/celulaWidth"
+        android:layout_height="@dimen/celulaHeight"
         android:background="@drawable/custom_selector"
         android:button="@null"
         android:clickable="false"
@@ -65,10 +60,9 @@
 
     <CheckBox
         android:id="@+id/checkBox5"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="12dp"
-        android:layout_toEndOf="@+id/imageView"
+        android:layout_width="@dimen/celulaWidth"
+        android:layout_height="@dimen/celulaHeight"
+        android:layout_toEndOf="@+id/checkBox4"
         android:background="@drawable/custom_selector"
         android:button="@null"
         android:clickable="false"
@@ -77,10 +71,8 @@
 
     <CheckBox
         android:id="@+id/checkBox6"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="12dp"
-        android:layout_toEndOf="@+id/imageView"
+        android:layout_width="@dimen/celulaWidth"
+        android:layout_height="@dimen/celulaHeight"
         android:background="@drawable/custom_selector"
         android:button="@null"
         android:clickable="false"
@@ -89,9 +81,8 @@
 
     <CheckBox
         android:id="@+id/checkBox7"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="12dp"
+        android:layout_width="@dimen/celulaWidth"
+        android:layout_height="@dimen/celulaHeight"
         android:background="@drawable/custom_selector"
         android:button="@null"
         android:clickable="false"

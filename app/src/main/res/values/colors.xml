@@ -39,4 +39,6 @@
     <color name="dotVerde">#56D894</color>
     <color name="dotVermelho">#FF002B</color>
 
+    <color name="bordaCelulaTabela">#D0D0D0</color>
+
 </resources>

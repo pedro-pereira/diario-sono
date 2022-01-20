@@ -19,6 +19,7 @@
         <item name="android:textColor">#0F184C</item>
         <item name="android:fontFamily">@font/roboto</item>
     </style>
+
     <style name="CustomCalendarWeek" parent="TextAppearance.MaterialComponents.Caption">
         <item name="android:textSize">20sp</item>
         <item name="android:labelTextSize">50dp</item>
