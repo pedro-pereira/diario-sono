@@ -30,9 +30,9 @@
 
     <color name="graficoCorFundo">#FFFFFF</color>
     <color name="graficoCorRotuloEixos">#0F184C</color>
-    <color name="graficoCorGrade">#9fadfc</color>
+    <color name="graficoCorGrade">#D0D0D0</color>
     <color name="graficoCorPontoMarcado">#0F184C</color>
-    <color name="graficoCorLinhaEntrePontos">#0F184C</color>
+    <color name="graficoCorLinhaEntrePontos">#F3C641</color>
 
     <color name="dotAzul">#5DC5FF</color>
     <color name="dotLaranja">#F76D0F</color>

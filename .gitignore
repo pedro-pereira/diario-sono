@@ -69,3 +69,6 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
+
+# Arquivos gerados na fase de package
+app/release/output-metadata.json

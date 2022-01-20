@@ -6,7 +6,6 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -21,7 +20,6 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -77,11 +75,6 @@ public class NovoUsuarioActivity extends AppCompatActivity {
                 ) {
                     Toast.makeText(NovoUsuarioActivity.this, "Todos os campos são obrigatórios.", Toast.LENGTH_LONG).show();
 
-                    /*
-                    Toast toast = Toast.makeText(NovoUsuarioActivity.this, "Todos os campos são obrigatórios.", Toast.LENGTH_LONG);
-                    toast.setGravity(Gravity.CENTER, 0, 0);
-                    toast.show();
-                     */
                 } else {
                     Usuario u = new Usuario();
                     u.setNome(edtNovoNome.getText().toString());
@@ -105,6 +98,24 @@ public class NovoUsuarioActivity extends AppCompatActivity {
                             .set(u).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
+
+                            // Teste de cadastro em tópico para notificação - Início
+                            /*
+                            FirebaseMessaging.getInstance().subscribeToTopic("centralDeAlertas")
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            String msg = "Você está cadastro na central de alertas...";
+                                            if (!task.isSuccessful()) {
+                                                msg = "Erro ao cadastrar na central de alertas.";
+                                            }
+                                            Log.d("RESUMO", msg);
+                                            Toast.makeText(NovoUsuarioActivity.this, msg, Toast.LENGTH_LONG).show();
+                                        }
+                                    });
+                            */
+                            // Teste de cadastro em tópico para notificação - Fim
+
                             Toast.makeText(NovoUsuarioActivity.this, "Novo usuário cadastrado...", Toast.LENGTH_LONG).show();
 
                             Intent intent = new Intent(NovoUsuarioActivity.this, LoginActivity.class);
@@ -193,5 +204,4 @@ public class NovoUsuarioActivity extends AppCompatActivity {
             }
         }
     };
-
 }

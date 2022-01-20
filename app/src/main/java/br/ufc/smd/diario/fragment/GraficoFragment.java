@@ -108,17 +108,20 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
         chart.getDescription().setEnabled(false);
 
         final Typeface tipografia = ResourcesCompat.getFont(getActivity().getBaseContext(), R.font.roboto);
+      
         // scaling can now only be done on x- and y-axis separately
         for (int i = 5; i < 25; i += 5) {
             LimitLine limitLine = new LimitLine(i);
             limitLine.setLineColor(getResources().getColor(R.color.graficoCorGrade));
             chart.getAxisLeft().addLimitLine(limitLine);
         }
+      
         for (int i = 0; i < 7; i++) {
             LimitLine limitLine = new LimitLine(i);
             limitLine.setLineColor(getResources().getColor(R.color.graficoCorGrade));
             chart.getXAxis().addLimitLine(limitLine);
         }
+      
         chart.setPinchZoom(false);
         chart.getXAxis().setLabelCount(7, true);
         chart.getXAxis().setDrawLabels(true);

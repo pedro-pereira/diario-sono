@@ -46,7 +46,10 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
         app:layout_constraintHorizontal_bias="0.554"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+
+        android:singleLine="true"
+        android:nextFocusForward="@+id/edtSenha" />
 
     <EditText
         android:id="@+id/edtSenha"
@@ -63,7 +66,10 @@
         app:layout_constraintEnd_toEndOf="@+id/edtLogin"
         app:layout_constraintHorizontal_bias="0.572"
         app:layout_constraintStart_toStartOf="@+id/edtLogin"
-        app:layout_constraintTop_toBottomOf="@+id/edtLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/edtLogin"
+
+        android:singleLine="true"
+        android:nextFocusForward="@+id/btnLogin" />
 
     <Button
         android:id="@+id/btnLogin"
