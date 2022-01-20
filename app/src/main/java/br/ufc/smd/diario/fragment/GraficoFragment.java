@@ -38,6 +38,7 @@ import java.util.Date;
 import br.ufc.smd.diario.R;
 import br.ufc.smd.diario.activity.PrincipalActivity;
 import br.ufc.smd.diario.formatter.DayFormatter;
+import br.ufc.smd.diario.formatter.HourFormatter;
 import br.ufc.smd.diario.formatter.RemoveZeroFormatter;
 import br.ufc.smd.diario.model.Usuario;
 
@@ -108,7 +109,7 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
 
         final Typeface tipografia = ResourcesCompat.getFont(getActivity().getBaseContext(), R.font.roboto);
         // scaling can now only be done on x- and y-axis separately
-        for (int i = 3; i < 12; i += 3) {
+        for (int i = 5; i < 25; i += 5) {
             LimitLine limitLine = new LimitLine(i);
             limitLine.setLineColor(getResources().getColor(R.color.graficoCorGrade));
             chart.getAxisLeft().addLimitLine(limitLine);
@@ -136,8 +137,8 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
         chart.getAxisRight().setEnabled(false);
 
         chart.getAxisLeft().setAxisMinimum(0);
-        chart.getAxisLeft().setAxisMaximum(12);
-        chart.getAxisLeft().setLabelCount(5, true);
+        chart.getAxisLeft().setAxisMaximum(25);
+        chart.getAxisLeft().setLabelCount(6, true);
         chart.getAxisLeft().setTextColor(getResources().getColor(R.color.graficoCorRotuloEixos));
         chart.getAxisLeft().setTypeface(tipografia);
         chart.getAxisLeft().setTextSize(12);
@@ -241,7 +242,11 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
             dataSets.add(set1);
 
             LineData data = new LineData(dataSets);
-            data.setDrawValues(false);
+            data.setValueTextSize(16);
+            data.setValueTextColor(getResources().getColor(R.color.graficoCorRotuloEixos));
+            data.setHighlightEnabled(true);
+            data.setValueFormatter(new HourFormatter());
+
             chart.setData(data);
         } else {
             Log.d("TAG", "Error getting documents: ", task.getException());
