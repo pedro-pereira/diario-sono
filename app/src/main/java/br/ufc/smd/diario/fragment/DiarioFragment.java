@@ -1,6 +1,5 @@
 package br.ufc.smd.diario.fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -9,8 +8,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -40,7 +40,7 @@ import br.ufc.smd.diario.model.Usuario;
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
 
-public class DiarioFragment extends Fragment {
+public class DiarioFragment extends Fragment implements CompoundButton.OnCheckedChangeListener {
 
     FirebaseFirestore db;
     Button btnSalvar;
@@ -50,12 +50,12 @@ public class DiarioFragment extends Fragment {
     Button btnEventoRemedio;
     Button btnEventoBebida;
 
-    Button btnSonoDeitar;
-    Button btnSonoLevantar;
-    Button btnBebidaCafe;
-    Button btnBebidaCha;
-    Button btnBebidaRefrigerante;
-    Button btnBebidaAlcool;
+    CheckBox chkSonoDeitar;
+    CheckBox chkSonoLevantar;
+    CheckBox chkBebidaCafe;
+    CheckBox chkBebidaCha;
+    CheckBox chkBebidaRefrigerante;
+    CheckBox chkBebidaAlcool;
 
     EditText edtObservacao;
 
@@ -112,12 +112,12 @@ public class DiarioFragment extends Fragment {
         btnEventoRemedio      = view.findViewById(R.id.btnEventoRemedio);
         btnEventoBebida       = view.findViewById(R.id.btnEventoBebida);
 
-        btnSonoDeitar         = view.findViewById(R.id.btnSonoDeitar);
-        btnSonoLevantar       = view.findViewById(R.id.btnSonoLevantar);
-        btnBebidaCafe         = view.findViewById(R.id.btnBebidaCafe);
-        btnBebidaCha          = view.findViewById(R.id.btnBebidaCha);
-        btnBebidaRefrigerante = view.findViewById(R.id.btnBebidaRefrigerante);
-        btnBebidaAlcool       = view.findViewById(R.id.btnBebidaAlcool);
+        chkSonoDeitar         = view.findViewById(R.id.chkSonoDeitar);
+        chkSonoLevantar       = view.findViewById(R.id.chkSonoLevantar);
+        chkBebidaCafe         = view.findViewById(R.id.chkBebidaCafe);
+        chkBebidaCha          = view.findViewById(R.id.chkBebidaCha);
+        chkBebidaRefrigerante = view.findViewById(R.id.chkBebidaRefrigerante);
+        chkBebidaAlcool       = view.findViewById(R.id.chkBebidaAlcool);
 
         edtObservacao         = view.findViewById(R.id.edtObservacao);
 
@@ -160,51 +160,12 @@ public class DiarioFragment extends Fragment {
             }
         });
 
-        // "Aba" de registro de sono - Início
-        btnSonoDeitar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                tratarTelaPorEvento("SONO", "DEITAR");
-            }
-        });
-
-        btnSonoLevantar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                tratarTelaPorEvento("SONO", "LEVANTAR");
-            }
-        });
-        // "Aba" de registro de sono - Fim
-
-        // "Aba" de registro de bebida - Início
-        btnBebidaCafe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                tratarTelaPorEvento("BEBIDA", "CAFE");
-            }
-        });
-
-        btnBebidaCha.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                tratarTelaPorEvento("BEBIDA", "CHA");
-            }
-        });
-
-        btnBebidaRefrigerante.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                tratarTelaPorEvento("BEBIDA", "REFRIGERANTE");
-            }
-        });
-
-        btnBebidaAlcool.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                tratarTelaPorEvento("BEBIDA", "ALCOOL");
-            }
-        });
-        // "Aba" de registro de bebida - Fim
+        chkSonoDeitar         .setOnCheckedChangeListener(this);
+        chkSonoLevantar       .setOnCheckedChangeListener(this);
+        chkBebidaCafe         .setOnCheckedChangeListener(this);
+        chkBebidaCha          .setOnCheckedChangeListener(this);
+        chkBebidaRefrigerante .setOnCheckedChangeListener(this);
+        chkBebidaAlcool       .setOnCheckedChangeListener(this);
 
         // Componente de Data - Início
         /* starts before 1 month from now */
@@ -360,13 +321,18 @@ public class DiarioFragment extends Fragment {
         this.subEvento = subEvento;
 
         if(tipoEvento.equals("SONO")) {
-            btnSonoDeitar.setVisibility(View.VISIBLE);
-            btnSonoLevantar.setVisibility(View.VISIBLE);
+            chkSonoDeitar.setVisibility(View.VISIBLE);
+            chkSonoLevantar.setVisibility(View.VISIBLE);
 
-            btnBebidaCafe.setVisibility(View.INVISIBLE);
-            btnBebidaCha.setVisibility(View.INVISIBLE);
-            btnBebidaRefrigerante.setVisibility(View.INVISIBLE);
-            btnBebidaAlcool.setVisibility(View.INVISIBLE);
+            chkBebidaCafe.setVisibility(View.INVISIBLE);
+            chkBebidaCha.setVisibility(View.INVISIBLE);
+            chkBebidaRefrigerante.setVisibility(View.INVISIBLE);
+            chkBebidaAlcool.setVisibility(View.INVISIBLE);
+
+            chkBebidaCafe.setChecked(false);
+            chkBebidaCha.setChecked(false);
+            chkBebidaRefrigerante.setChecked(false);
+            chkBebidaAlcool.setChecked(false);
 
             btnEventoSono.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoSonoHabilitado , null, null);
             btnEventoExercicio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoExercicioDesabilitado , null, null);
@@ -374,30 +340,32 @@ public class DiarioFragment extends Fragment {
             btnEventoBebida.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoBebidaDesabilitado , null, null);
 
             if(subEvento.equals("DEITAR")) {
-                btnSonoDeitar.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
-                btnSonoDeitar.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
-
-                btnSonoLevantar.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnSonoLevantar.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+                chkSonoDeitar.setChecked(true);
+                chkSonoLevantar.setChecked(false);
             }
 
             if(subEvento.equals("LEVANTAR")) {
-                btnSonoDeitar.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnSonoDeitar.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-                btnSonoLevantar.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
-                btnSonoLevantar.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
+                chkSonoDeitar.setChecked(false);
+                chkSonoLevantar.setChecked(true);
             }
         }
 
         if(tipoEvento.equals("EXERCICIO")) {
-            btnSonoDeitar.setVisibility(View.INVISIBLE);
-            btnSonoLevantar.setVisibility(View.INVISIBLE);
+            chkSonoDeitar.setVisibility(View.INVISIBLE);
+            chkSonoLevantar.setVisibility(View.INVISIBLE);
 
-            btnBebidaCafe.setVisibility(View.INVISIBLE);
-            btnBebidaCha.setVisibility(View.INVISIBLE);
-            btnBebidaRefrigerante.setVisibility(View.INVISIBLE);
-            btnBebidaAlcool.setVisibility(View.INVISIBLE);
+            chkBebidaCafe.setVisibility(View.INVISIBLE);
+            chkBebidaCha.setVisibility(View.INVISIBLE);
+            chkBebidaRefrigerante.setVisibility(View.INVISIBLE);
+            chkBebidaAlcool.setVisibility(View.INVISIBLE);
+
+            chkSonoDeitar.setChecked(false);
+            chkSonoLevantar.setChecked(false);
+
+            chkBebidaCafe.setChecked(false);
+            chkBebidaCha.setChecked(false);
+            chkBebidaRefrigerante.setChecked(false);
+            chkBebidaAlcool.setChecked(false);
 
             btnEventoSono.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoSonoDesabilitado, null, null);
             btnEventoExercicio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoExercicioHabilitado, null, null);
@@ -406,13 +374,21 @@ public class DiarioFragment extends Fragment {
         }
 
         if(tipoEvento.equals("REMEDIO")) {
-            btnSonoDeitar.setVisibility(View.INVISIBLE);
-            btnSonoLevantar.setVisibility(View.INVISIBLE);
+            chkSonoDeitar.setVisibility(View.INVISIBLE);
+            chkSonoLevantar.setVisibility(View.INVISIBLE);
 
-            btnBebidaCafe.setVisibility(View.INVISIBLE);
-            btnBebidaCha.setVisibility(View.INVISIBLE);
-            btnBebidaRefrigerante.setVisibility(View.INVISIBLE);
-            btnBebidaAlcool.setVisibility(View.INVISIBLE);
+            chkBebidaCafe.setVisibility(View.INVISIBLE);
+            chkBebidaCha.setVisibility(View.INVISIBLE);
+            chkBebidaRefrigerante.setVisibility(View.INVISIBLE);
+            chkBebidaAlcool.setVisibility(View.INVISIBLE);
+
+            chkSonoDeitar.setChecked(false);
+            chkSonoLevantar.setChecked(false);
+
+            chkBebidaCafe.setChecked(false);
+            chkBebidaCha.setChecked(false);
+            chkBebidaRefrigerante.setChecked(false);
+            chkBebidaAlcool.setChecked(false);
 
             btnEventoSono.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoSonoDesabilitado, null, null);
             btnEventoExercicio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoExercicioDesabilitado, null, null);
@@ -421,13 +397,16 @@ public class DiarioFragment extends Fragment {
         }
 
         if(tipoEvento.equals("BEBIDA")) {
-            btnSonoDeitar.setVisibility(View.INVISIBLE);
-            btnSonoLevantar.setVisibility(View.INVISIBLE);
+            chkSonoDeitar.setVisibility(View.INVISIBLE);
+            chkSonoLevantar.setVisibility(View.INVISIBLE);
 
-            btnBebidaCafe.setVisibility(View.VISIBLE);
-            btnBebidaCha.setVisibility(View.VISIBLE);
-            btnBebidaRefrigerante.setVisibility(View.VISIBLE);
-            btnBebidaAlcool.setVisibility(View.VISIBLE);
+            chkBebidaCafe.setVisibility(View.VISIBLE);
+            chkBebidaCha.setVisibility(View.VISIBLE);
+            chkBebidaRefrigerante.setVisibility(View.VISIBLE);
+            chkBebidaAlcool.setVisibility(View.VISIBLE);
+
+            chkSonoDeitar.setChecked(false);
+            chkSonoLevantar.setChecked(false);
 
             btnEventoSono.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoSonoDesabilitado, null, null);
             btnEventoExercicio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoExercicioDesabilitado, null, null);
@@ -435,61 +414,69 @@ public class DiarioFragment extends Fragment {
             btnEventoBebida.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoBebidaHabilitado, null, null);
 
             if(subEvento.equals("CAFE")) {
-                btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
-                btnBebidaCafe.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
-
-                btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnBebidaCha.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-                btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnBebidaRefrigerante.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-                btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnBebidaAlcool.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+                chkBebidaCafe.setChecked(true);
+                chkBebidaCha.setChecked(false);
+                chkBebidaRefrigerante.setChecked(false);
+                chkBebidaAlcool.setChecked(false);
             }
 
             if(subEvento.equals("CHA")) {
-                btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnBebidaCafe.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-                btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
-                btnBebidaCha.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
-
-                btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnBebidaRefrigerante.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-                btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnBebidaAlcool.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+                chkBebidaCafe.setChecked(false);
+                chkBebidaCha.setChecked(true);
+                chkBebidaRefrigerante.setChecked(false);
+                chkBebidaAlcool.setChecked(false);
             }
 
             if(subEvento.equals("REFRIGERANTE")) {
-                btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnBebidaCafe.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-                btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnBebidaCha.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-                btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
-                btnBebidaRefrigerante.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
-
-                btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnBebidaAlcool.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
+                chkBebidaCafe.setChecked(false);
+                chkBebidaCha.setChecked(false);
+                chkBebidaRefrigerante.setChecked(true);
+                chkBebidaAlcool.setChecked(false);
             }
 
             if(subEvento.equals("ALCOOL")) {
-                btnBebidaCafe.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnBebidaCafe.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-                btnBebidaCha.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnBebidaCha.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-                btnBebidaRefrigerante.setBackgroundColor(getResources().getColor(R.color.botaoNaoSelecionado));
-                btnBebidaRefrigerante.setTextColor(getResources().getColor(R.color.textoBotaoNaoSelecionado));
-
-                btnBebidaAlcool.setBackgroundColor(getResources().getColor(R.color.botaoSelecionado));
-                btnBebidaAlcool.setTextColor(getResources().getColor(R.color.textoBotaoSelecionado));
+                chkBebidaCafe.setChecked(false);
+                chkBebidaCha.setChecked(false);
+                chkBebidaRefrigerante.setChecked(false);
+                chkBebidaAlcool.setChecked(true);
             }
         }
     }
     // Método para exibir/ocultar botões baseado no tipo de evento + sub-evento - Fim
+
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
+
+        switch(compoundButton.getId()) {
+            case R.id.chkSonoDeitar:
+                if (checked)
+                    tratarTelaPorEvento("SONO", "DEITAR");
+                break;
+
+            case R.id.chkSonoLevantar:
+                if (checked)
+                    tratarTelaPorEvento("SONO", "LEVANTAR");
+                break;
+
+            case R.id.chkBebidaCafe:
+                if (checked)
+                    tratarTelaPorEvento("BEBIDA", "CAFE");
+                break;
+
+            case R.id.chkBebidaCha:
+                if (checked)
+                    tratarTelaPorEvento("BEBIDA", "CHA");
+                break;
+
+            case R.id.chkBebidaRefrigerante:
+                if (checked)
+                    tratarTelaPorEvento("BEBIDA", "REFRIGERANTE");
+                break;
+
+            case R.id.chkBebidaAlcool:
+                if (checked)
+                    tratarTelaPorEvento("BEBIDA", "ALCOOL");
+                break;
+        }
+    }
 }
