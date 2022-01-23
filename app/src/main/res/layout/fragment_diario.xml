@@ -9,9 +9,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutCalendario"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintBottom_toTopOf="@+id/layoutBotoesEvento"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,14 +20,15 @@
         <devs.mulham.horizontalcalendar.HorizontalCalendarView
             android:id="@+id/calendarView"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="80dp"
 
             android:background="#0F184C"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.111"
 
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             app:selectorColor="#F3C641"
+            app:sizeMiddleText="14dp"
             app:textColorNormal="#FFFFFF"
             app:textColorSelected="#F3C641"
             tools:layout_editor_absoluteX="0dp" />
@@ -35,10 +36,10 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/layoutBotoesEvento"
         android:layout_width="370dp"
-        android:layout_height="85dp"
-        android:layout_marginTop="4dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -101,21 +102,100 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="369dp"
-        android:layout_height="82dp"
+        android:id="@+id/layoutNomesEvento"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+        app:layout_constraintTop_toBottomOf="@+id/layoutBotoesEvento">
 
-        <Button
-            android:id="@+id/btnSonoDeitar"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
+        <TextView
+            android:id="@+id/txtNomeEventoSono"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:background="@android:color/transparent"
+
+            android:text="Sono"
+            android:textColor="#101951"
+            android:textAlignment="center"
+            android:textSize="12dp"
+            android:paddingTop="0dp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.4" />
+
+        <TextView
+            android:id="@+id/txtNomeEventoExercicio"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:background="@android:color/transparent"
+
+            android:text="Exercício"
+            android:textColor="#101951"
+            android:textAlignment="center"
+            android:textSize="12dp"
+            android:paddingTop="0dp"
+
+            app:layout_constraintStart_toEndOf="@+id/txtNomeEventoSono"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtNomeEventoRemedio"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:background="@android:color/transparent"
+
+            android:text="Remédio"
+            android:textColor="#101951"
+            android:textAlignment="center"
+            android:textSize="12dp"
+            android:paddingTop="0dp"
+
+            app:layout_constraintStart_toEndOf="@+id/txtNomeEventoExercicio"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtNomeEventoBebida"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+
+            android:text="Bebida"
+            android:textColor="#101951"
+            android:textAlignment="center"
+            android:textSize="12dp"
+            android:paddingTop="0dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtNomeEventoRemedio"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.4" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutBotoesSubEvento"
+        android:layout_width="360dp"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginLeft="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutNomesEvento">
+
+        <CheckBox
+            android:id="@+id/chkSonoDeitar"
+            android:layout_width="165dp"
+            android:layout_height="50dp"
             android:text="Deitar"
-            app:cornerRadius="4dp"
-            android:backgroundTint="#F3C641"
             android:textColor="#071025"
+            android:textSize="20dp"
+            android:buttonTint="#F3C641"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.076"
@@ -123,14 +203,14 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.091" />
 
-        <Button
-            android:id="@+id/btnSonoLevantar"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
+        <CheckBox
+            android:id="@+id/chkSonoLevantar"
+            android:layout_width="165dp"
+            android:layout_height="50dp"
             android:text="Levantar"
-            app:cornerRadius="4dp"
-            android:backgroundTint="#0F184C"
-            android:textColor="#FFFFFF"
+            android:textColor="#071025"
+            android:textSize="20dp"
+            android:buttonTint="#F3C641"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.923"
@@ -138,14 +218,14 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.094" />
 
-        <Button
-            android:id="@+id/btnBebidaCafe"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
+        <CheckBox
+            android:id="@+id/chkBebidaCafe"
+            android:layout_width="165dp"
+            android:layout_height="50dp"
             android:text="Café"
-            app:cornerRadius="4dp"
-            android:backgroundTint="#F3C641"
             android:textColor="#071025"
+            android:textSize="20dp"
+            android:buttonTint="#F3C641"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.077"
@@ -153,14 +233,14 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.093" />
 
-        <Button
-            android:id="@+id/btnBebidaCha"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
+        <CheckBox
+            android:id="@+id/chkBebidaCha"
+            android:layout_width="165dp"
+            android:layout_height="50dp"
             android:text="Chá"
-            app:cornerRadius="4dp"
-            android:backgroundTint="#0F184C"
-            android:textColor="#FFFFFF"
+            android:textColor="#071025"
+            android:textSize="20dp"
+            android:buttonTint="#F3C641"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.922"
@@ -168,74 +248,78 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.093" />
 
-        <Button
-            android:id="@+id/btnBebidaAlcool"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:text="Álcool"
-            app:cornerRadius="4dp"
-            android:backgroundTint="#0F184C"
-            android:textColor="#FFFFFF"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.924"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.837" />
-
-        <Button
-            android:id="@+id/btnBebidaRefrigerante"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
+        <CheckBox
+            android:id="@+id/chkBebidaRefrigerante"
+            android:layout_width="165dp"
+            android:layout_height="50dp"
             android:text="Refrigerante"
-            app:cornerRadius="4dp"
-            android:backgroundTint="#0F184C"
-            android:textColor="#FFFFFF"
+            android:textColor="#071025"
+            android:textSize="20dp"
+            android:buttonTint="#F3C641"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.075"
+            app:layout_constraintHorizontal_bias="0.073"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.837" />
+            app:layout_constraintVertical_bias="1.0" />
+
+        <CheckBox
+            android:id="@+id/chkBebidaAlcool"
+            android:layout_width="165dp"
+            android:layout_height="50dp"
+            android:text="Álcool"
+            android:textColor="#071025"
+            android:textSize="20dp"
+            android:buttonTint="#F3C641"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.928"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TimePicker
         android:id="@+id/spnMomentoHora"
         android:layout_width="370dp"
-        android:layout_height="132dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="0dp"
+        android:theme="@style/MyTimePicker"
         android:timePickerMode="spinner"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/layoutBotoesSubEvento"
         tools:layout_editor_absoluteX="11dp" />
 
     <EditText
         android:id="@+id/edtObservacao"
         android:layout_width="340dp"
-        android:layout_height="70dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="1dp"
+        android:layout_marginTop="2dp"
         android:layout_marginRight="1dp"
         android:background="@drawable/edit_text_border"
         android:hint="Observação"
+        android:inputType="text"
         android:paddingLeft="8dp"
         android:paddingTop="1dp"
-        android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spnMomentoHora" />
 
     <Button
         android:id="@+id/btnSalvar"
         android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:text="Salvar"
+        android:layout_height="50dp"
         android:backgroundTint="#101951"
+        android:text="Salvar"
         android:textColor="#FFFFFF"
         app:cornerRadius="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintHorizontal_bias="0.936"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtObservacao"
-        app:layout_constraintVertical_bias="0.031" />
+        app:layout_constraintVertical_bias="0.1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

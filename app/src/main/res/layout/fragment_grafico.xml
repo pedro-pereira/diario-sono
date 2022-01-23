@@ -6,7 +6,7 @@ android:layout_height="match_parent"
 tools:context=".fragment.GraficoFragment">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtTituloTabela"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -19,31 +19,35 @@ tools:context=".fragment.GraficoFragment">
         android:textColor="#0F184C" />
 
     <include
+        android:id="@+id/diasSemana"
+        layout="@layout/layout_checks_dias"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtTituloTabela" />
+
+    <include
         android:id="@+id/halter"
         layout="@layout/layout_checks_exercicio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_marginTop="3dp" />
+        android:layout_below="@+id/diasSemana" />
 
     <include
         android:id="@+id/pilula"
         layout="@layout/layout_checks_remedio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/halter"
-        android:layout_marginTop="6dp" />
+        android:layout_below="@+id/halter" />
 
     <include
         android:id="@+id/bebida"
         layout="@layout/layout_checks_bebida"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/pilula"
-        android:layout_marginTop="6dp" />
+        android:layout_below="@+id/pilula" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txtTituloGrafico"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/bebida"
@@ -58,7 +62,7 @@ tools:context=".fragment.GraficoFragment">
         android:id="@+id/chart1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/txtTituloGrafico"
         android:layout_marginTop="6dp"
         android:layout_marginBottom="10dp">
     </com.github.mikephil.charting.charts.LineChart>

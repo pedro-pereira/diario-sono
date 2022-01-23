@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <CheckBox
+        android:id="@+id/chkIconeDias"
+        android:layout_width="@dimen/celulaWidth"
+        android:layout_height="@dimen/celulaHeight"
+        android:background="@drawable/ic_grafico_dias_chk"
+        android:button="@null"
+        android:clickable="false"
+        tools:layout_editor_absoluteY="17dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="42dp"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/txtDia1"
+        android:text="D"
+        android:layout_width="@dimen/celulaWidth"
+        android:layout_height="@dimen/celulaHeight"
+        android:gravity="center"
+        android:fontFamily="@font/roboto"
+        android:textColor="#0F184C"
+        app:layout_constraintStart_toEndOf="@+id/chkIconeDias"
+        tools:layout_editor_absoluteY="17dp" />
+
+    <TextView
+        android:id="@+id/txtDia2"
+        android:text="S"
+        android:layout_width="@dimen/celulaWidth"
+        android:layout_height="@dimen/celulaHeight"
+        android:gravity="center"
+        android:fontFamily="@font/roboto"
+        android:textColor="#0F184C"
+        app:layout_constraintBottom_toBottomOf="@+id/txtDia1"
+        app:layout_constraintStart_toEndOf="@+id/txtDia1" />
+
+    <TextView
+        android:id="@+id/txtDia3"
+        android:text="T"
+        android:layout_width="@dimen/celulaWidth"
+        android:layout_height="@dimen/celulaHeight"
+        android:gravity="center"
+        android:fontFamily="@font/roboto"
+        android:textColor="#0F184C"
+        app:layout_constraintBottom_toBottomOf="@+id/txtDia2"
+        app:layout_constraintStart_toEndOf="@+id/txtDia2" />
+
+    <TextView
+        android:id="@+id/txtDia4"
+        android:text="Q"
+        android:layout_width="@dimen/celulaWidth"
+        android:layout_height="@dimen/celulaHeight"
+        android:gravity="center"
+        android:fontFamily="@font/roboto"
+        android:textColor="#0F184C"
+        app:layout_constraintBottom_toBottomOf="@+id/txtDia3"
+        app:layout_constraintStart_toEndOf="@+id/txtDia3" />
+
+    <TextView
+        android:id="@+id/txtDia5"
+        android:text="Q"
+        android:layout_width="@dimen/celulaWidth"
+        android:layout_height="@dimen/celulaHeight"
+        android:gravity="center"
+        android:fontFamily="@font/roboto"
+        android:textColor="#0F184C"
+        app:layout_constraintBottom_toBottomOf="@+id/txtDia4"
+        app:layout_constraintStart_toEndOf="@+id/txtDia4" />
+
+    <TextView
+        android:id="@+id/txtDia6"
+        android:text="S"
+        android:layout_width="@dimen/celulaWidth"
+        android:layout_height="@dimen/celulaHeight"
+        android:gravity="center"
+        android:fontFamily="@font/roboto"
+        android:textColor="#0F184C"
+        app:layout_constraintBottom_toBottomOf="@+id/txtDia5"
+        app:layout_constraintStart_toEndOf="@+id/txtDia5" />
+
+    <TextView
+        android:id="@+id/txtDia7"
+        android:text="S"
+        android:layout_width="@dimen/celulaWidth"
+        android:layout_height="@dimen/celulaHeight"
+        android:gravity="center"
+        android:fontFamily="@font/roboto"
+        android:textColor="#0F184C"
+        app:layout_constraintBottom_toBottomOf="@+id/txtDia6"
+        app:layout_constraintStart_toEndOf="@+id/txtDia6" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,17 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".fragment.CalendarioFragment">
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.CalendarioFragment">
 
-<!-- TODO: Update blank fragment layout -->
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textSize="30dp"
-    android:textStyle="bold"
-    android:textColor="@android:color/holo_red_dark"
-    android:layout_centerInParent="true"
-    android:text="Tab 1" />
-</RelativeLayout>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="415dp"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="fill_parent"
+        android:layout_height="415dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/toolBar"
+        app:layout_constraintVertical_bias="0.044"
+        app:mcv_dateTextAppearance="@style/CustomCalendarWeek"
+        app:mcv_headerTextAppearance="@style/CustomCalendarWeek"
+        app:mcv_selectionColor="#F3C641"
+        app:mcv_selectionMode="none"
+        app:mcv_showOtherDates="none"
+        app:mcv_weekDayTextAppearance="@style/CustomCalendarDay"
+        tools:layout_editor_absoluteX="0dp"
+        app:mcv_tileHeight="58dp"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="1dp">
+
+        <TextView
+            android:id="@+id/plainText2"
+            android:layout_width="16dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="14dp"
+            android:text="•"
+            android:textColor="@color/dotAzul"
+            android:textSize="50dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView7"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/plainText3"
+            android:layout_width="16dp"
+            android:layout_height="43dp"
+            android:layout_below="@+id/plainText2"
+            android:layout_marginStart="14dp"
+            android:text="•"
+            android:textColor="@color/dotVermelho"
+            android:textSize="50dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView6"
+            app:layout_constraintStart_toEndOf="@+id/textView9" />
+
+        <TextView
+            android:id="@+id/plainText4"
+            android:layout_width="16dp"
+            android:layout_height="43dp"
+            android:layout_below="@+id/plainText3"
+            android:layout_marginStart="14dp"
+            android:text="•"
+            android:textColor="@color/dotLaranja"
+            android:textSize="50dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView9"
+            app:layout_constraintStart_toEndOf="@+id/textView8" />
+
+        <TextView
+            android:id="@+id/plainText5"
+            android:layout_width="16dp"
+            android:layout_height="43dp"
+            android:layout_below="@+id/plainText4"
+            android:layout_marginStart="14dp"
+            android:text="•"
+            android:textColor="@color/dotVerde"
+            android:textSize="50dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView8"
+            app:layout_constraintStart_toEndOf="@+id/textView7" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView7"
+            android:layout_marginStart="4dp"
+            android:layout_toEndOf="@+id/plainText5"
+            android:fontFamily="@font/roboto"
+            android:text="Bebida"
+            android:textColor="@color/dotVermelho"
+            android:textFontWeight="600"
+            android:textSize="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.145"
+            app:layout_constraintStart_toEndOf="@+id/plainText3"
+            tools:layout_editor_absoluteY="116dp" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_toEndOf="@+id/plainText4"
+            android:fontFamily="@font/roboto"
+            android:text="Sono"
+            android:textColor="@color/dotAzul"
+            android:textFontWeight="600"
+            android:textSize="15dp"
+            app:layout_constraintStart_toEndOf="@+id/plainText2"
+            tools:layout_editor_absoluteY="116dp" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView9"
+            android:layout_marginStart="4dp"
+            android:layout_toEndOf="@+id/plainText3"
+            android:fontFamily="@font/roboto"
+            android:text="Remédio"
+            android:textColor="@color/dotVerde"
+            android:textFontWeight="600"
+            android:textSize="15dp"
+            app:layout_constraintStart_toEndOf="@+id/plainText5"
+            tools:layout_editor_absoluteY="116dp" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView6"
+            android:layout_marginStart="4dp"
+            android:layout_toEndOf="@+id/plainText2"
+            android:fontFamily="@font/roboto"
+            android:text="Exercício"
+            android:textColor="@color/dotLaranja"
+            android:textFontWeight="600"
+            android:textSize="15dp"
+            app:layout_constraintStart_toEndOf="@+id/plainText4"
+            tools:layout_editor_absoluteY="117dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <selector xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item android:drawable="@drawable/ic_grafico_circulo_vermelho" android:state_checked="false"/>
-    <item android:drawable="@drawable/ic_grafico_check_verde" android:state_checked="true"/>
-    <item android:drawable="@drawable/ic_grafico_circulo_vermelho"/>
+
+   <item android:state_checked="false">
+      <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+         <item>
+            <shape android:shape="rectangle">
+               <solid android:color="#FFFFFF"/>
+
+               <stroke
+                   android:width="2px"
+                   android:color="@color/bordaCelulaTabela" />
+
+               <corners android:radius="0dp" />
+            </shape>
+         </item>
+
+         <item>
+            <inset xmlns:android="http://schemas.android.com/apk/res/android"
+                android:drawable="@drawable/ic_grafico_nao_check"
+                android:insetTop="18dp"
+                android:insetBottom="18dp"
+                android:insetLeft="12dp"
+                android:insetRight="12dp"
+            />
+         </item>
+      </layer-list>
+   </item>
+
+   <item android:state_checked="true">
+      <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+         <item>
+            <shape android:shape="rectangle">
+               <solid android:color="#FFFFFF"/>
+
+               <stroke
+                   android:width="2px"
+                   android:color="@color/bordaCelulaTabela" />
+
+               <corners android:radius="0dp" />
+            </shape>
+         </item>
+
+         <item>
+            <inset xmlns:android="http://schemas.android.com/apk/res/android"
+                android:drawable="@drawable/ic_grafico_check"
+                android:inset="8dp"
+            />
+         </item>
+      </layer-list>
+   </item>
+
+   <item>
+      <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+         <item>
+            <shape android:shape="rectangle">
+               <solid android:color="#FFFFFF"/>
+
+               <stroke
+                   android:width="2px"
+                   android:color="@color/bordaCelulaTabela" />
+
+               <corners android:radius="0dp" />
+            </shape>
+         </item>
+
+         <item>
+            <inset xmlns:android="http://schemas.android.com/apk/res/android"
+                android:drawable="@drawable/ic_grafico_nao_check"
+                android:insetTop="18dp"
+                android:insetBottom="18dp"
+                android:insetLeft="12dp"
+                android:insetRight="12dp"
+            />
+         </item>
+      </layer-list>
+   </item>
+
 </selector>

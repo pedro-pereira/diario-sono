@@ -12,10 +12,9 @@
         android:id="@+id/edtNovoNome"
         android:layout_width="0dp"
         android:layout_height="36dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/edit_text_border"
         android:hint="Nome"
-        android:inputType="textPersonName"
         android:paddingLeft="40px"
         android:textAlignment="viewStart"
         android:textColor="#131627"
@@ -25,84 +24,52 @@
         app:layout_constraintEnd_toEndOf="@+id/edtNovoDataNascimento"
         app:layout_constraintHorizontal_bias="0.563"
         app:layout_constraintStart_toStartOf="@+id/edtNovoDataNascimento"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:inputType="textPersonName"
+        android:maxLength="50"/>
 
     <EditText
         android:id="@+id/edtNovoDataNascimento"
         android:layout_width="0dp"
         android:layout_height="36dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/edit_text_border"
         android:hint="Data de Nascimento"
-        android:inputType="textPersonName"
         android:paddingLeft="40px"
         android:textAlignment="viewStart"
         android:textColor="#131627"
         android:textColorLink="#FFFFFF"
         android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/edtNovoGenero"
-        app:layout_constraintEnd_toEndOf="@+id/edtNovoGenero"
-        app:layout_constraintHorizontal_bias="0.563"
-        app:layout_constraintStart_toStartOf="@+id/edtNovoGenero"
-        app:layout_constraintTop_toBottomOf="@+id/edtNovoNome" />
-
-    <Spinner
-        android:id="@+id/edtNovoGenero"
-        android:layout_width="0dp"
-        android:layout_height="36dp"
-        android:background="@drawable/edit_text_border"
-        android:hint="Genero"
-        android:inputType="textPersonName"
-        android:paddingLeft="40px"
-        android:textAlignment="viewStart"
-        android:textColor="#131627"
-        android:textColorLink="#FFFFFF"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/edtNovoCpf"
         app:layout_constraintEnd_toEndOf="@+id/edtNovoCpf"
         app:layout_constraintHorizontal_bias="0.563"
         app:layout_constraintStart_toStartOf="@+id/edtNovoCpf"
-        app:layout_constraintTop_toBottomOf="@+id/edtNovoDataNascimento" />
-
-<!--    <EditText-->
-<!--            android:id="@+id/edtNovoGenero"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="36dp"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:background="@drawable/edit_text_border"-->
-<!--            android:hint="Genero"-->
-<!--            android:inputType="textPersonName"-->
-<!--            android:paddingLeft="40px"-->
-<!--            android:textAlignment="viewStart"-->
-<!--            android:textColor="#131627"-->
-<!--            android:textColorLink="#FFFFFF"-->
-<!--            android:textSize="16dp"-->
-<!--            app:layout_constraintEnd_toEndOf="@+id/edtNovoCpf"-->
-<!--            app:layout_constraintHorizontal_bias="0.563"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/edtNovoCpf"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/edtNovoDataNascimento" />-->
+        app:layout_constraintTop_toBottomOf="@+id/edtNovoNome"
+        android:inputType="date"/>
 
     <EditText
         android:id="@+id/edtNovoCpf"
         android:layout_width="0dp"
         android:layout_height="36dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/edit_text_border"
         android:hint="CPF"
-        android:inputType="textPersonName"
         android:paddingLeft="40px"
         android:textAlignment="viewStart"
         android:textColor="#131627"
         android:textColorLink="#FFFFFF"
         android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/edtNovoTelefone"
         app:layout_constraintEnd_toEndOf="@+id/edtNovoTelefone"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="@+id/edtNovoTelefone"
-        app:layout_constraintTop_toBottomOf="@+id/edtNovoGenero" />
+        app:layout_constraintTop_toBottomOf="@+id/edtNovoDataNascimento"
+        android:inputType="number"
+        android:maxLength="11"/>
 
     <EditText
         android:id="@+id/edtNovoTelefone"
         android:layout_width="0dp"
         android:layout_height="36dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/edit_text_border"
         android:hint="Telefone"
         android:paddingLeft="40px"
@@ -110,16 +77,18 @@
         android:textColor="#131627"
         android:textColorLink="#FFFFFF"
         android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/edtNovoLogin"
         app:layout_constraintEnd_toEndOf="@+id/edtNovoLogin"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="@+id/edtNovoLogin"
-        app:layout_constraintTop_toBottomOf="@+id/edtNovoCpf" />
+        app:layout_constraintTop_toBottomOf="@+id/edtNovoCpf"
+        android:inputType="phone"
+        android:maxLength="11" />
 
     <EditText
         android:id="@+id/edtNovoLogin"
         android:layout_width="0dp"
         android:layout_height="36dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/edit_text_border"
         android:hint="Usuário"
         android:inputType="textPersonName"
@@ -128,54 +97,55 @@
         android:textColor="#131627"
         android:textColorLink="#FFFFFF"
         android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/edtNovoSenha"
         app:layout_constraintEnd_toEndOf="@+id/edtNovoSenha"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="@+id/edtNovoSenha"
-        app:layout_constraintTop_toBottomOf="@+id/edtNovoTelefone" />
+        app:layout_constraintTop_toBottomOf="@+id/edtNovoTelefone"
+        android:maxLength="20" />
 
     <EditText
         android:id="@+id/edtNovoSenha"
         android:layout_width="0dp"
         android:layout_height="36dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/edit_text_border"
         android:hint="Senha"
-        android:inputType="textPassword"
         android:paddingLeft="40px"
         android:textAlignment="viewStart"
         android:textColor="#131627"
         android:textColorLink="#FFFFFF"
         android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/edtNovoConfirmarSenha"
         app:layout_constraintEnd_toEndOf="@+id/btCriar"
         app:layout_constraintHorizontal_bias="0.563"
         app:layout_constraintStart_toStartOf="@+id/btCriar"
-        app:layout_constraintTop_toBottomOf="@+id/edtNovoLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/edtNovoLogin"
+        android:inputType="textPassword"
+        android:maxLength="8"/>
 
     <EditText
         android:id="@+id/edtNovoConfirmarSenha"
         android:layout_width="0dp"
         android:layout_height="36dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/edit_text_border"
         android:hint="Confirmar Senha"
-        android:inputType="textPassword"
         android:paddingLeft="40px"
         android:textAlignment="viewStart"
         android:textColor="#131627"
         android:textColorLink="#FFFFFF"
         android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/btCriar"
         app:layout_constraintEnd_toEndOf="@+id/btCriar"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/btCriar"
-        app:layout_constraintTop_toBottomOf="@+id/edtNovoSenha" />
+        app:layout_constraintTop_toBottomOf="@+id/edtNovoSenha"
+        android:inputType="textPassword"
+        android:maxLength="8" />
 
     <Button
         android:id="@+id/btCriar"
         android:layout_width="271dp"
         android:layout_height="55dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginTop="30dp"
         android:backgroundTint="#0F184C"
         android:text="Salvar"
         android:textColor="#FFFFFF"

@@ -28,6 +28,7 @@ tools:context=".activity.PrincipalActivity">
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.5"
     app:layout_constraintStart_toStartOf="parent"
-    app:menu="@menu/bottom_nav_menu"/>
+    app:menu="@menu/bottom_nav_menu"
+    app:labelVisibilityMode="labeled"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

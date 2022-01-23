@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
@@ -11,6 +11,45 @@
 
     <style name="ActionBarTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:background">@color/barraSuperiorCadastro</item>
+    </style>
+
+    <style name="CustomCalendarDay" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">20sp</item>
+        <item name="android:padding">20dp</item>
+        <item name="android:textColor">#0F184C</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+
+    <style name="CustomCalendarWeek" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">20sp</item>
+        <item name="android:labelTextSize">50dp</item>
+        <item name="android:textColor">#0F184C</item>
+        <item name="android:layout_margin">60dp</item>
+        <item name="android:layout_height">60sp</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+
+    <style name="MyTimePicker" parent="@android:style/Widget.Material.TimePicker">
+        <!-- Text color -->
+        <item name="android:textColorPrimary">#0F184C</item>
+        <item name="android:textSize">20dp</item>
+        <!-- Divider color -->
+        <item name="colorControlNormal">#F3C641</item>
+    </style>
+
+    <style name="SwitchStyle" parent="Theme.AppCompat.Light">
+        <!-- active thumb & track color (30% transparency) -->
+        <item name="colorControlActivated">#0F184C</item>
+
+        <!-- inactive thumb color -->
+        <item name="colorSwitchThumbNormal">#1c000000</item>
+
+        <!-- inactive track color (30% transparency) -->
+        <item name="android:colorForeground">#42221f1f</item>
+
+        <item name="android:textColor">#0F184C</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:font" tools:targetApi="o">@font/roboto</item>
     </style>
 
 </resources>

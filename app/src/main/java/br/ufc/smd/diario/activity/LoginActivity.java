@@ -10,9 +10,11 @@
 package br.ufc.smd.diario.activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,6 +27,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import br.ufc.smd.diario.R;
 import br.ufc.smd.diario.model.Usuario;
@@ -75,25 +78,40 @@ public class LoginActivity extends AppCompatActivity {
                         .whereEqualTo("senha", senha)
                         .get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @RequiresApi(api = Build.VERSION_CODES.O)
                             @Override
                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                 if (task.isSuccessful()) {
                                     if (task.getResult().isEmpty()) {
                                         Toast.makeText(LoginActivity.this, "Login ou senha errados...", Toast.LENGTH_LONG).show();
-                                        Log.d("TAG", "Login ou senha errados...");
                                     } else {
                                         for (QueryDocumentSnapshot document : task.getResult()) {
                                             if (document.exists()) {
                                                 u = new Usuario();
-                                                u.setUsuario(document.getData().get("usuario").toString());
                                                 u.setNome(document.getData().get("nome").toString());
-                                                u.setSenha(document.getData().get("senha").toString());
-                                                u.setEmail(document.getData().get("email").toString());
+                                                u.setDataNascimento(((com.google.firebase.Timestamp) document.getData().get("dataNascimento")).toDate());
+                                                u.setCpf(document.getData().get("cpf").toString());
                                                 u.setTelefone(document.getData().get("telefone").toString());
-                                                Log.d("TAG", document.getId() + " => " + document.getData());
+                                                u.setUsuario(document.getData().get("usuario").toString());
+                                                u.setSenha(document.getData().get("senha").toString());
+
+                                                // Log.d("TAG", document.getId() + " => " + document.getData());
 
                                                 if (u.getUsuario() != null) {
-                                                    // RegistroEventoActivity
+
+                                                    // Teste de cadastro em tópico para notificação - Início
+                                                    FirebaseMessaging.getInstance().subscribeToTopic("centralDeAlertas")
+                                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                @Override
+                                                                public void onComplete(@NonNull Task<Void> task) {
+                                                                    String msg = "Você está cadastro na central de alertas...";
+                                                                    if (!task.isSuccessful()) {
+                                                                        msg = "Erro ao cadastrar na central de alertas.";
+                                                                    }
+                                                                }
+                                                            });
+                                                    // Teste de cadastro em tópico para notificação - Fim
+
                                                     Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
                                                     intent.putExtra("usuario", u);
                                                     startActivity(intent);

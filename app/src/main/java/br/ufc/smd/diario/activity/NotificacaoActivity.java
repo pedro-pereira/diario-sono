@@ -16,8 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.core.OrderBy;
 
 import java.util.ArrayList;
 
@@ -56,13 +58,13 @@ public class NotificacaoActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         db.collection("alertas")
+                .orderBy("dataCadastro", Query.Direction.DESCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("RESUMO", document.getId() + " => " + document.getData());
                                 notificacaoArrayList.add(new Notificacao(document.getData().get("descricao").toString(),
                                                                         ((com.google.firebase.Timestamp) document.getData().get("dataCadastro")).toDate(),
                                                                         (boolean) document.getData().get("habilitado")));

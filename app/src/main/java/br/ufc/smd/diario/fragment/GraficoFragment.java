@@ -1,6 +1,5 @@
 package br.ufc.smd.diario.fragment;
 
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.icu.util.Calendar;
@@ -12,13 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.LimitLine;
@@ -38,9 +36,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import br.ufc.smd.diario.R;
-import br.ufc.smd.diario.activity.EditarPerfilActivity;
 import br.ufc.smd.diario.activity.PrincipalActivity;
 import br.ufc.smd.diario.formatter.DayFormatter;
+import br.ufc.smd.diario.formatter.HourFormatter;
 import br.ufc.smd.diario.formatter.RemoveZeroFormatter;
 import br.ufc.smd.diario.model.Usuario;
 
@@ -52,8 +50,8 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
 
     ImageView imgAndroid;
     AnimationDrawable mAnimation;
-
     private LineChart chart;
+    TextView txtTituloTabela, txtTituloGrafico;
 
     View view;
 
@@ -88,7 +86,20 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
 
         mAnimation = (AnimationDrawable) imgAndroid.getBackground();
         mAnimation.start();
+
         setData();
+
+        txtTituloTabela  = (TextView) view.findViewById(R.id.txtTituloTabela);
+        txtTituloGrafico = (TextView) view.findViewById(R.id.txtTituloGrafico);
+
+        Calendar c0 = getDateForFirstDayOfTheWeek();
+        String d0 = c0.getTime().getDate() +  "/" + (c0.getTime().getMonth() + 1) + "/" + (c0.getTime().getYear() + 1900);
+
+        c0.add(c0.DATE, 6);
+        String df = c0.getTime().getDate() +  "/" + (c0.getTime().getMonth() + 1) + "/" + (c0.getTime().getYear() + 1900);
+
+        txtTituloTabela.setText("Hábitos da semana" + ": " + d0 + " a " + df);
+        txtTituloGrafico.setText("Horas de sono " + ": " + d0 + " a " + df);
 
         return view;
     }
@@ -97,17 +108,20 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
         chart.getDescription().setEnabled(false);
 
         final Typeface tipografia = ResourcesCompat.getFont(getActivity().getBaseContext(), R.font.roboto);
+      
         // scaling can now only be done on x- and y-axis separately
-        for (int i = 3; i < 12; i += 3) {
+        for (int i = 5; i < 25; i += 5) {
             LimitLine limitLine = new LimitLine(i);
             limitLine.setLineColor(getResources().getColor(R.color.graficoCorGrade));
             chart.getAxisLeft().addLimitLine(limitLine);
         }
+      
         for (int i = 0; i < 7; i++) {
             LimitLine limitLine = new LimitLine(i);
             limitLine.setLineColor(getResources().getColor(R.color.graficoCorGrade));
             chart.getXAxis().addLimitLine(limitLine);
         }
+      
         chart.setPinchZoom(false);
         chart.getXAxis().setLabelCount(7, true);
         chart.getXAxis().setDrawLabels(true);
@@ -126,8 +140,8 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
         chart.getAxisRight().setEnabled(false);
 
         chart.getAxisLeft().setAxisMinimum(0);
-        chart.getAxisLeft().setAxisMaximum(12);
-        chart.getAxisLeft().setLabelCount(5, true);
+        chart.getAxisLeft().setAxisMaximum(25);
+        chart.getAxisLeft().setLabelCount(6, true);
         chart.getAxisLeft().setTextColor(getResources().getColor(R.color.graficoCorRotuloEixos));
         chart.getAxisLeft().setTypeface(tipografia);
         chart.getAxisLeft().setTextSize(12);
@@ -231,7 +245,11 @@ public class GraficoFragment extends Fragment implements OnCompleteListener<Quer
             dataSets.add(set1);
 
             LineData data = new LineData(dataSets);
-            data.setDrawValues(false);
+            data.setValueTextSize(16);
+            data.setValueTextColor(getResources().getColor(R.color.graficoCorRotuloEixos));
+            data.setHighlightEnabled(true);
+            data.setValueFormatter(new HourFormatter());
+
             chart.setData(data);
         } else {
             Log.d("TAG", "Error getting documents: ", task.getException());
