@@ -83,7 +83,7 @@ public class ListaEventosActivity extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 // Log.i("RESUMO", document.getId() + " => " + document.getData());
 
-                                String idEvento = "", tipoEvento = "", subEvento = "", duracao = "", observacao = "";
+                                String idEvento = "", tipoEvento = "", subEvento = "", duracao = "", observacao = "", situacao = "";
                                 Date momento = null;
 
                                 if(document.getData().get("tipoEvento") != null) { tipoEvento = document.getData().get("tipoEvento").toString(); }
@@ -91,8 +91,9 @@ public class ListaEventosActivity extends AppCompatActivity {
                                 if(document.getData().get("momento")    != null) { momento    = ((com.google.firebase.Timestamp) document.getData().get("momento")).toDate(); }
                                 if(document.getData().get("duracao")    != null) { duracao    = document.getData().get("duracao").toString(); }
                                 if(document.getData().get("observacao") != null) { observacao = document.getData().get("observacao").toString(); }
+                                if(document.getData().get("situacao")   != null) { situacao   = document.getData().get("situacao").toString(); }
 
-                                eventoArrayList.add(new Evento(document.getId(), tipoEvento, subEvento, momento, duracao, observacao));
+                                eventoArrayList.add(new Evento(document.getId(), tipoEvento, subEvento, momento, duracao, observacao, situacao));
                             }
 
                             eventoRV = findViewById(R.id.idRVListaEventos);
