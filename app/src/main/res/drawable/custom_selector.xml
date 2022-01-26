@@ -19,10 +19,10 @@
          <item>
             <inset xmlns:android="http://schemas.android.com/apk/res/android"
                 android:drawable="@drawable/ic_grafico_nao_check"
-                android:insetTop="18dp"
-                android:insetBottom="18dp"
-                android:insetLeft="12dp"
-                android:insetRight="12dp"
+                android:insetTop="16dp"
+                android:insetBottom="16dp"
+                android:insetLeft="10dp"
+                android:insetRight="10dp"
             />
          </item>
       </layer-list>
@@ -68,10 +68,10 @@
          <item>
             <inset xmlns:android="http://schemas.android.com/apk/res/android"
                 android:drawable="@drawable/ic_grafico_nao_check"
-                android:insetTop="18dp"
-                android:insetBottom="18dp"
-                android:insetLeft="12dp"
-                android:insetRight="12dp"
+                android:insetTop="16dp"
+                android:insetBottom="16dp"
+                android:insetLeft="10dp"
+                android:insetRight="10dp"
             />
          </item>
       </layer-list>

@@ -180,7 +180,8 @@
             android:id="@+id/group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:constraint_referenced_ids="layoutBotoesEvento,layoutNomesEvento" />
+            app:constraint_referenced_ids="layoutBotoesEvento,layoutNomesEvento"
+            tools:ignore="NotSibling" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

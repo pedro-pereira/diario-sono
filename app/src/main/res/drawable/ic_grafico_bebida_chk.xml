@@ -20,8 +20,8 @@
                 android:drawable="@drawable/ic_grafico_bebida"
                 android:insetTop="3dp"
                 android:insetBottom="3dp"
-                android:insetLeft="9dp"
-                android:insetRight="9dp"
+                android:insetLeft="10dp"
+                android:insetRight="10dp"
             />
          </item>
       </layer-list>

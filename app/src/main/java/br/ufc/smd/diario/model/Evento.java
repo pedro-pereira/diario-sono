@@ -17,15 +17,18 @@ public class Evento implements Serializable {
 
     public String observacao;
 
+    public String situacao;
+
     public Evento() {}
 
-    public Evento(String idEvento, String tipoEvento, String subEvento, Date momento, String duracao, String observacao) {
+    public Evento(String idEvento, String tipoEvento, String subEvento, Date momento, String duracao, String observacao, String situacao) {
         this.idEvento   = idEvento;
         this.tipoEvento = tipoEvento;
         this.subEvento  = subEvento;
         this.momento    = momento;
         this.duracao    = duracao;
         this.observacao = observacao;
+        this.situacao   = situacao;
     }
 
     public String getIdEvento() {
@@ -76,15 +79,24 @@ public class Evento implements Serializable {
         this.observacao = observacao;
     }
 
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
+
     @Override
     public String toString() {
         return "Evento{" +
-                "  idEvento='"   + idEvento   + '\'' +
+                "idEvento='" + idEvento + '\'' +
                 ", tipoEvento='" + tipoEvento + '\'' +
-                ", subEvento='"  + subEvento  + '\'' +
-                ", momento="     + momento    +
-                ", duracao='"    + duracao    + '\'' +
+                ", subEvento='" + subEvento + '\'' +
+                ", momento=" + momento +
+                ", duracao='" + duracao + '\'' +
                 ", observacao='" + observacao + '\'' +
+                ", situacao='" + situacao + '\'' +
                 '}';
     }
 }
