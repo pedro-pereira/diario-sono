@@ -28,7 +28,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -94,8 +93,7 @@ public class DiarioFragment extends Fragment implements CompoundButton.OnChecked
     Drawable drawableEventoBebidaHabilitado;
     Drawable drawableEventoBebidaDesabilitado;
 
-    public DiarioFragment() {
-    }
+    public DiarioFragment() { }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -283,20 +281,24 @@ public class DiarioFragment extends Fragment implements CompoundButton.OnChecked
                                         public void onSuccess(DocumentReference documentReference) {
                                             Toast.makeText(getActivity(), "Novo evento cadastrado...", Toast.LENGTH_LONG).show();
                                             edtObservacao.setText("");
+                                            return;
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
                                             Toast.makeText(getActivity(), "Erro ao cadastrar evento de sono...", Toast.LENGTH_LONG).show();
+                                            return;
                                         }
                                     });
+                            posEventoDeitarSelecionado = -1;
+                            listaEventoDormir = null;
                         } else {
-                            Toast.makeText(getActivity(), "O evento 'DEITAR' deve ser anterior ao evento 'LEVANTAR'...", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), "O evento 'LEVANTAR' deve ser POSTERIOR ao evento 'DEITAR' selecionado...", Toast.LENGTH_LONG).show();
                             return;
                         }
                     } else {
-                        Toast.makeText(getActivity(), "Você precisa primeiro escolher um evento 'DEITAR', antes de cadastrar um evento 'LEVANTAR'", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "Você precisa escolher um evento 'DEITAR', antes de cadastrar um evento 'LEVANTAR'", Toast.LENGTH_LONG).show();
                         return;
                     }
                 } else {
@@ -309,14 +311,18 @@ public class DiarioFragment extends Fragment implements CompoundButton.OnChecked
                                 public void onSuccess(DocumentReference documentReference) {
                                     Toast.makeText(getActivity(), "Novo evento cadastrado...", Toast.LENGTH_LONG).show();
                                     edtObservacao.setText("");
+                                    return;
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     Log.i("RESUMO", "Erro ao cadastrar evento de sono...", e);
+                                    return;
                                 }
                             });
+                    posEventoDeitarSelecionado = -1;
+                    listaEventoDormir = null;
                 }
             }
         });
@@ -330,15 +336,10 @@ public class DiarioFragment extends Fragment implements CompoundButton.OnChecked
         this.subEvento  = subEvento;
         this.situacao   = "FECHADO";
 
+        posEventoDeitarSelecionado = -1;
+        listaEventoDormir = null;
+
         if(tipoEvento.equals("SONO")) {
-            chkSonoDeitar.setVisibility(View.VISIBLE);
-            chkSonoLevantar.setVisibility(View.VISIBLE);
-
-            chkBebidaCafe.setVisibility(View.INVISIBLE);
-            chkBebidaCha.setVisibility(View.INVISIBLE);
-            chkBebidaRefrigerante.setVisibility(View.INVISIBLE);
-            chkBebidaAlcool.setVisibility(View.INVISIBLE);
-
             chkBebidaCafe.setChecked(false);
             chkBebidaCha.setChecked(false);
             chkBebidaRefrigerante.setChecked(false);
@@ -359,17 +360,17 @@ public class DiarioFragment extends Fragment implements CompoundButton.OnChecked
                 chkSonoDeitar.setChecked(false);
                 chkSonoLevantar.setChecked(true);
             }
-        }
 
-        if(tipoEvento.equals("EXERCICIO")) {
-            chkSonoDeitar.setVisibility(View.INVISIBLE);
-            chkSonoLevantar.setVisibility(View.INVISIBLE);
+            chkSonoDeitar.setVisibility(View.VISIBLE);
+            chkSonoLevantar.setVisibility(View.VISIBLE);
 
             chkBebidaCafe.setVisibility(View.INVISIBLE);
             chkBebidaCha.setVisibility(View.INVISIBLE);
             chkBebidaRefrigerante.setVisibility(View.INVISIBLE);
             chkBebidaAlcool.setVisibility(View.INVISIBLE);
+        }
 
+        if(tipoEvento.equals("EXERCICIO")) {
             chkSonoDeitar.setChecked(false);
             chkSonoLevantar.setChecked(false);
 
@@ -377,6 +378,14 @@ public class DiarioFragment extends Fragment implements CompoundButton.OnChecked
             chkBebidaCha.setChecked(false);
             chkBebidaRefrigerante.setChecked(false);
             chkBebidaAlcool.setChecked(false);
+
+            chkSonoDeitar.setVisibility(View.INVISIBLE);
+            chkSonoLevantar.setVisibility(View.INVISIBLE);
+
+            chkBebidaCafe.setVisibility(View.INVISIBLE);
+            chkBebidaCha.setVisibility(View.INVISIBLE);
+            chkBebidaRefrigerante.setVisibility(View.INVISIBLE);
+            chkBebidaAlcool.setVisibility(View.INVISIBLE);
 
             btnEventoSono.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoSonoDesabilitado, null, null);
             btnEventoExercicio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoExercicioHabilitado, null, null);
@@ -385,14 +394,6 @@ public class DiarioFragment extends Fragment implements CompoundButton.OnChecked
         }
 
         if(tipoEvento.equals("REMEDIO")) {
-            chkSonoDeitar.setVisibility(View.INVISIBLE);
-            chkSonoLevantar.setVisibility(View.INVISIBLE);
-
-            chkBebidaCafe.setVisibility(View.INVISIBLE);
-            chkBebidaCha.setVisibility(View.INVISIBLE);
-            chkBebidaRefrigerante.setVisibility(View.INVISIBLE);
-            chkBebidaAlcool.setVisibility(View.INVISIBLE);
-
             chkSonoDeitar.setChecked(false);
             chkSonoLevantar.setChecked(false);
 
@@ -401,6 +402,14 @@ public class DiarioFragment extends Fragment implements CompoundButton.OnChecked
             chkBebidaRefrigerante.setChecked(false);
             chkBebidaAlcool.setChecked(false);
 
+            chkSonoDeitar.setVisibility(View.INVISIBLE);
+            chkSonoLevantar.setVisibility(View.INVISIBLE);
+
+            chkBebidaCafe.setVisibility(View.INVISIBLE);
+            chkBebidaCha.setVisibility(View.INVISIBLE);
+            chkBebidaRefrigerante.setVisibility(View.INVISIBLE);
+            chkBebidaAlcool.setVisibility(View.INVISIBLE);
+
             btnEventoSono.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoSonoDesabilitado, null, null);
             btnEventoExercicio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoExercicioDesabilitado, null, null);
             btnEventoRemedio.setCompoundDrawablesWithIntrinsicBounds(null, drawableEventoRemedioHabilitado, null, null);
@@ -408,14 +417,6 @@ public class DiarioFragment extends Fragment implements CompoundButton.OnChecked
         }
 
         if(tipoEvento.equals("BEBIDA")) {
-            chkSonoDeitar.setVisibility(View.INVISIBLE);
-            chkSonoLevantar.setVisibility(View.INVISIBLE);
-
-            chkBebidaCafe.setVisibility(View.VISIBLE);
-            chkBebidaCha.setVisibility(View.VISIBLE);
-            chkBebidaRefrigerante.setVisibility(View.VISIBLE);
-            chkBebidaAlcool.setVisibility(View.VISIBLE);
-
             chkSonoDeitar.setChecked(false);
             chkSonoLevantar.setChecked(false);
 
@@ -451,6 +452,14 @@ public class DiarioFragment extends Fragment implements CompoundButton.OnChecked
                 chkBebidaRefrigerante.setChecked(false);
                 chkBebidaAlcool.setChecked(true);
             }
+
+            chkSonoDeitar.setVisibility(View.INVISIBLE);
+            chkSonoLevantar.setVisibility(View.INVISIBLE);
+
+            chkBebidaCafe.setVisibility(View.VISIBLE);
+            chkBebidaCha.setVisibility(View.VISIBLE);
+            chkBebidaRefrigerante.setVisibility(View.VISIBLE);
+            chkBebidaAlcool.setVisibility(View.VISIBLE);
         }
     }
     // Método para exibir/ocultar botões baseado no tipo de evento + sub-evento - Fim
