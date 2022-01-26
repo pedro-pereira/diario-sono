@@ -51,7 +51,7 @@ public class ListaEventoDeitarFragment extends DialogFragment {
                         dismiss();
                     }
                 })
-                .setNegativeButton("Cancela", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
 
