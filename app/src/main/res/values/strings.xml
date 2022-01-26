@@ -9,19 +9,16 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="title_activity_tabbed">TabbedActivity</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
     <string name="dash">-</string>
 
     <string name="tituloLembreteSono">Lembrete do sono</string>
-    <string name="mensagemLembreteSono">Que horas você dormiu?</string>
+    <string name="mensagemLembreteSono">Você está registrando as suas horas de sono regularmente?</string>
     <string name="tituloLembreteExercicio">Lembrete de exercício</string>
-    <string name="mensagemLembreteExercicio">Quando você malhou?</string>
+    <string name="mensagemLembreteExercicio">Você registrou as suas horas de exercícios físicos esta semana?</string>
     <string name="tituloLembreteRemedio">Lembrete de remédio</string>
-    <string name="mensagemLembreteRemedio">Quando você se drogou?</string>
+    <string name="mensagemLembreteRemedio">Costuma tomar remédios que podem influenciar na sua higiene do sono? Registre no Diário do Sono.</string>
     <string name="tituloLembreteBebida">Lembrete de bebida</string>
-    <string name="mensagemLembreteBebida">Quando você bebeu?</string>
+    <string name="mensagemLembreteBebida">Tomou alguma bebida estimulante esta semana? Favor, informe no Diário do Sono.</string>
 
     <string-array name="generos">
         <item>Feminino</item>
