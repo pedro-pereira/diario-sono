@@ -67,16 +67,16 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.Viewholder
 
         switch (evento.getTipoEvento()) {
             case "SONO":
-                holder.iconeEvento.setImageResource(R.drawable.ic_dormir_desabilitado);
+                holder.iconeEvento.setImageResource(R.drawable.ic_sono_inativo);
             break;
             case "EXERCICIO":
-                holder.iconeEvento.setImageResource(R.drawable.ic_exercicio_desabilitado);
+                holder.iconeEvento.setImageResource(R.drawable.ic_exercicio_inativo);
             break;
             case "REMEDIO":
-                holder.iconeEvento.setImageResource(R.drawable.ic_remedio_desabilitado);
+                holder.iconeEvento.setImageResource(R.drawable.ic_remedio_inativo);
             break;
             case "BEBIDA":
-                holder.iconeEvento.setImageResource(R.drawable.ic_bebida_desabilitado);
+                holder.iconeEvento.setImageResource(R.drawable.ic_bebida_inativo);
             break;
         }
 
