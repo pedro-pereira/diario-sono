@@ -4,60 +4,73 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    app:cardBackgroundColor="@color/corFundoCard"
-    app:cardCornerRadius="15dp"
+    android:layout_margin="3dp"
     app:cardElevation="10dp"
     app:cardMaxElevation="10dp"
     app:cardPreventCornerOverlap="true"
-    android:background="@color/corFundoCard"
-    android:id="@+id/cardEvento" >
+    android:id="@+id/cardEvento"
+    app:cardBackgroundColor="@android:color/white">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iconeEvento"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="16dp"
+            android:paddingLeft="15dp"
+            android:foregroundGravity="center_vertical"/>
+
         <TextView
             android:id="@+id/txtTipoEvento"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textColor="#3A416B"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@+id/iconeEvento"
+            android:layout_alignParentTop="true" />
 
         <TextView
             android:id="@+id/txtMomento"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txtTipoEvento"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
-            android:textColor="#FFFFFF" />
+            android:textColor="#3A416B"
+            android:layout_toRightOf="@+id/iconeEvento"
+            android:layout_below="@+id/txtTipoEvento" />
 
         <TextView
             android:id="@+id/txtObservacao"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/txtMomento"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
-            android:textColor="#FFFFFF" />
+            android:textColor="#3A416B"
+            android:layout_toRightOf="@+id/iconeEvento" />
 
         <TextView
             android:id="@+id/txtDuracao"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/txtObservacao"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="10dp"
-            android:textColor="#FFFFFF" />
+            android:textColor="#3A416B"
+            android:layout_toRightOf="@+id/iconeEvento" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
