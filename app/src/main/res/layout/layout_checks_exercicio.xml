@@ -9,7 +9,7 @@
         android:id="@+id/chkIconeExercicio"
         android:layout_width="@dimen/celulaWidth"
         android:layout_height="@dimen/celulaHeight"
-        android:background="@drawable/ic_grafico_exercicio_chk"
+        android:background="@drawable/ic_exercicio_check"
         android:button="@null"
         android:clickable="false"
         tools:layout_editor_absoluteY="17dp"
@@ -25,6 +25,7 @@
         android:button="@null"
         android:clickable="false"
         app:layout_constraintStart_toEndOf="@+id/chkIconeExercicio"
+        android:layout_marginStart="5dp"
         tools:layout_editor_absoluteY="17dp" />
 
     <CheckBox
