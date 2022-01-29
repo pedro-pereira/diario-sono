@@ -7,45 +7,27 @@
 
     <CheckBox
         android:id="@+id/chkIconeBebida"
-        android:layout_width="@dimen/celulaWidth"
+        android:layout_width="15dp"
         android:layout_height="@dimen/celulaHeight"
-        android:background="@drawable/ic_grafico_bebida_chk"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="50dp"
+        android:background="@drawable/ic_bebida_check"
         android:button="@null"
         android:clickable="false"
-        tools:layout_editor_absoluteY="17dp"
+        android:paddingHorizontal="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="42dp"
-        android:layout_alignParentStart="true" />
+        tools:layout_editor_absoluteY="17dp" />
 
     <CheckBox
         android:id="@+id/checkBox1"
         android:layout_width="@dimen/celulaWidth"
         android:layout_height="@dimen/celulaHeight"
+        android:layout_marginStart="16dp"
         android:background="@drawable/custom_selector"
         android:button="@null"
         android:clickable="false"
         app:layout_constraintStart_toEndOf="@+id/chkIconeBebida"
         tools:layout_editor_absoluteY="17dp" />
-
-    <CheckBox
-        android:id="@+id/checkBox2"
-        android:layout_width="@dimen/celulaWidth"
-        android:layout_height="@dimen/celulaHeight"
-        android:background="@drawable/custom_selector"
-        android:button="@null"
-        android:clickable="false"
-        app:layout_constraintBottom_toBottomOf="@+id/checkBox1"
-        app:layout_constraintStart_toEndOf="@+id/checkBox1" />
-
-    <CheckBox
-        android:id="@+id/checkBox3"
-        android:layout_width="@dimen/celulaWidth"
-        android:layout_height="@dimen/celulaHeight"
-        android:background="@drawable/custom_selector"
-        android:button="@null"
-        android:clickable="false"
-        app:layout_constraintBottom_toBottomOf="@+id/checkBox2"
-        app:layout_constraintStart_toEndOf="@+id/checkBox2" />
 
     <CheckBox
         android:id="@+id/checkBox4"
@@ -58,14 +40,24 @@
         app:layout_constraintStart_toEndOf="@+id/checkBox3" />
 
     <CheckBox
-        android:id="@+id/checkBox5"
+        android:id="@+id/checkBox7"
         android:layout_width="@dimen/celulaWidth"
         android:layout_height="@dimen/celulaHeight"
         android:background="@drawable/custom_selector"
         android:button="@null"
         android:clickable="false"
-        app:layout_constraintBottom_toBottomOf="@+id/checkBox4"
-        app:layout_constraintStart_toEndOf="@+id/checkBox4" />
+        app:layout_constraintBottom_toBottomOf="@+id/checkBox6"
+        app:layout_constraintStart_toEndOf="@+id/checkBox6" />
+
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="@dimen/celulaWidth"
+        android:layout_height="@dimen/celulaHeight"
+        android:background="@drawable/custom_selector"
+        android:button="@null"
+        android:clickable="false"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBox2"
+        app:layout_constraintStart_toEndOf="@+id/checkBox2" />
 
     <CheckBox
         android:id="@+id/checkBox6"
@@ -78,13 +70,37 @@
         app:layout_constraintStart_toEndOf="@+id/checkBox5" />
 
     <CheckBox
-        android:id="@+id/checkBox7"
+        android:id="@+id/checkBox5"
         android:layout_width="@dimen/celulaWidth"
         android:layout_height="@dimen/celulaHeight"
         android:background="@drawable/custom_selector"
         android:button="@null"
         android:clickable="false"
-        app:layout_constraintBottom_toBottomOf="@+id/checkBox6"
-        app:layout_constraintStart_toEndOf="@+id/checkBox6" />
+        app:layout_constraintBottom_toBottomOf="@+id/checkBox4"
+        app:layout_constraintStart_toEndOf="@+id/checkBox4" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="@dimen/celulaWidth"
+        android:layout_height="@dimen/celulaHeight"
+        android:background="@drawable/custom_selector"
+        android:button="@null"
+        android:clickable="false"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBox1"
+        app:layout_constraintStart_toEndOf="@+id/checkBox1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -111,14 +111,14 @@ public class DiarioFragment extends Fragment implements CompoundButton.OnChecked
 
         final FragmentManager fm = ((AppCompatActivity)getActivity()).getSupportFragmentManager();
 
-        drawableEventoSonoHabilitado        = getResources().getDrawable(R.drawable.ic_dormir_habilitado);
-        drawableEventoSonoDesabilitado      = getResources().getDrawable(R.drawable.ic_dormir_desabilitado);
-        drawableEventoExercicioHabilitado   = getResources().getDrawable(R.drawable.ic_exercicio_habilitado);
-        drawableEventoExercicioDesabilitado = getResources().getDrawable(R.drawable.ic_exercicio_desabilitado);
-        drawableEventoRemedioHabilitado     = getResources().getDrawable(R.drawable.ic_remedio_habilitado);
-        drawableEventoRemedioDesabilitado   = getResources().getDrawable(R.drawable.ic_remedio_desabilitado);
-        drawableEventoBebidaHabilitado      = getResources().getDrawable(R.drawable.ic_bebida_habilitado);
-        drawableEventoBebidaDesabilitado    = getResources().getDrawable(R.drawable.ic_bebida_desabilitado);
+        drawableEventoSonoHabilitado        = getResources().getDrawable(R.drawable.ic_sono_ativo);
+        drawableEventoSonoDesabilitado      = getResources().getDrawable(R.drawable.ic_sono_inativo);
+        drawableEventoExercicioHabilitado   = getResources().getDrawable(R.drawable.ic_exercicio_ativo);
+        drawableEventoExercicioDesabilitado = getResources().getDrawable(R.drawable.ic_exercicio_inativo);
+        drawableEventoRemedioHabilitado     = getResources().getDrawable(R.drawable.ic_remedio_ativo);
+        drawableEventoRemedioDesabilitado   = getResources().getDrawable(R.drawable.ic_remedio_inativo);
+        drawableEventoBebidaHabilitado      = getResources().getDrawable(R.drawable.ic_bebida_ativo);
+        drawableEventoBebidaDesabilitado    = getResources().getDrawable(R.drawable.ic_bebida_inativo);
 
         btnEventoSono         = view.findViewById(R.id.btnEventoSono);
         btnEventoExercicio    = view.findViewById(R.id.btnEventoExercicio);

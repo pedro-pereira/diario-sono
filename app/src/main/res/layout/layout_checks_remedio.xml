@@ -9,7 +9,7 @@
         android:id="@+id/chkIconeRemedio"
         android:layout_width="@dimen/celulaWidth"
         android:layout_height="@dimen/celulaHeight"
-        android:background="@drawable/ic_grafico_remedio_chk"
+        android:background="@drawable/ic_remedio_check"
         android:button="@null"
         android:clickable="false"
         tools:layout_editor_absoluteY="17dp"
@@ -26,6 +26,7 @@
         android:button="@null"
         android:clickable="false"
         app:layout_constraintStart_toEndOf="@+id/chkIconeRemedio"
+        android:layout_marginStart="5dp"
         tools:layout_editor_absoluteY="17dp" />
 
     <CheckBox
