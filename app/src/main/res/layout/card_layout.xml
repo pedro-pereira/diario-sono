@@ -48,7 +48,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
-            android:textColor="#FFFFFF"
+            android:textColor="#131627"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -62,7 +62,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             android:layout_marginRight="10dp"
-            android:textColor="#FFFFFF"
+            android:textColor="#131627"
             android:gravity="right"/>
 <!--
         <TextView
