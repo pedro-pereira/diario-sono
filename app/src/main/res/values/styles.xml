@@ -9,8 +9,22 @@
         -->
     </style>
 
-    <style name="ActionBarTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:background">@color/barraSuperiorCadastro</item>
+    <!-- https://stackoverflow.com/questions/22192291/how-to-change-the-status-bar-color-in-android -->
+    <!-- https://medium.com/over-engineering/setting-up-a-material-components-theme-for-android-fbf7774da739 -->
+    <style name="ActionBarTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">@color/barraSuperiorCadastro</item>
+        <!--
+        <item name="colorPrimaryVariant">@color/barraSuperiorCadastro</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#2962FF</item>
+        <item name="colorSecondaryVariant">#0039CB</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorError">#F44336</item>
+        <item name="colorOnError">#FFFFFF</item>
+        <item name="colorSurface">#FFFFFF</item>
+        <item name="colorOnSurface">#212121</item>
+        <item name="colorOnBackground">#212121</item>
+        -->
     </style>
 
     <style name="CustomCalendarDay" parent="TextAppearance.MaterialComponents.Caption">
@@ -52,4 +66,7 @@
         <item name="android:font" tools:targetApi="o">@font/roboto</item>
     </style>
 
+    <style name="CardViewStyle" parent="CardView">
+        <item name="cardBackgroundColor">#FFFFFF</item>
+    </style>
 </resources>
