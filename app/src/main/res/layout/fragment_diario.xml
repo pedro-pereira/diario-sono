@@ -35,7 +35,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutBotoesEvento"
         android:layout_width="370dp"
-        android:layout_height="75dp"
+        android:layout_height="76dp"
         android:layout_marginTop="20dp"
         app:layout_constraintBottom_toTopOf="@+id/layoutNomesEvento"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,11 +46,11 @@
         <Button
             android:id="@+id/btnEventoSono"
             android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_height="match_parent"
             android:layout_marginStart="14dp"
             android:background="@android:color/transparent"
 
-            android:drawableTop="@drawable/ic_dormir_desabilitado"
+            android:drawableTop="@drawable/ic_sono_inativo"
             android:paddingTop="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -60,11 +60,11 @@
         <Button
             android:id="@+id/btnEventoExercicio"
             android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_height="match_parent"
             android:layout_marginStart="14dp"
             android:background="@android:color/transparent"
 
-            android:drawableTop="@drawable/ic_exercicio_desabilitado"
+            android:drawableTop="@drawable/ic_exercicio_inativo"
             android:paddingTop="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btnEventoSono"
@@ -73,11 +73,11 @@
         <Button
             android:id="@+id/btnEventoRemedio"
             android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_height="match_parent"
             android:layout_marginStart="14dp"
             android:background="@android:color/transparent"
 
-            android:drawableTop="@drawable/ic_remedio_desabilitado"
+            android:drawableTop="@drawable/ic_remedio_inativo"
             android:paddingTop="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btnEventoExercicio"
@@ -86,9 +86,9 @@
         <Button
             android:id="@+id/btnEventoBebida"
             android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_height="match_parent"
             android:background="@android:color/transparent"
-            android:drawableTop="@drawable/ic_bebida_desabilitado"
+            android:drawableTop="@drawable/ic_bebida_inativo"
 
             android:paddingTop="0dp"
             app:layout_constraintBottom_toBottomOf="parent"

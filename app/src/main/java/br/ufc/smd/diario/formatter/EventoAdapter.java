@@ -1,11 +1,13 @@
 package br.ufc.smd.diario.formatter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -38,6 +40,7 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.Viewholder
         return new Viewholder(view);
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull EventoAdapter.Viewholder holder, int position) {
         evento = eventoArrayList.get(position);
@@ -61,6 +64,21 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.Viewholder
         }
 
         holder.txtObservacao.setText("Observação: " + evento.getObservacao());
+
+        switch (evento.getTipoEvento()) {
+            case "SONO":
+                holder.iconeEvento.setImageResource(R.drawable.ic_dormir_desabilitado);
+            break;
+            case "EXERCICIO":
+                holder.iconeEvento.setImageResource(R.drawable.ic_exercicio_desabilitado);
+            break;
+            case "REMEDIO":
+                holder.iconeEvento.setImageResource(R.drawable.ic_remedio_desabilitado);
+            break;
+            case "BEBIDA":
+                holder.iconeEvento.setImageResource(R.drawable.ic_bebida_desabilitado);
+            break;
+        }
 
         /*
         holder.cardView.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +104,7 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.Viewholder
 
         public CardView cardView;
         private TextView txtTipoEvento, txtMomento, txtDuracao, txtObservacao;
+        private ImageView iconeEvento;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
@@ -93,6 +112,7 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.Viewholder
             txtMomento    = itemView.findViewById(R.id.txtMomento);
             txtDuracao    = itemView.findViewById(R.id.txtDuracao);
             txtObservacao = itemView.findViewById(R.id.txtObservacao);
+            iconeEvento   = itemView.findViewById(R.id.iconeEvento);
 
             cardView      = itemView.findViewById(R.id.cardEvento);
         }

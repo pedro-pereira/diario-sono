@@ -1,6 +1,8 @@
 package br.ufc.smd.diario.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -37,6 +39,7 @@ public class ListaEventosActivity extends AppCompatActivity {
 
     private ArrayList<Evento> eventoArrayList;
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
